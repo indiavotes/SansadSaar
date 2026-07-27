@@ -28,7 +28,7 @@
 
 import { idbGet, idbPut } from './deps.js';
 
-// corpus → Promise<meta|null>
+// `corpus|dataBaseUrl` → Promise<meta|null>
 const _metaCache = new Map();
 
 // "<corpus>|<shard_file>" → Promise<shardData|null>
@@ -49,7 +49,12 @@ function _evictNullResolved(cache, key, promise) {
 }
 
 async function _fetchTextMeta(corpus, dataBaseUrl) {
-  if (_metaCache.has(corpus)) return _metaCache.get(corpus);
+  // Keyed on corpus AND origin. Keyed on corpus alone, reading one corpus
+  // from two base URLs silently returns the first origin's manifest — which
+  // during the 2026-07-27 schema migration produced a convincing false
+  // "the compatibility fallback is broken" result and cost real debugging time.
+  const corpusKey = `${corpus}|${dataBaseUrl}`;
+  if (_metaCache.has(corpusKey)) return _metaCache.get(corpusKey);
   const p = (async () => {
     try {
       const res = await fetch(`${dataBaseUrl}${corpus}/texts-meta.json${_cacheBuster()}`, { cache: 'no-cache' });
@@ -60,8 +65,8 @@ async function _fetchTextMeta(corpus, dataBaseUrl) {
       return null;
     }
   })();
-  _metaCache.set(corpus, p);
-  _evictNullResolved(_metaCache, corpus, p);
+  _metaCache.set(corpusKey, p);
+  _evictNullResolved(_metaCache, corpusKey, p);
   return p;
 }
 
@@ -236,7 +241,13 @@ async function _fetchR2Raw(origin, key) {
  * by shard filename and a re-fetch will overwrite naturally.
  */
 export function clearTextShardCache(corpus) {
-  _metaCache.delete(corpus);
+  // Prefix-match, not an exact delete: _metaCache is keyed `corpus|origin`,
+  // so a bare `delete(corpus)` silently matches nothing. Clearing every
+  // origin for the corpus is also the right semantics for "refresh this
+  // corpus" and keeps the signature caller-friendly.
+  for (const key of _metaCache.keys()) {
+    if (key === corpus || key.startsWith(`${corpus}|`)) _metaCache.delete(key);
+  }
   for (const key of _shardCache.keys()) {
     if (key.startsWith(`${corpus}|`)) _shardCache.delete(key);
   }

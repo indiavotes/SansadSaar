@@ -14,6 +14,7 @@ import {
   escapeHtml, debounce,
   relativeTime, statusBucket,
   INTRO_SEEN_KEY,
+  setNotifier, installGlobalErrorSurface,
 } from './deps.js';
 import { DRSCCorpus }    from './corpora/drsc/index.js';
 import { CAGCorpus }     from './corpora/cag/index.js';
@@ -1440,6 +1441,14 @@ async function init() {
     });
   }
 }
+
+// Wire the error surface before anything else can fail, on BOTH boot paths —
+// this module is loaded as a deferred ES module, so readyState is often
+// already past 'loading' and the else-branch is the live one. Until
+// 2026-07-27 an exception in a handler, or a rejected promise, produced no
+// visible trace at all — see deps.js installGlobalErrorSurface.
+setNotifier(msg => toast(msg, 6000));
+installGlobalErrorSurface();
 
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', init);

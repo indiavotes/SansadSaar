@@ -25,7 +25,7 @@
 // `renderResultsLine()` see consistent "loading…" → "loaded N" transitions
 // without each corpus having to re-implement the dance.
 
-import { idbGet, idbPut, escapeHtml, mapPooled } from './deps.js';
+import { idbGet, idbPut, escapeHtml, mapPooled, notify } from './deps.js';
 
 // ── Query parsing + highlight rendering ───────────────────────────────────
 
@@ -263,7 +263,10 @@ export async function loadSearchBundle({
       idbPut('blobs', idbKey, merged).catch(() => {});
     }
   } catch (e) {
-    console.warn(`${corpusId}: search-bundle fetch failed`, e);
+    // Surfaced, not just logged: a failure here leaves the search box looking
+    // functional while returning nothing, which is indistinguishable from
+    // "no results" to the user.
+    notify(`${corpusId}: full-text search unavailable — ${e?.message || e}`, e);
   } finally {
     state[fields.loading] = false;
     onChange?.();
@@ -323,7 +326,7 @@ export async function loadSearchIndex({
       idbPut('blobs', idbKey, blob).catch(() => {});
     }
   } catch (e) {
-    console.warn(`${corpusId}: search-index fetch failed`, e);
+    notify(`${corpusId}: full-text search unavailable — ${e?.message || e}`, e);
   } finally {
     state[fields.loading] = false;
     onChange?.();

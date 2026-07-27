@@ -185,9 +185,18 @@ async function fetchReports(dataUrl, v, fetchOpts) {
   // failure (network, JSON parse) is also treated as fall-back-worthy
   // rather than fatal, so a transient blip on reports-meta doesn't break
   // the load when reports.json is still around.
-  try {
-    const metaResp = await fetch(dataUrl + CORPUS_PREFIX + 'reports-meta.json' + v, fetchOpts);
-    if (metaResp.ok) {
+  // Fall back to the legacy single file ONLY when reports-meta.json is
+  // genuinely absent (404). The previous shape caught *any* error from the
+  // sharded path — including a transient failure on one shard out of
+  // hundreds — and fell through to reports.json, which has not existed since
+  // sharding landed on 2026-05-14. So every sharded-path hiccup surfaced as
+  // `reports.json: 404`, pointing at a file that is supposed to be missing.
+  // That is exactly what masked the real cause during the 2026-07-27 outage:
+  // the actual error was a connection-pool rejection on the shard fetches.
+  const metaResp = await fetch(dataUrl + CORPUS_PREFIX + 'reports-meta.json' + v, fetchOpts);
+  if (metaResp.status !== 404) {
+    if (!metaResp.ok) throw new Error(`reports-meta.json: ${metaResp.status}`);
+    {
       const reportsMeta = await metaResp.json();
       const shardsByHouse = reportsMeta?.shards || {};
       const merged = {};
@@ -219,11 +228,10 @@ async function fetchReports(dataUrl, v, fetchOpts) {
       }
       return merged;
     }
-  } catch (e) {
-    console.warn('debates: sharded reports fetch failed, trying legacy reports.json', e);
   }
 
-  // Legacy single-file fallback.
+  // Legacy single-file fallback — reached only when reports-meta.json is a
+  // genuine 404, i.e. an old data-repo snapshot from before sharding.
   const resp = await fetch(dataUrl + CORPUS_PREFIX + 'reports.json' + v, fetchOpts);
   if (!resp.ok) throw new Error(`reports.json: ${resp.status}`);
   return resp.json();
