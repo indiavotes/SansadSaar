@@ -49,7 +49,12 @@ function _evictNullResolved(cache, key, promise) {
 }
 
 async function _fetchTextMeta(corpus, dataBaseUrl) {
-  if (_metaCache.has(corpus)) return _metaCache.get(corpus);
+  // Keyed on corpus AND origin. Keyed on corpus alone, reading one corpus
+  // from two base URLs silently returns the first origin's manifest — which
+  // during the 2026-07-27 schema migration produced a convincing false
+  // "the compatibility fallback is broken" result and cost real debugging time.
+  const corpusKey = `${corpus}|${dataBaseUrl}`;
+  if (_metaCache.has(corpusKey)) return _metaCache.get(corpusKey);
   const p = (async () => {
     try {
       const res = await fetch(`${dataBaseUrl}${corpus}/texts-meta.json${_cacheBuster()}`, { cache: 'no-cache' });
@@ -60,8 +65,8 @@ async function _fetchTextMeta(corpus, dataBaseUrl) {
       return null;
     }
   })();
-  _metaCache.set(corpus, p);
-  _evictNullResolved(_metaCache, corpus, p);
+  _metaCache.set(corpusKey, p);
+  _evictNullResolved(_metaCache, corpusKey, p);
   return p;
 }
 

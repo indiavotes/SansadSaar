@@ -1038,7 +1038,9 @@ async function loadCachedTexts() {
       return !!state.data.manifest?.texts?.[committee]?.[mkey];
     },
   });
-  if (dropped) console.log(`loadCachedTexts: hydrated ${added}, dropped ${dropped} stale orphan entries`);
+  // Kept as a deliberate diagnostic (console.info, not log) — a nonzero drop
+  // count is the signal that cached texts have drifted from the manifest.
+  if (dropped) console.info(`drsc loadCachedTexts: hydrated ${added}, dropped ${dropped} stale orphan entries`);
   return added;
 }
 
