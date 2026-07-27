@@ -28,7 +28,7 @@
 
 import { idbGet, idbPut } from './deps.js';
 
-// corpus → Promise<meta|null>
+// `corpus|dataBaseUrl` → Promise<meta|null>
 const _metaCache = new Map();
 
 // "<corpus>|<shard_file>" → Promise<shardData|null>
@@ -241,7 +241,13 @@ async function _fetchR2Raw(origin, key) {
  * by shard filename and a re-fetch will overwrite naturally.
  */
 export function clearTextShardCache(corpus) {
-  _metaCache.delete(corpus);
+  // Prefix-match, not an exact delete: _metaCache is keyed `corpus|origin`,
+  // so a bare `delete(corpus)` silently matches nothing. Clearing every
+  // origin for the corpus is also the right semantics for "refresh this
+  // corpus" and keeps the signature caller-friendly.
+  for (const key of _metaCache.keys()) {
+    if (key === corpus || key.startsWith(`${corpus}|`)) _metaCache.delete(key);
+  }
   for (const key of _shardCache.keys()) {
     if (key.startsWith(`${corpus}|`)) _shardCache.delete(key);
   }
