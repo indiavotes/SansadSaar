@@ -25,7 +25,7 @@
 // `renderResultsLine()` see consistent "loading…" → "loaded N" transitions
 // without each corpus having to re-implement the dance.
 
-import { idbGet, idbPut, escapeHtml } from './deps.js';
+import { idbGet, idbPut, escapeHtml, mapPooled } from './deps.js';
 
 // ── Query parsing + highlight rendering ───────────────────────────────────
 
@@ -239,10 +239,13 @@ export async function loadSearchBundle({
     }
     const dataUrl = deps.config.dataBaseUrl;
     const bucket  = Math.floor(Date.now() / 300000);
-    const shards = await Promise.all(shardList.map(name =>
-      fetch(dataUrl + urlPath + name + '?v=' + bucket, { cache: 'no-cache' })
-        .then(r => r.ok ? r.json() : Promise.reject(`${name}: ${r.status}`))
-    ));
+    // Bounded — shard count is a property of the data, not the app. See
+    // mapPooled in deps.js.
+    const shards = await mapPooled(shardList, async name => {
+      const r = await fetch(dataUrl + urlPath + name + '?v=' + bucket, { cache: 'no-cache' });
+      if (!r.ok) throw new Error(`${name}: ${r.status}`);
+      return r.json();
+    });
 
     let head_chars   = 5000;
     let generated_at = '';
@@ -301,10 +304,12 @@ export async function loadSearchIndex({
     }
     const dataUrl = deps.config.dataBaseUrl;
     const bucket  = Math.floor(Date.now() / 300000);
-    const shards = await Promise.all(shardList.map(name =>
-      fetch(dataUrl + urlPath + name + '?v=' + bucket, { cache: 'no-cache' })
-        .then(r => r.ok ? r.json() : Promise.reject(`${name}: ${r.status}`))
-    ));
+    // Bounded — see loadSearchBundle above.
+    const shards = await mapPooled(shardList, async name => {
+      const r = await fetch(dataUrl + urlPath + name + '?v=' + bucket, { cache: 'no-cache' });
+      if (!r.ok) throw new Error(`${name}: ${r.status}`);
+      return r.json();
+    });
 
     let generated_at = '';
     for (const s of shards) {

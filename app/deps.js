@@ -88,6 +88,69 @@ export function saveSettings(obj) {
   localStorage.setItem(SETTINGS_KEY, JSON.stringify(obj));
 }
 
+// ── Bounded concurrency ─────────────────────────────────────────────────────
+//
+// Every shard family in this app is fetched as "the whole list, at startup":
+// reports shards, search-bundle shards, search-index shards. Fanning those out
+// with a bare `Promise.all(list.map(fetch))` works right up until the list
+// gets long, and then it doesn't work at all — the browser caps in-flight
+// requests per origin and rejects the excess with a bare "Failed to fetch",
+// which reads like a network outage rather than a self-inflicted burst.
+//
+// That is not hypothetical. On 2026-07-27 a data rebuild took the reports
+// shard count from ~100 to ~1,500 and questions + debates went down on the
+// live site for exactly this reason. Shard counts are a property of the DATA,
+// not of the app, so any call site that fans out over a manifest-supplied list
+// must be bounded — the app cannot assume the list stays short.
+//
+// The limit is MEASURED, not guessed. Against the live mirror over questions'
+// 1,208 search-bundle shards:
+//
+//     limit  16 -> 36.6s      limit  64 ->  7.3s
+//     limit  32 -> 13.8s      limit 128 ->  5.8s
+//     unbounded -> 18.0s, and the cliff
+//
+// 64 sits just past the knee — 128 buys ~1.5s more and gives back headroom
+// for no good reason. An earlier guess of 16 was ~5x slower than 64 and
+// slower than no pooling at all, which is the trap here: too low a limit
+// serialises a workload HTTP/2 is happy to multiplex.
+//
+// Note the unbounded run did NOT fail at 1,208 in isolation. The production
+// failure was ~3,300 in flight (two corpora activating together, plus meta
+// and IDB traffic). So the cliff is a function of TOTAL concurrency, not of
+// any one list's length — which is exactly why every fan-out needs a bound
+// rather than a per-site judgement about whether its list is "short enough".
+
+export const DEFAULT_FETCH_LIMIT = 64;
+
+/**
+ * Map `items` through async `fn` with at most `limit` in flight.
+ * Results keep input order. The first rejection propagates (matching
+ * Promise.all semantics) — callers that want partial results should catch
+ * inside `fn`.
+ *
+ * @param {Array} items
+ * @param {(item: any, index: number) => Promise<any>} fn
+ * @param {number} limit
+ * @returns {Promise<Array>}
+ */
+export async function mapPooled(items, fn, limit = DEFAULT_FETCH_LIMIT) {
+  const list = Array.from(items || []);
+  const out = new Array(list.length);
+  let next = 0;
+  const worker = async () => {
+    for (;;) {
+      const i = next++;
+      if (i >= list.length) return;
+      out[i] = await fn(list[i], i);
+    }
+  };
+  await Promise.all(
+    Array.from({ length: Math.max(1, Math.min(limit, list.length)) }, worker)
+  );
+  return out;
+}
+
 // ── Pure helpers ────────────────────────────────────────────────────────────
 
 export function escapeHtml(s) {

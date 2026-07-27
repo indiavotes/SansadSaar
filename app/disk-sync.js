@@ -33,7 +33,7 @@
 //
 // See CONV.md "File System Access API" + "Save-to-Disk pattern".
 
-import { idbGet, idbPut } from './deps.js';
+import { idbGet, idbPut, mapPooled } from './deps.js';
 
 const HANDLE_KEY = 'disk-handle';   // in 'blobs' store
 
@@ -139,11 +139,17 @@ async function syncCorpus(corpusId, root, onProgress) {
     ...(meta.search_bundle?.shards || []),
     ...(meta.search_index?.shards  || []),
   ];
-  for (const shard of shardLists) {
+  // Pooled rather than serial: these lists run to four figures on the
+  // proceedings corpora (questions ships ~1,200 bundle + ~1,200 index
+  // shards), and one-at-a-time turns Save to Disk into a multi-minute stall.
+  // Fetches are pooled; the write stays inside the worker so a slow disk
+  // backpressures the fetches instead of buffering every shard in memory.
+  let done = 0;
+  await mapPooled(shardLists, async shard => {
     const content = await fetchText(`${dataUrl}${corpusId}/${shard}`);
     await writeFile(sub, shard, content);
-    onProgress?.(`${corpusId}/${shard}`);
-  }
+    onProgress?.(`${corpusId}/${shard}`, ++done, shardLists.length);
+  });
 
   // Bills has a sharded index-NN.json on top of the bundle/index.
   if (corpusId === 'bills') {

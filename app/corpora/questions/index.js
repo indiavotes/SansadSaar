@@ -29,6 +29,7 @@ import {
   escapeHtml, debounce,
   loadSettings, saveSettings,
   formatLocalTimestamp,
+  mapPooled,
 } from '../../deps.js';
 import {
   parseQuery, highlightMatches,
@@ -130,32 +131,6 @@ function getAllReports() {
 
 // ── Data fetching ───────────────────────────────────────────────────────────
 
-// Bounded-concurrency shard fetcher, shared by the sharded reports path.
-// `tasks` is [{house, idx, file}, ...]; returns them resolved, order preserved.
-// LIMIT is deliberately low: HTTP/2 multiplexes, but the browser still caps
-// in-flight requests per origin and a burst of ~1.5k rejects outright.
-const _SHARD_FETCH_LIMIT = 16;
-
-async function _fetchShardsPooled(tasks, dataUrl, v, fetchOpts) {
-  const out = new Array(tasks.length);
-  let next = 0;
-  const worker = async () => {
-    for (;;) {
-      const i = next++;
-      if (i >= tasks.length) return;
-      const t = tasks[i];
-      const r = await fetch(dataUrl + CORPUS_PREFIX + t.file + v, fetchOpts);
-      if (!r.ok) throw new Error(`${t.file}: ${r.status}`);
-      const payload = await r.json();
-      out[i] = { house: t.house, idx: t.idx, records: payload?.records || [] };
-    }
-  };
-  await Promise.all(
-    Array.from({ length: Math.min(_SHARD_FETCH_LIMIT, tasks.length) }, worker)
-  );
-  return out;
-}
-
 // Sharded reports fetcher. Reads reports-meta.json + per-house shards
 // (the post-2026-05-14 shape). Returns canonical { ls: [...], rs: [...] }.
 async function fetchReports(dataUrl, v, fetchOpts) {
@@ -178,7 +153,12 @@ async function fetchReports(dataUrl, v, fetchOpts) {
   // Fetch with a bounded pool. Bucket-named shards mean ~1.5k reports files
   // instead of ~100, and firing them all at once exhausts the browser's
   // connection pool — every request fails with a bare "Failed to fetch".
-  const shardResults = await _fetchShardsPooled(tasks, dataUrl, v, fetchOpts);
+  const shardResults = await mapPooled(tasks, async t => {
+        const r = await fetch(dataUrl + CORPUS_PREFIX + t.file + v, fetchOpts);
+        if (!r.ok) throw new Error(`${t.file}: ${r.status}`);
+        const payload = await r.json();
+        return { house: t.house, idx: t.idx, records: payload?.records || [] };
+      });
   shardResults.sort((a, b) =>
     a.house === b.house ? a.idx - b.idx : a.house.localeCompare(b.house));
   for (const { house, records } of shardResults) {
