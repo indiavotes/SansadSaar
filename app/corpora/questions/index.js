@@ -130,6 +130,32 @@ function getAllReports() {
 
 // ── Data fetching ───────────────────────────────────────────────────────────
 
+// Bounded-concurrency shard fetcher, shared by the sharded reports path.
+// `tasks` is [{house, idx, file}, ...]; returns them resolved, order preserved.
+// LIMIT is deliberately low: HTTP/2 multiplexes, but the browser still caps
+// in-flight requests per origin and a burst of ~1.5k rejects outright.
+const _SHARD_FETCH_LIMIT = 16;
+
+async function _fetchShardsPooled(tasks, dataUrl, v, fetchOpts) {
+  const out = new Array(tasks.length);
+  let next = 0;
+  const worker = async () => {
+    for (;;) {
+      const i = next++;
+      if (i >= tasks.length) return;
+      const t = tasks[i];
+      const r = await fetch(dataUrl + CORPUS_PREFIX + t.file + v, fetchOpts);
+      if (!r.ok) throw new Error(`${t.file}: ${r.status}`);
+      const payload = await r.json();
+      out[i] = { house: t.house, idx: t.idx, records: payload?.records || [] };
+    }
+  };
+  await Promise.all(
+    Array.from({ length: Math.min(_SHARD_FETCH_LIMIT, tasks.length) }, worker)
+  );
+  return out;
+}
+
 // Sharded reports fetcher. Reads reports-meta.json + per-house shards
 // (the post-2026-05-14 shape). Returns canonical { ls: [...], rs: [...] }.
 async function fetchReports(dataUrl, v, fetchOpts) {
@@ -146,17 +172,13 @@ async function fetchReports(dataUrl, v, fetchOpts) {
     // an ordinal baked into the payload would change for every shard each
     // time a new session appeared — the same cascade that blew up the repo.
     entries.forEach((entry, i) => {
-      tasks.push(
-        fetch(dataUrl + CORPUS_PREFIX + entry.file + v, fetchOpts)
-          .then(r => {
-            if (!r.ok) throw new Error(`${entry.file}: ${r.status}`);
-            return r.json();
-          })
-          .then(payload => ({ house, idx: i, records: payload?.records || [] }))
-      );
+      tasks.push({ house, idx: i, file: entry.file });
     });
   }
-  const shardResults = await Promise.all(tasks);
+  // Fetch with a bounded pool. Bucket-named shards mean ~1.5k reports files
+  // instead of ~100, and firing them all at once exhausts the browser's
+  // connection pool — every request fails with a bare "Failed to fetch".
+  const shardResults = await _fetchShardsPooled(tasks, dataUrl, v, fetchOpts);
   shardResults.sort((a, b) =>
     a.house === b.house ? a.idx - b.idx : a.house.localeCompare(b.house));
   for (const { house, records } of shardResults) {

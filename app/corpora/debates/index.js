@@ -179,6 +179,30 @@ function memberLine(r) {
 // snapshot during the brief window between app deploy and data-repo deploy.
 //
 // Returns the canonical `{ls: [...], rs: [...]}` shape regardless of source.
+// Bounded-concurrency shard fetcher. `tasks` is [{house, idx, file}, ...];
+// returns them resolved, order preserved. See app/corpora/questions/index.js.
+const _SHARD_FETCH_LIMIT = 16;
+
+async function _fetchShardsPooled(tasks, dataUrl, v, fetchOpts) {
+  const out = new Array(tasks.length);
+  let next = 0;
+  const worker = async () => {
+    for (;;) {
+      const i = next++;
+      if (i >= tasks.length) return;
+      const t = tasks[i];
+      const r = await fetch(dataUrl + CORPUS_PREFIX + t.file + v, fetchOpts);
+      if (!r.ok) throw new Error(`${t.file}: ${r.status}`);
+      const payload = await r.json();
+      out[i] = { house: t.house, idx: t.idx, records: payload?.records || [] };
+    }
+  };
+  await Promise.all(
+    Array.from({ length: Math.min(_SHARD_FETCH_LIMIT, tasks.length) }, worker)
+  );
+  return out;
+}
+
 async function fetchReports(dataUrl, v, fetchOpts) {
   // Prefer sharded format. A 404 here is the cue to fall back; any other
   // failure (network, JSON parse) is also treated as fall-back-worthy
@@ -196,17 +220,14 @@ async function fetchReports(dataUrl, v, fetchOpts) {
         // Order comes from the manifest's entry order, NOT from an index in
         // the shard payload — see app/corpora/questions/index.js.
         entries.forEach((entry, i) => {
-          tasks.push(
-            fetch(dataUrl + CORPUS_PREFIX + entry.file + v, fetchOpts)
-              .then(r => {
-                if (!r.ok) throw new Error(`${entry.file}: ${r.status}`);
-                return r.json();
-              })
-              .then(payload => ({ house, idx: i, records: payload?.records || [] }))
-          );
+          tasks.push({ house, idx: i, file: entry.file });
         });
       }
-      const shardResults = await Promise.all(tasks);
+      // Bounded pool — bucket-named shards mean ~1.8k reports files here, and
+      // firing them all at once fails the whole load with "Failed to fetch",
+      // which this function then silently swallows into the legacy
+      // reports.json fallback (a 404 since the 2026-05-14 sharding).
+      const shardResults = await _fetchShardsPooled(tasks, dataUrl, v, fetchOpts);
       // Sort defensively by (house, shard_index) so concat order is
       // deterministic even if shard_index is missing on legacy entries.
       shardResults.sort((a, b) =>
