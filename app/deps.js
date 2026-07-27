@@ -151,6 +151,56 @@ export async function mapPooled(items, fn, limit = DEFAULT_FETCH_LIMIT) {
   return out;
 }
 
+// ── User-visible error surface ──────────────────────────────────────────────
+//
+// Modules below the shell (corpus-search, text-shards, disk-sync) have no
+// access to the DOM toast and can't import shell.js without a cycle, so they
+// report through here and the shell wires itself in at boot.
+//
+// This exists because the app had NO error surface at all. On 2026-07-27
+// questions and debates failed to load on the live site and the only trace
+// was a console.warn — the corpora simply rendered nothing. A failure the
+// user cannot see is a failure nobody fixes.
+//
+// The reporter must never itself throw: it runs on the failure path, and an
+// exception here would replace a visible error with a silent one.
+
+let _notifier = null;
+let _lastNotifyAt = 0;
+
+/** Wire the UI sink (called once by shell.js with its toast). */
+export function setNotifier(fn) { _notifier = fn; }
+
+/**
+ * Surface a failure to the user, throttled so a burst of failing shards
+ * doesn't strobe the toast. Always logs, whether or not a sink is attached.
+ */
+export function notify(msg, err) {
+  try { console.error('[sansadsaar]', msg, err ?? ''); } catch {}
+  try {
+    const now = Date.now();
+    if (now - _lastNotifyAt < 4000) return;   // throttle bursts
+    _lastNotifyAt = now;
+    _notifier?.(msg);
+  } catch {}
+}
+
+/**
+ * Catch what nothing else does: exceptions in event handlers and rejected
+ * promises with no .catch. Without this an error in a click handler produces
+ * literally nothing — no toast, no log the user would ever see.
+ */
+export function installGlobalErrorSurface() {
+  addEventListener('error', e => {
+    const detail = e.error?.message || e.message;
+    if (detail) notify('Something went wrong — ' + detail + ' (see console)', e.error);
+  });
+  addEventListener('unhandledrejection', e => {
+    const detail = e.reason?.message || e.reason;
+    if (detail) notify('Something went wrong — ' + detail + ' (see console)', e.reason);
+  });
+}
+
 // ── Pure helpers ────────────────────────────────────────────────────────────
 
 export function escapeHtml(s) {
