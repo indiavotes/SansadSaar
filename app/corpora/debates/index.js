@@ -193,16 +193,18 @@ async function fetchReports(dataUrl, v, fetchOpts) {
       const tasks = [];
       for (const [house, entries] of Object.entries(shardsByHouse)) {
         merged[house] = [];
-        for (const entry of entries) {
+        // Order comes from the manifest's entry order, NOT from an index in
+        // the shard payload — see app/corpora/questions/index.js.
+        entries.forEach((entry, i) => {
           tasks.push(
             fetch(dataUrl + CORPUS_PREFIX + entry.file + v, fetchOpts)
               .then(r => {
                 if (!r.ok) throw new Error(`${entry.file}: ${r.status}`);
                 return r.json();
               })
-              .then(payload => ({ house, idx: entry.shard_index ?? 0, records: payload?.records || [] }))
+              .then(payload => ({ house, idx: i, records: payload?.records || [] }))
           );
-        }
+        });
       }
       const shardResults = await Promise.all(tasks);
       // Sort defensively by (house, shard_index) so concat order is

@@ -1,17 +1,20 @@
 // app/text-shards.js
 //
 // Shared text-shard loader. Each corpus's per-record text bodies are
-// bundled at build time into 4-5 MB JSON shards (`texts-NN.json`) with a
-// small `texts-meta.json` manifest at `<dataBaseUrl>/<corpus>/`. This
-// module fetches a record's text by:
+// bundled at build time into key-addressed JSON shards
+// (`texts-<bucket>-<band>.json`) with a small `texts-meta.json` manifest at
+// `<dataBaseUrl>/<corpus>/`. This module fetches a record's text by:
 //
-//   1. Loading the corpus's texts-meta.json once (cached per session).
-//   2. Looking up the record's composite key in the manifest's
-//      `record_to_shard` map.
-//   3. Fetching the listed shard JSON, parsed once and cached.
-//   4. Returning either the inline string body or, if the shard stores
+//   1. Deriving the shard filename from the record's own composite key
+//      (see shardFileFor) — no lookup map, no manifest round-trip needed
+//      for resolution.
+//   2. Fetching that shard JSON, parsed once and cached.
+//   3. Returning either the inline string body or, if the shard stores
 //      a `{"r2": true}` sentinel for that key, fetching from the
 //      manifest's `r2_origin` URL.
+//
+// Manifests written before 2026-07-27 carry a `record_to_shard` map instead;
+// that path is still honoured so the app works against un-rebuilt mirrors.
 //
 // Each corpus module owns its composite-key construction (drsc =
 // `<committee>|<file_id>`, debates = `ls|<file_id>` or
@@ -87,6 +90,61 @@ async function _fetchShard(corpus, shardFile, dataBaseUrl) {
   return p;
 }
 
+// ── Shard resolution ───────────────────────────────────────────────────────
+//
+// A record's shard is a pure function of its own key. Mirrors bucket_for()
+// and fnv1a32() in parliamentwatch_text_shards.py — if you change one, change
+// both.
+//
+// Before 2026-07-27 the manifest carried a `record_to_shard` map instead: one
+// entry per record, 3.5 MB for questions, rewritten on every scrape run and
+// downloaded by every session before any text could be read. Deriving the
+// shard removes that download entirely.
+//
+// `record_to_shard` is still honoured when present so the app keeps working
+// against mirrors that haven't been rebuilt yet (schema 1).
+
+const _BUCKET_SPLIT = /[_|]/;
+const _BUCKET_CLEAN = /[^A-Za-z0-9-]/g;
+
+export function bucketFor(key) {
+  const bar = key.indexOf('|');
+  const house = bar === -1 ? '' : key.slice(0, bar);
+  const body = bar === -1 ? key : key.slice(bar + 1);
+  const parts = body.split(_BUCKET_SPLIT).filter(Boolean);
+  const raw = [house, parts[0] || '', parts[1] || ''].filter(Boolean).join('-');
+  return raw.replace(_BUCKET_CLEAN, '') || 'misc';
+}
+
+const _ORDINAL = /(\d+)\D*$/;
+const _DEFAULT_STRIDE = 250;   // must match DEFAULT_SHARD_STRIDE in parliamentwatch_text_shards.py
+
+/**
+ * Shard filename holding `key`. Pure function of the key (plus the stride
+ * recorded in the manifest). Mirrors shard_filename() in
+ * parliamentwatch_text_shards.py — change one, change both.
+ */
+export function shardFileFor(key, stride = _DEFAULT_STRIDE) {
+  const bucket = bucketFor(key);
+  const m = _ORDINAL.exec(key);
+  // No ordinal (e.g. RS date-keyed records) — the bucket is one sitting
+  // already, so it is not banded.
+  if (!m) return `texts-${bucket}.json`;
+  const band = Math.floor(parseInt(m[1], 10) / stride);
+  return `texts-${bucket}-${String(band).padStart(4, '0')}.json`;
+}
+
+/** Resolve the shard filename holding `compositeKey`, or null. */
+function _shardFileFor(meta, compositeKey) {
+  // Schema 1 — explicit map. Kept for mirrors not yet rebuilt.
+  if (meta?.record_to_shard) {
+    const idx = meta.record_to_shard[compositeKey];
+    if (idx === undefined) return null;
+    return meta.shards?.[idx]?.file ?? null;
+  }
+  return shardFileFor(compositeKey, meta?.shard_stride || _DEFAULT_STRIDE);
+}
+
 /**
  * Load a record's extracted text by composite key.
  *
@@ -100,13 +158,9 @@ export async function loadTextFromShards(corpus, compositeKey, dataBaseUrl) {
   if (!corpus || !compositeKey || !dataBaseUrl) return null;
   const meta = await _fetchTextMeta(corpus, dataBaseUrl);
   if (!meta) return null;
-  const map = meta.record_to_shard;
-  if (!map) return null;
-  const shardIdx = map[compositeKey];
-  if (shardIdx === undefined) return null;
-  const shardEntry = meta.shards?.[shardIdx];
-  if (!shardEntry) return null;
-  const shard = await _fetchShard(corpus, shardEntry.file, dataBaseUrl);
+  const shardFile = _shardFileFor(meta, compositeKey);
+  if (!shardFile) return null;
+  const shard = await _fetchShard(corpus, shardFile, dataBaseUrl);
   if (!shard) return null;
   const value = shard.records?.[compositeKey];
   if (value == null) return null;
@@ -143,9 +197,9 @@ export async function loadTextFromShardsWithR2Key(corpus, compositeKey, r2Key, d
   // direct came back null. Could mean: not in shard at all, or sentinel
   // hit but R2 lookup needs the explicit key. Re-resolve and retry.
   const meta = await _fetchTextMeta(corpus, dataBaseUrl);
-  const shardIdx = meta?.record_to_shard?.[compositeKey];
-  if (shardIdx === undefined) return null;
-  const shard = await _fetchShard(corpus, meta.shards[shardIdx].file, dataBaseUrl);
+  const shardFile = _shardFileFor(meta, compositeKey);
+  if (!shardFile) return null;
+  const shard = await _fetchShard(corpus, shardFile, dataBaseUrl);
   const value = shard?.records?.[compositeKey];
   if (!value || typeof value === 'string') return null;
   if (value.r2 && meta.r2_origin) {

@@ -141,16 +141,20 @@ async function fetchReports(dataUrl, v, fetchOpts) {
   const tasks = [];
   for (const [house, entries] of Object.entries(shardsByHouse)) {
     merged[house] = [];
-    for (const entry of entries) {
+    // Order comes from the manifest's entry order, NOT from an index inside
+    // the shard payload. Shards are now named for their natural bucket, and
+    // an ordinal baked into the payload would change for every shard each
+    // time a new session appeared — the same cascade that blew up the repo.
+    entries.forEach((entry, i) => {
       tasks.push(
         fetch(dataUrl + CORPUS_PREFIX + entry.file + v, fetchOpts)
           .then(r => {
             if (!r.ok) throw new Error(`${entry.file}: ${r.status}`);
             return r.json();
           })
-          .then(payload => ({ house, idx: payload?.shard_index ?? 0, records: payload?.records || [] }))
+          .then(payload => ({ house, idx: i, records: payload?.records || [] }))
       );
-    }
+    });
   }
   const shardResults = await Promise.all(tasks);
   shardResults.sort((a, b) =>
