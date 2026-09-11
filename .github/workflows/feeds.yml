@@ -1,0 +1,57 @@
+name: Generate RSS feeds
+
+# Regenerate one RSS feed per section (corpus) from the live data mirror and
+# commit the changed XML. The committed files are served statically at
+# https://sansadsaar.naklitechie.com/feeds/<id>.xml.
+#
+# Runs daily, and on demand. The scrape pipelines live in the sibling data
+# repos; this job reads their published JSON, so "daily" is the refresh
+# cadence. Trigger it right after a scrape by dispatching this workflow
+# (Actions tab → Generate RSS feeds → Run workflow) or via repository_dispatch.
+
+on:
+  schedule:
+    - cron: '30 2 * * *'        # 02:30 UTC daily (~08:00 IST)
+  workflow_dispatch: {}
+  repository_dispatch:
+    types: [scrape-complete]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: feeds
+  cancel-in-progress: false
+
+jobs:
+  feeds:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Generate feeds
+        id: gen
+        continue-on-error: true      # a single corpus failing still commits the rest
+        run: node scripts/gen-feeds.mjs
+
+      - name: Commit changed feeds
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add feeds/
+          if git diff --cached --quiet; then
+            echo "No feed changes."
+          else
+            git commit -m "feeds: daily regeneration ($(date -u +%Y-%m-%d))"
+            git push
+          fi
+
+      - name: Flag generator failures
+        if: steps.gen.outcome != 'success'
+        run: |
+          echo "::warning::gen-feeds.mjs reported at least one corpus failure; committed feeds may be partial."
+          exit 1

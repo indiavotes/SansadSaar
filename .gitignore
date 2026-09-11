@@ -9,6 +9,12 @@
 !app/
 !app/**
 !persistence.md
+!feeds/
+!feeds/**
+!scripts/
+!scripts/**
+!.github/
+!.github/**
 
 # wrangler files
 .wrangler
