@@ -15,6 +15,7 @@
 !scripts/**
 !.github/
 !.github/**
+!wrangler.jsonc
 
 # wrangler files
 .wrangler

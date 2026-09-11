@@ -1,0 +1,20 @@
+{
+  // Static-assets-only Worker serving sansadsaar.naklitechie.com.
+  // Deployed by Cloudflare Workers Builds (Git-connected to this repo,
+  // production branch = main): the build's Build command stages the served
+  // files into ./public, then `npx wrangler deploy` uploads exactly that dir.
+  // Serving from a dedicated public/ (not the repo root) guarantees repo
+  // machinery — .git, plan/, scripts/, config — can never leak to the edge.
+  // The `build.command` below stages public/ automatically, so a plain
+  // `npx wrangler deploy` (the Worker's existing deploy command) does the
+  // whole job — no separate Build command needs setting in the dashboard.
+  "name": "sansadsaar",
+  "account_id": "62231b040ed00c96cdcf3a4541eab958",
+  "compatibility_date": "2026-05-14",
+  "build": {
+    "command": "rm -rf public && mkdir -p public && cp -r index.html app guide feeds public/ && find public -name .DS_Store -delete"
+  },
+  "assets": {
+    "directory": "./public"
+  }
+}
