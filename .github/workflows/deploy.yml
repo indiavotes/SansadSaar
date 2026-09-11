@@ -1,0 +1,46 @@
+name: Deploy to Cloudflare
+
+# Deploy the static-assets Worker (serves sansadsaar.naklitechie.com) on every
+# push to main, and after the daily RSS feeds regeneration. Uses wrangler with
+# a scoped Cloudflare API token stored as the repo secret CLOUDFLARE_API_TOKEN.
+#
+# Why GitHub Actions instead of Cloudflare's own Git integration: the repo moved
+# to the indiavotes GitHub org, which stranded the Cloudflare Workers Builds
+# connection (installed under a different account), so CF stopped auto-pulling.
+# Running wrangler from CI is account-agnostic and doesn't depend on that link.
+#
+# wrangler reads wrangler.jsonc, whose build.command stages ./public
+# (index.html + app + guide + feeds) and deploys only that directory.
+
+on:
+  push:
+    branches: [main]
+  workflow_run:
+    # The daily feeds job commits with GITHUB_TOKEN, which does NOT re-trigger
+    # `push` workflows — so deploy after it completes to ship the fresh feeds.
+    workflows: ["Generate RSS feeds"]
+    types: [completed]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-cloudflare
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Deploy with Wrangler
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          command: deploy
