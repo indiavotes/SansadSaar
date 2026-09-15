@@ -5,9 +5,27 @@
     <link>https://sansadsaar.naklitechie.com</link>
     <description>Gazette of India (Central) notifications. Most recent 50 items.</description>
     <language>en-in</language>
-    <lastBuildDate>Mon, 14 Sep 2026 08:05:31 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 15 Sep 2026 08:00:10 GMT</lastBuildDate>
     <generator>sansadsaar feeds (scripts/gen-feeds.mjs)</generator>
     <atom:link href="https://sansadsaar.naklitechie.com/feeds/gazettes.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>This Gazette may contains Multiple Subjects</title>
+      <link>https://archive.org/download/in.gazette.central.w.2026-09-12.276159/276159.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.w.2026-09-12.276159</guid>
+      <pubDate>Sat, 12 Sep 2026 12:00:00 GMT</pubDate>
+      <description>weekly · This Gazette may contains Multiple Ministry / Organization · This Gazette may contains Multiple Departments</description>
+      <category>This Gazette may contains Multiple Ministry / Organization</category>
+      <category>weekly</category>
+    </item>
+    <item>
+      <title>This Gazette may contains Multiple Subjects</title>
+      <link>https://archive.org/download/in.gazette.central.w.2026-09-12.276158/276158.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.w.2026-09-12.276158</guid>
+      <pubDate>Sat, 12 Sep 2026 12:00:00 GMT</pubDate>
+      <description>weekly · This Gazette may contains Multiple Ministry / Organization · This Gazette may contains Multiple Departments</description>
+      <category>This Gazette may contains Multiple Ministry / Organization</category>
+      <category>weekly</category>
+    </item>
     <item>
       <title>This Gazette may contains Multiple Subjects</title>
       <link>https://archive.org/download/in.gazette.central.w.2026-09-12.276143/276143.pdf</link>
@@ -438,24 +456,6 @@
       <pubDate>Mon, 07 Sep 2026 12:00:00 GMT</pubDate>
       <description>extraordinary · Ministry of Railways · Construction Department</description>
       <category>Ministry of Railways</category>
-      <category>extraordinary</category>
-    </item>
-    <item>
-      <title>Publication of Notification in respect of Manyata Promoters Private Limited for IT ITES SEZ at Villages Rachenahalli, Nagavara and Tanisandra, Bangalore District, Karnataka, for partial denotification of 1.4310 Ha out of 19.199 Ha</title>
-      <link>https://archive.org/download/in.gazette.central.e.2026-09-07.276082/276082.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-09-07.276082</guid>
-      <pubDate>Mon, 07 Sep 2026 12:00:00 GMT</pubDate>
-      <description>extraordinary · Ministry of Commerce and Industry · Department of Commerce</description>
-      <category>Ministry of Commerce and Industry</category>
-      <category>extraordinary</category>
-    </item>
-    <item>
-      <title>Publication of notification in respect of Rackbank Datacenters Private Limited for IT ITES SEZ at Nava Raipur, Atal Nagar, Chhattisgarh, for addition of an area of 2.708437 hectares thereby making resultant area as 5.412488 Ha</title>
-      <link>https://archive.org/download/in.gazette.central.e.2026-09-07.276077/276077.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-09-07.276077</guid>
-      <pubDate>Mon, 07 Sep 2026 12:00:00 GMT</pubDate>
-      <description>extraordinary · Ministry of Commerce and Industry · Department of Commerce</description>
-      <category>Ministry of Commerce and Industry</category>
       <category>extraordinary</category>
     </item>
   </channel>
