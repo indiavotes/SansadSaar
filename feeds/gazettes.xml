@@ -5,7 +5,7 @@
     <link>https://sansadsaar.naklitechie.com</link>
     <description>Gazette of India (Central) notifications. Most recent 50 items.</description>
     <language>en-in</language>
-    <lastBuildDate>Wed, 16 Sep 2026 07:53:18 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 17 Sep 2026 07:57:28 GMT</lastBuildDate>
     <generator>sansadsaar feeds (scripts/gen-feeds.mjs)</generator>
     <atom:link href="https://sansadsaar.naklitechie.com/feeds/gazettes.xml" rel="self" type="application/rss+xml"/>
     <item>
@@ -25,6 +25,15 @@
       <description>extraordinary · Ministry of Finance · Department of Revenue</description>
       <category>Ministry of Finance</category>
       <category>extraordinary</category>
+    </item>
+    <item>
+      <title>This Gazette may contains Multiple Subjects</title>
+      <link>https://archive.org/download/in.gazette.central.w.2026-09-12.276190/276190.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.w.2026-09-12.276190</guid>
+      <pubDate>Sat, 12 Sep 2026 12:00:00 GMT</pubDate>
+      <description>weekly · This Gazette may contains Multiple Ministry / Organization · This Gazette may contains Multiple Departments</description>
+      <category>This Gazette may contains Multiple Ministry / Organization</category>
+      <category>weekly</category>
     </item>
     <item>
       <title>7A Gazette Notification for CALA of Godda Pakur Nagarnabi New line as Special Railway Project for acquisition of land in Godda district in the state of Jharkhand.</title>
@@ -447,15 +456,6 @@
       <pubDate>Tue, 08 Sep 2026 12:00:00 GMT</pubDate>
       <description>extraordinary · Election Commission of India · Not Applicable</description>
       <category>Election Commission of India</category>
-      <category>extraordinary</category>
-    </item>
-    <item>
-      <title>Issuance of commemorative coin on the occasion of Centenary Year of the UPSC.</title>
-      <link>https://archive.org/download/in.gazette.central.e.2026-09-08.276057/276057.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-09-08.276057</guid>
-      <pubDate>Tue, 08 Sep 2026 12:00:00 GMT</pubDate>
-      <description>extraordinary · Ministry of Finance · Department of Economic Affairs</description>
-      <category>Ministry of Finance</category>
       <category>extraordinary</category>
     </item>
   </channel>
