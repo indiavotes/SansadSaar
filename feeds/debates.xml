@@ -5,7 +5,7 @@
     <link>https://sansadsaar.naklitechie.com</link>
     <description>Lok Sabha and Rajya Sabha debates. Most recent 50 items.</description>
     <language>en-in</language>
-    <lastBuildDate>Thu, 17 Sep 2026 07:57:28 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 18 Sep 2026 07:35:50 GMT</lastBuildDate>
     <generator>sansadsaar feeds (scripts/gen-feeds.mjs)</generator>
     <atom:link href="https://sansadsaar.naklitechie.com/feeds/debates.xml" rel="self" type="application/rss+xml"/>
     <item>
@@ -414,6 +414,22 @@
       <category>Lok Sabha</category>
     </item>
     <item>
+      <title>Rajya Sabha · Session 270 · 06/02/2026</title>
+      <link>https://cms.rajyasabha.nic.in/UploadedFiles/Debates/OfficialDebatesDatewise/Floor/270/622026/06022026.pdf</link>
+      <guid isPermaLink="false">debates:rs|270|2026-02-06</guid>
+      <pubDate>Fri, 06 Feb 2026 12:00:00 GMT</pubDate>
+      <description>Debate · Rajya Sabha</description>
+      <category>Rajya Sabha</category>
+    </item>
+    <item>
+      <title>Rajya Sabha · Session 270 · 05/02/2026</title>
+      <link>https://cms.rajyasabha.nic.in/UploadedFiles/Debates/OfficialDebatesDatewise/Floor/270/522026/05022026.pdf</link>
+      <guid isPermaLink="false">debates:rs|270|2026-02-05</guid>
+      <pubDate>Thu, 05 Feb 2026 12:00:00 GMT</pubDate>
+      <description>Debate · Rajya Sabha</description>
+      <category>Rajya Sabha</category>
+    </item>
+    <item>
       <title>Rajya Sabha · Session 270 · 04/02/2026</title>
       <link>https://cms.rajyasabha.nic.in/UploadedFiles/Debates/OfficialDebatesDatewise/Floor/270/422026/04022026.pdf</link>
       <guid isPermaLink="false">debates:rs|270|2026-02-04</guid>
@@ -422,34 +438,18 @@
       <category>Rajya Sabha</category>
     </item>
     <item>
+      <title>Rajya Sabha · Session 270 · 03/02/2026</title>
+      <link>https://cms.rajyasabha.nic.in/UploadedFiles/Debates/OfficialDebatesDatewise/Floor/270/322026/03022026.pdf</link>
+      <guid isPermaLink="false">debates:rs|270|2026-02-03</guid>
+      <pubDate>Tue, 03 Feb 2026 12:00:00 GMT</pubDate>
+      <description>Debate · Rajya Sabha</description>
+      <category>Rajya Sabha</category>
+    </item>
+    <item>
       <title>Rajya Sabha · Session 270 · 02/02/2026</title>
       <link>https://cms.rajyasabha.nic.in/UploadedFiles/Debates/OfficialDebatesDatewise/Floor/270/222026/02022026.pdf</link>
       <guid isPermaLink="false">debates:rs|270|2026-02-02</guid>
       <pubDate>Mon, 02 Feb 2026 12:00:00 GMT</pubDate>
-      <description>Debate · Rajya Sabha</description>
-      <category>Rajya Sabha</category>
-    </item>
-    <item>
-      <title>Rajya Sabha · Session 270 · 01/02/2026</title>
-      <link>https://cms.rajyasabha.nic.in/UploadedFiles/Debates/OfficialDebatesDatewise/Floor/270/122026/01022026.pdf</link>
-      <guid isPermaLink="false">debates:rs|270|2026-02-01</guid>
-      <pubDate>Sun, 01 Feb 2026 12:00:00 GMT</pubDate>
-      <description>Debate · Rajya Sabha</description>
-      <category>Rajya Sabha</category>
-    </item>
-    <item>
-      <title>Rajya Sabha · Session 270 · 29/01/2026</title>
-      <link>https://cms.rajyasabha.nic.in/UploadedFiles/Debates/OfficialDebatesDatewise/Floor/270/2912026/29012026.pdf</link>
-      <guid isPermaLink="false">debates:rs|270|2026-01-29</guid>
-      <pubDate>Thu, 29 Jan 2026 12:00:00 GMT</pubDate>
-      <description>Debate · Rajya Sabha</description>
-      <category>Rajya Sabha</category>
-    </item>
-    <item>
-      <title>Rajya Sabha · Session 270 · 28/01/2026</title>
-      <link>https://cms.rajyasabha.nic.in/UploadedFiles/Debates/OfficialDebatesDatewise/Floor/270/2812026/28012026.pdf</link>
-      <guid isPermaLink="false">debates:rs|270|2026-01-28</guid>
-      <pubDate>Wed, 28 Jan 2026 12:00:00 GMT</pubDate>
       <description>Debate · Rajya Sabha</description>
       <category>Rajya Sabha</category>
     </item>
