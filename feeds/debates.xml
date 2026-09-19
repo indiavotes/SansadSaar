@@ -5,7 +5,7 @@
     <link>https://sansadsaar.naklitechie.com</link>
     <description>Lok Sabha and Rajya Sabha debates. Most recent 50 items.</description>
     <language>en-in</language>
-    <lastBuildDate>Fri, 18 Sep 2026 07:35:50 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 19 Sep 2026 07:31:02 GMT</lastBuildDate>
     <generator>sansadsaar feeds (scripts/gen-feeds.mjs)</generator>
     <atom:link href="https://sansadsaar.naklitechie.com/feeds/debates.xml" rel="self" type="application/rss+xml"/>
     <item>
@@ -414,6 +414,14 @@
       <category>Lok Sabha</category>
     </item>
     <item>
+      <title>Rajya Sabha · Session 270 · 10/02/2026</title>
+      <link>https://cms.rajyasabha.nic.in/UploadedFiles/Debates/OfficialDebatesDatewise/Floor/270/122026/01022026.pdf</link>
+      <guid isPermaLink="false">debates:rs|270|2026-02-10</guid>
+      <pubDate>Tue, 10 Feb 2026 12:00:00 GMT</pubDate>
+      <description>Debate · Rajya Sabha</description>
+      <category>Rajya Sabha</category>
+    </item>
+    <item>
       <title>Rajya Sabha · Session 270 · 06/02/2026</title>
       <link>https://cms.rajyasabha.nic.in/UploadedFiles/Debates/OfficialDebatesDatewise/Floor/270/622026/06022026.pdf</link>
       <guid isPermaLink="false">debates:rs|270|2026-02-06</guid>
@@ -442,14 +450,6 @@
       <link>https://cms.rajyasabha.nic.in/UploadedFiles/Debates/OfficialDebatesDatewise/Floor/270/322026/03022026.pdf</link>
       <guid isPermaLink="false">debates:rs|270|2026-02-03</guid>
       <pubDate>Tue, 03 Feb 2026 12:00:00 GMT</pubDate>
-      <description>Debate · Rajya Sabha</description>
-      <category>Rajya Sabha</category>
-    </item>
-    <item>
-      <title>Rajya Sabha · Session 270 · 02/02/2026</title>
-      <link>https://cms.rajyasabha.nic.in/UploadedFiles/Debates/OfficialDebatesDatewise/Floor/270/222026/02022026.pdf</link>
-      <guid isPermaLink="false">debates:rs|270|2026-02-02</guid>
-      <pubDate>Mon, 02 Feb 2026 12:00:00 GMT</pubDate>
       <description>Debate · Rajya Sabha</description>
       <category>Rajya Sabha</category>
     </item>
