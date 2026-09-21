@@ -5,9 +5,27 @@
     <link>https://sansadsaar.naklitechie.com</link>
     <description>Gazette of India (Central) notifications. Most recent 50 items.</description>
     <language>en-in</language>
-    <lastBuildDate>Sun, 20 Sep 2026 07:54:20 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 21 Sep 2026 08:10:53 GMT</lastBuildDate>
     <generator>sansadsaar feeds (scripts/gen-feeds.mjs)</generator>
     <atom:link href="https://sansadsaar.naklitechie.com/feeds/gazettes.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>This Gazette may contains Multiple Subjects</title>
+      <link>https://archive.org/download/in.gazette.central.w.2026-09-19.276329/276329.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.w.2026-09-19.276329</guid>
+      <pubDate>Sat, 19 Sep 2026 12:00:00 GMT</pubDate>
+      <description>weekly · This Gazette may contains Multiple Ministry / Organization · This Gazette may contains Multiple Departments</description>
+      <category>This Gazette may contains Multiple Ministry / Organization</category>
+      <category>weekly</category>
+    </item>
+    <item>
+      <title>This Gazette may contains Multiple Subjects</title>
+      <link>https://archive.org/download/in.gazette.central.w.2026-09-19.276328/276328.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.w.2026-09-19.276328</guid>
+      <pubDate>Sat, 19 Sep 2026 12:00:00 GMT</pubDate>
+      <description>weekly · This Gazette may contains Multiple Ministry / Organization · This Gazette may contains Multiple Departments</description>
+      <category>This Gazette may contains Multiple Ministry / Organization</category>
+      <category>weekly</category>
+    </item>
     <item>
       <title>Publication of Egazette Notification for Declaration of acquisition of land under Section 20(E) for land acquisition for 10 villages Chitoda, Barbadi, Mandavgad, Bhugaon, Dhanora, Aashta, Bhankheda, Saonegaon, Goji, Raifuli Tq. Wardha Dist. Wardha for Quadrupling of Wardha  Ballarshah (135 KM) on Delhi  Chennai High Density Network (HDN) Route under  the Railways Act, 1989 (24 of 1989).</title>
       <link>https://archive.org/download/in.gazette.central.e.2026-09-17.276318/276318.pdf</link>
@@ -439,24 +457,6 @@
       <description>weekly · This Gazette may contains Multiple Ministry / Organization · This Gazette may contains Multiple Departments</description>
       <category>This Gazette may contains Multiple Ministry / Organization</category>
       <category>weekly</category>
-    </item>
-    <item>
-      <title>This Gazette may contains Multiple Subjects</title>
-      <link>https://archive.org/download/in.gazette.central.w.2026-09-12.276138/276138.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.w.2026-09-12.276138</guid>
-      <pubDate>Sat, 12 Sep 2026 12:00:00 GMT</pubDate>
-      <description>weekly · This Gazette may contains Multiple Ministry / Organization · This Gazette may contains Multiple Departments</description>
-      <category>This Gazette may contains Multiple Ministry / Organization</category>
-      <category>weekly</category>
-    </item>
-    <item>
-      <title>In exercise of the powers conferred by</title>
-      <link>https://archive.org/download/in.gazette.central.e.2026-09-10.276304/276304.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-09-10.276304</guid>
-      <pubDate>Thu, 10 Sep 2026 12:00:00 GMT</pubDate>
-      <description>extraordinary · International Financial Services Centres Authority · Not Applicable</description>
-      <category>International Financial Services Centres Authority</category>
-      <category>extraordinary</category>
     </item>
   </channel>
 </rss>
