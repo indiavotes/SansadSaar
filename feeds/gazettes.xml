@@ -5,9 +5,18 @@
     <link>https://sansadsaar.naklitechie.com</link>
     <description>Gazette of India (Central) notifications. Most recent 50 items.</description>
     <language>en-in</language>
-    <lastBuildDate>Mon, 21 Sep 2026 08:10:53 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 22 Sep 2026 07:55:54 GMT</lastBuildDate>
     <generator>sansadsaar feeds (scripts/gen-feeds.mjs)</generator>
     <atom:link href="https://sansadsaar.naklitechie.com/feeds/gazettes.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>This Gazette may contains Multiple Subjects</title>
+      <link>https://archive.org/download/in.gazette.central.w.2026-09-19.276354/276354.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.w.2026-09-19.276354</guid>
+      <pubDate>Sat, 19 Sep 2026 12:00:00 GMT</pubDate>
+      <description>weekly · This Gazette may contains Multiple Ministry / Organization · This Gazette may contains Multiple Departments</description>
+      <category>This Gazette may contains Multiple Ministry / Organization</category>
+      <category>weekly</category>
+    </item>
     <item>
       <title>This Gazette may contains Multiple Subjects</title>
       <link>https://archive.org/download/in.gazette.central.w.2026-09-19.276329/276329.pdf</link>
@@ -25,6 +34,69 @@
       <description>weekly · This Gazette may contains Multiple Ministry / Organization · This Gazette may contains Multiple Departments</description>
       <category>This Gazette may contains Multiple Ministry / Organization</category>
       <category>weekly</category>
+    </item>
+    <item>
+      <title>THE INDIAN STAMP (ANDAMAN AND NICOBAR ISLANDS AMENDMENT) REGULATION, 2026</title>
+      <link>https://archive.org/download/in.gazette.central.e.2026-09-18.276325/276325.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-09-18.276325</guid>
+      <pubDate>Fri, 18 Sep 2026 12:00:00 GMT</pubDate>
+      <description>extraordinary · Ministry of Law  and Justice · Legislative Department</description>
+      <category>Ministry of Law  and Justice</category>
+      <category>extraordinary</category>
+    </item>
+    <item>
+      <title>Notification regarding extension of Sikka Port</title>
+      <link>https://archive.org/download/in.gazette.central.e.2026-09-18.276324/276324.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-09-18.276324</guid>
+      <pubDate>Fri, 18 Sep 2026 12:00:00 GMT</pubDate>
+      <description>extraordinary · Ministry of Ports, Shipping and Waterways · Ports Wing</description>
+      <category>Ministry of Ports, Shipping and Waterways</category>
+      <category>extraordinary</category>
+    </item>
+    <item>
+      <title>THE ANDAMAN AND NICOBAR ISLANDS REGISTRATION (AMENDMENT) REGULATION, 2026</title>
+      <link>https://archive.org/download/in.gazette.central.e.2026-09-18.276322/276322.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-09-18.276322</guid>
+      <pubDate>Fri, 18 Sep 2026 12:00:00 GMT</pubDate>
+      <description>extraordinary · Ministry of Law  and Justice · Legislative Department</description>
+      <category>Ministry of Law  and Justice</category>
+      <category>extraordinary</category>
+    </item>
+    <item>
+      <title>Issuance of commemorative coin on the occasion of 1000 Years of Modhera Sun Temple, Gujarat.</title>
+      <link>https://archive.org/download/in.gazette.central.e.2026-09-18.276321/276321.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-09-18.276321</guid>
+      <pubDate>Fri, 18 Sep 2026 12:00:00 GMT</pubDate>
+      <description>extraordinary · Ministry of Finance · Department of Economic Affairs</description>
+      <category>Ministry of Finance</category>
+      <category>extraordinary</category>
+    </item>
+    <item>
+      <title>Inter State Council (Amendment) Order, 2026</title>
+      <link>https://archive.org/download/in.gazette.central.e.2026-09-18.276317/276317.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-09-18.276317</guid>
+      <pubDate>Fri, 18 Sep 2026 12:00:00 GMT</pubDate>
+      <description>extraordinary · Ministry of Home Affairs · CS Division</description>
+      <category>Ministry of Home Affairs</category>
+      <category>extraordinary</category>
+    </item>
+    <item>
+      <title>Reappointing Shri Kamlesh Chandra Varshney, IRS IT 1990 Retd, to the post of Whole Time Member, Securities and Exchange Board of India.</title>
+      <link>https://archive.org/download/in.gazette.central.e.2026-09-18.276316/276316.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-09-18.276316</guid>
+      <pubDate>Fri, 18 Sep 2026 12:00:00 GMT</pubDate>
+      <description>extraordinary · Ministry of Finance · Department of Economic Affairs</description>
+      <category>Ministry of Finance</category>
+      <category>extraordinary</category>
+    </item>
+    <item>
+      <title>Publication of Notification in respect of Shri Alpesh K Prajapati, Retd. Joint Commissioner of State Tax, Government of Gujarat as Competent Authority under section 2(a) of the PMP Act for acquisition of Right of User (ROU) in the State of Gujarat.</title>
+      <link>https://archive.org/download/in.gazette.central.e.2026-09-17.276345/276345.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-09-17.276345</guid>
+      <pubDate>Thu, 17 Sep 2026 12:00:00 GMT</pubDate>
+      <description>extraordinary · Ministry of Petroleum and Natural Gas · Exploration Division</description>
+      <category>Ministry of Petroleum and Natural Gas</category>
+      <category>extraordinary</category>
     </item>
     <item>
       <title>Publication of Egazette Notification for Declaration of acquisition of land under Section 20(E) for land acquisition for 10 villages Chitoda, Barbadi, Mandavgad, Bhugaon, Dhanora, Aashta, Bhankheda, Saonegaon, Goji, Raifuli Tq. Wardha Dist. Wardha for Quadrupling of Wardha  Ballarshah (135 KM) on Delhi  Chennai High Density Network (HDN) Route under  the Railways Act, 1989 (24 of 1989).</title>
@@ -198,6 +270,15 @@
       <category>extraordinary</category>
     </item>
     <item>
+      <title>Regarding egazette publication</title>
+      <link>https://archive.org/download/in.gazette.central.e.2026-09-15.276337/276337.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-09-15.276337</guid>
+      <pubDate>Tue, 15 Sep 2026 12:00:00 GMT</pubDate>
+      <description>extraordinary · Ministry of Jal Shakti · Department of Water Resources, River Development and Ganga Rejuvenation</description>
+      <category>Ministry of Jal Shakti</category>
+      <category>extraordinary</category>
+    </item>
+    <item>
       <title>LM Metrology General Fifth Amendment Rules 2026</title>
       <link>https://archive.org/download/in.gazette.central.e.2026-09-15.276323/276323.pdf</link>
       <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-09-15.276323</guid>
@@ -270,6 +351,24 @@
       <category>extraordinary</category>
     </item>
     <item>
+      <title>Publication of Notification in the Extra ordinary Gazette of India under Section 3(1) of the Petroleum and Minerals Pipelines (ARUL) Act 1962 regarding declaration of intention to acquire the  Right of User in land for laying of Nagpur Jharsuguda Section of Mumbai  Nagpur  Jharsuguda Pipeline (MNJPL) Natural Gas Pipeline in the State of Odisha</title>
+      <link>https://archive.org/download/in.gazette.central.e.2026-09-14.276350/276350.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-09-14.276350</guid>
+      <pubDate>Mon, 14 Sep 2026 12:00:00 GMT</pubDate>
+      <description>extraordinary · Ministry of Petroleum and Natural Gas · Gas Projects (GP) Division</description>
+      <category>Ministry of Petroleum and Natural Gas</category>
+      <category>extraordinary</category>
+    </item>
+    <item>
+      <title>Publication of Notification in the Extra ordinary Gazette of India under Section 6(1) of the Petroleum and Minerals Pipelines (ARUL) Act 1962 regarding declaration of acquisition of Right of User in land for laying of Nagpur Jharsuguda Section of Mumbai  Nagpur  Jharsuguda Pipeline (MNJPL) Natural Gas Pipeline in the State of Odisha</title>
+      <link>https://archive.org/download/in.gazette.central.e.2026-09-14.276349/276349.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-09-14.276349</guid>
+      <pubDate>Mon, 14 Sep 2026 12:00:00 GMT</pubDate>
+      <description>extraordinary · Ministry of Petroleum and Natural Gas · Gas Projects (GP) Division</description>
+      <category>Ministry of Petroleum and Natural Gas</category>
+      <category>extraordinary</category>
+    </item>
+    <item>
       <title>In exercise of the powers conferred by sub section (1) of section 23 of the Insurance Regulatory and Development Authority Act, 1999 (41 of 1999), the Authority has delegated its powers for imposition of penalties</title>
       <link>https://archive.org/download/in.gazette.central.e.2026-09-14.276314/276314.pdf</link>
       <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-09-14.276314</guid>
@@ -333,6 +432,24 @@
       <category>extraordinary</category>
     </item>
     <item>
+      <title>Publication of Gazette Notification for declaring 08 Numbers Road over Bridges (ROBs) in the jurisdiction of Sonpur Division_project of East Central Railway as Special railway Project in the State of Bihar</title>
+      <link>https://archive.org/download/in.gazette.central.e.2026-09-12.276348/276348.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-09-12.276348</guid>
+      <pubDate>Sat, 12 Sep 2026 12:00:00 GMT</pubDate>
+      <description>extraordinary · Ministry of Railways · Construction Department</description>
+      <category>Ministry of Railways</category>
+      <category>extraordinary</category>
+    </item>
+    <item>
+      <title>South Coast Railway Publication of notification under section 20A of the Railways Act 1989, in connection with construction of Rail Over Rail (ROR) double line between Guntakal West Mallappa Gate for Ananthapuramu district in the state of Andhra Pradesh.</title>
+      <link>https://archive.org/download/in.gazette.central.e.2026-09-12.276343/276343.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-09-12.276343</guid>
+      <pubDate>Sat, 12 Sep 2026 12:00:00 GMT</pubDate>
+      <description>extraordinary · Ministry of Railways · Construction organization</description>
+      <category>Ministry of Railways</category>
+      <category>extraordinary</category>
+    </item>
+    <item>
       <title>Publication of Corrigendum required for correction in already published E Gazette Notification No. 4636 Dated 31.08.2026 for declaration of acquisition of land under Section 20(E) in connection with Kherwadi Railway station development of circulating area of Goods shed in UP direction for holding passengers during Kumbh Mela traffic in 2027 District Nashik under the Railways Act, 1989 (24 of 1989).</title>
       <link>https://archive.org/download/in.gazette.central.e.2026-09-12.276320/276320.pdf</link>
       <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-09-12.276320</guid>
@@ -340,123 +457,6 @@
       <description>extraordinary · Ministry of Railways · Construction Organization / Central Railway</description>
       <category>Ministry of Railways</category>
       <category>extraordinary</category>
-    </item>
-    <item>
-      <title>SC Railway Publication of Notification under section 7A of Railway Act 1989 Acquisition of land for 4th Line between Balharshah and Kazipet Vijayawada Guduru stations including double line between Indupalli and Duggirala stations stations in Mancherial District in the State of Telangana.</title>
-      <link>https://archive.org/download/in.gazette.central.e.2026-09-12.276268/276268.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-09-12.276268</guid>
-      <pubDate>Sat, 12 Sep 2026 12:00:00 GMT</pubDate>
-      <description>extraordinary · Ministry of Railways · Construction Department</description>
-      <category>Ministry of Railways</category>
-      <category>extraordinary</category>
-    </item>
-    <item>
-      <title>SC Railway Publication of Notification under section 7A of Railway Act 1989 Acquisition of land for 4th Line between Balharshah and Kazipet Vijayawada Guduru stations including double line between Indupalli and Duggirala stations stations in Peddapalli District in the State of Telangana.</title>
-      <link>https://archive.org/download/in.gazette.central.e.2026-09-12.276267/276267.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-09-12.276267</guid>
-      <pubDate>Sat, 12 Sep 2026 12:00:00 GMT</pubDate>
-      <description>extraordinary · Ministry of Railways · Construction Department</description>
-      <category>Ministry of Railways</category>
-      <category>extraordinary</category>
-    </item>
-    <item>
-      <title>Publication of notification of extraordinary gazette under Part II section 3 Sub Section (I) Notification under clause 20A of the Railway Act 1989 (24 of 1989) for land to be acquired in connection with Special Railway Project namely Jambusar Samani Gauge Conversion Project (Western Railway) in the District of Bharuch in the State of Gujarat</title>
-      <link>https://archive.org/download/in.gazette.central.e.2026-09-12.276252/276252.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-09-12.276252</guid>
-      <pubDate>Sat, 12 Sep 2026 12:00:00 GMT</pubDate>
-      <description>extraordinary · Ministry of Railways · Construction Department</description>
-      <category>Ministry of Railways</category>
-      <category>extraordinary</category>
-    </item>
-    <item>
-      <title>Publication of notification of extraordinary gazette under Part II section 3 Sub Section (II) Notification under clause 37A of section 2 of the Railway (Amendment) Act 2008 for Construction of Road Over Bridge (ROB) in lieu of LC No. 58 between Dahanu Road and Gholvad Stations at Km 126/14 16 on Virar Surat Section as a Special Railway Project for acquisition of land in the State of Maharashtra</title>
-      <link>https://archive.org/download/in.gazette.central.e.2026-09-12.276248/276248.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-09-12.276248</guid>
-      <pubDate>Sat, 12 Sep 2026 12:00:00 GMT</pubDate>
-      <description>extraordinary · Ministry of Railways · Construction Department</description>
-      <category>Ministry of Railways</category>
-      <category>extraordinary</category>
-    </item>
-    <item>
-      <title>SC Railway Publication of Notification under section 20E of Railways Act, 1989 Acquisition of land for Doubling between Mudkhed and Dhone for Nirmal district in the state of Telangana.</title>
-      <link>https://archive.org/download/in.gazette.central.e.2026-09-12.276223/276223.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-09-12.276223</guid>
-      <pubDate>Sat, 12 Sep 2026 12:00:00 GMT</pubDate>
-      <description>extraordinary · Ministry of Railways · Construction Department</description>
-      <category>Ministry of Railways</category>
-      <category>extraordinary</category>
-    </item>
-    <item>
-      <title>SC Railway Publication of Notification under section 20A of Railways Act, 1989 Acquisition of land for Doubling between Mudkhed and Dhone for Nizamabad district in the state of Telangana.</title>
-      <link>https://archive.org/download/in.gazette.central.e.2026-09-12.276222/276222.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-09-12.276222</guid>
-      <pubDate>Sat, 12 Sep 2026 12:00:00 GMT</pubDate>
-      <description>extraordinary · Ministry of Railways · Construction Department</description>
-      <category>Ministry of Railways</category>
-      <category>extraordinary</category>
-    </item>
-    <item>
-      <title>SC Railway Publication of Notification under section 7A of Railway Act 1989 Acquisition of land for 4th Line between Balharshah and Kazipet Vijayawada Guduru stations including double line between Indupalli and Duggirala stations stations in Karimnagar District in the State of Telangana.</title>
-      <link>https://archive.org/download/in.gazette.central.e.2026-09-12.276221/276221.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-09-12.276221</guid>
-      <pubDate>Sat, 12 Sep 2026 12:00:00 GMT</pubDate>
-      <description>extraordinary · Ministry of Railways · Construction Department</description>
-      <category>Ministry of Railways</category>
-      <category>extraordinary</category>
-    </item>
-    <item>
-      <title>SC Railway Publication of Notification under section 20A of Railways Act, 1989 Acquisition of Special Railway Project namely, Secunderabad Division, Secunderabad and Kazipet Section Proposed Road Over Bridge in lieu of LC.No.33 between Yadadri and Wangapalli Stations in the State of Telangana.</title>
-      <link>https://archive.org/download/in.gazette.central.e.2026-09-12.276220/276220.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-09-12.276220</guid>
-      <pubDate>Sat, 12 Sep 2026 12:00:00 GMT</pubDate>
-      <description>extraordinary · Ministry of Railways · Construction Department</description>
-      <category>Ministry of Railways</category>
-      <category>extraordinary</category>
-    </item>
-    <item>
-      <title>This Gazette may contains Multiple Subjects</title>
-      <link>https://archive.org/download/in.gazette.central.w.2026-09-12.276190/276190.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.w.2026-09-12.276190</guid>
-      <pubDate>Sat, 12 Sep 2026 12:00:00 GMT</pubDate>
-      <description>weekly · This Gazette may contains Multiple Ministry / Organization · This Gazette may contains Multiple Departments</description>
-      <category>This Gazette may contains Multiple Ministry / Organization</category>
-      <category>weekly</category>
-    </item>
-    <item>
-      <title>7A Gazette Notification for CALA of Godda Pakur Nagarnabi New line as Special Railway Project for acquisition of land in Godda district in the state of Jharkhand.</title>
-      <link>https://archive.org/download/in.gazette.central.e.2026-09-12.276171/276171.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-09-12.276171</guid>
-      <pubDate>Sat, 12 Sep 2026 12:00:00 GMT</pubDate>
-      <description>extraordinary · Ministry of Railways · Construction Department</description>
-      <category>Ministry of Railways</category>
-      <category>extraordinary</category>
-    </item>
-    <item>
-      <title>This Gazette may contains Multiple Subjects</title>
-      <link>https://archive.org/download/in.gazette.central.w.2026-09-12.276159/276159.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.w.2026-09-12.276159</guid>
-      <pubDate>Sat, 12 Sep 2026 12:00:00 GMT</pubDate>
-      <description>weekly · This Gazette may contains Multiple Ministry / Organization · This Gazette may contains Multiple Departments</description>
-      <category>This Gazette may contains Multiple Ministry / Organization</category>
-      <category>weekly</category>
-    </item>
-    <item>
-      <title>This Gazette may contains Multiple Subjects</title>
-      <link>https://archive.org/download/in.gazette.central.w.2026-09-12.276158/276158.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.w.2026-09-12.276158</guid>
-      <pubDate>Sat, 12 Sep 2026 12:00:00 GMT</pubDate>
-      <description>weekly · This Gazette may contains Multiple Ministry / Organization · This Gazette may contains Multiple Departments</description>
-      <category>This Gazette may contains Multiple Ministry / Organization</category>
-      <category>weekly</category>
-    </item>
-    <item>
-      <title>This Gazette may contains Multiple Subjects</title>
-      <link>https://archive.org/download/in.gazette.central.w.2026-09-12.276143/276143.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.w.2026-09-12.276143</guid>
-      <pubDate>Sat, 12 Sep 2026 12:00:00 GMT</pubDate>
-      <description>weekly · This Gazette may contains Multiple Ministry / Organization · This Gazette may contains Multiple Departments</description>
-      <category>This Gazette may contains Multiple Ministry / Organization</category>
-      <category>weekly</category>
     </item>
   </channel>
 </rss>
