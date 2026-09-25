@@ -5,7 +5,7 @@
     <link>https://sansadsaar.naklitechie.com</link>
     <description>Gazette of India (Central) notifications. Most recent 50 items.</description>
     <language>en-in</language>
-    <lastBuildDate>Thu, 24 Sep 2026 07:47:25 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 25 Sep 2026 08:09:01 GMT</lastBuildDate>
     <generator>sansadsaar feeds (scripts/gen-feeds.mjs)</generator>
     <atom:link href="https://sansadsaar.naklitechie.com/feeds/gazettes.xml" rel="self" type="application/rss+xml"/>
     <item>
@@ -70,6 +70,15 @@
       <description>extraordinary · Ministry of Communications · Department of Telecommunications</description>
       <category>Ministry of Communications</category>
       <category>extraordinary</category>
+    </item>
+    <item>
+      <title>This Gazette may contains Multiple Subjects</title>
+      <link>https://archive.org/download/in.gazette.central.w.2026-09-19.276455/276455.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.w.2026-09-19.276455</guid>
+      <pubDate>Sat, 19 Sep 2026 12:00:00 GMT</pubDate>
+      <description>weekly · This Gazette may contains Multiple Ministry / Organization · This Gazette may contains Multiple Departments</description>
+      <category>This Gazette may contains Multiple Ministry / Organization</category>
+      <category>weekly</category>
     </item>
     <item>
       <title>This Gazette may contains Multiple Subjects</title>
@@ -446,15 +455,6 @@
       <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-09-16.276261</guid>
       <pubDate>Wed, 16 Sep 2026 12:00:00 GMT</pubDate>
       <description>extraordinary · Ministry of Finance · Department of Economic Affairs</description>
-      <category>Ministry of Finance</category>
-      <category>extraordinary</category>
-    </item>
-    <item>
-      <title>Designation of Special Court Under Section 43 of PMLA, 2002 in the State of Himachal Pradesh</title>
-      <link>https://archive.org/download/in.gazette.central.e.2026-09-16.276260/276260.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-09-16.276260</guid>
-      <pubDate>Wed, 16 Sep 2026 12:00:00 GMT</pubDate>
-      <description>extraordinary · Ministry of Finance · Department of Revenue</description>
       <category>Ministry of Finance</category>
       <category>extraordinary</category>
     </item>
