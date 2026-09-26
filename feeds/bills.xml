@@ -5,7 +5,7 @@
     <link>https://sansadsaar.naklitechie.com</link>
     <description>Bills introduced in Parliament. Most recent 50 items.</description>
     <language>en-in</language>
-    <lastBuildDate>Fri, 25 Sep 2026 08:09:01 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 26 Sep 2026 07:58:25 GMT</lastBuildDate>
     <generator>sansadsaar feeds (scripts/gen-feeds.mjs)</generator>
     <atom:link href="https://sansadsaar.naklitechie.com/feeds/bills.xml" rel="self" type="application/rss+xml"/>
     <item>
@@ -31,9 +31,9 @@
       <link>https://sansad.in/getFile/BillsTexts/LSBillTexts/Asintroduced/as%20intro%20THE%20MINES%20Eng813202633846PM.pdf?source=legislation</link>
       <guid isPermaLink="false">bills:Government:154:2026</guid>
       <pubDate>Mon, 10 Aug 2026 12:00:00 GMT</pubDate>
-      <description>Government · introduced in Lok Sabha · COAL AND MINES</description>
+      <description>Government · introduced in Lok Sabha · MINES</description>
       <category>Government</category>
-      <category>COAL AND MINES</category>
+      <category>MINES</category>
     </item>
     <item>
       <title>THE TRIBUNALS REFORMS BILL, 2026</title>
@@ -193,9 +193,9 @@
       <link>https://sansad.in/getFile/BillsTexts/LSBillTexts/Asintroduced/as%20intro3232026122530PM.pdf?source=legislation</link>
       <guid isPermaLink="false">bills:Government:85:2026</guid>
       <pubDate>Mon, 23 Mar 2026 12:00:00 GMT</pubDate>
-      <description>Government · introduced in Lok Sabha · FINANCE</description>
+      <description>Government · introduced in Lok Sabha · CORPORATE AFFAIRS</description>
       <category>Government</category>
-      <category>FINANCE</category>
+      <category>CORPORATE AFFAIRS</category>
     </item>
     <item>
       <title>THE APPROPRIATION (NO. 2) BILL, 2026</title>
