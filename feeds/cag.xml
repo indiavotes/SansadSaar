@@ -5,9 +5,49 @@
     <link>https://sansadsaar.naklitechie.com</link>
     <description>Comptroller and Auditor General audit reports. Most recent 50 items.</description>
     <language>en-in</language>
-    <lastBuildDate>Tue, 29 Sep 2026 08:59:10 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 30 Sep 2026 08:58:12 GMT</lastBuildDate>
     <generator>sansadsaar feeds (scripts/gen-feeds.mjs)</generator>
     <atom:link href="https://sansadsaar.naklitechie.com/feeds/cag.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Report No. 2 of the Year 2026 of the CAG on Subject Specific Compliance Audit</title>
+      <link>https://cag.gov.in/en/audit-report/details/124236</link>
+      <guid isPermaLink="false">cag:124236</guid>
+      <pubDate>Mon, 28 Sep 2026 12:00:00 GMT</pubDate>
+      <description>State audit · 2026</description>
+      <category>State</category>
+    </item>
+    <item>
+      <title>Report of the Comptroller and Auditor General of India on Local bodies, Government of Odisha, for the period ended March 2023, Report No. 4 of 2026 (Local Government)</title>
+      <link>https://cag.gov.in/en/audit-report/details/126482</link>
+      <guid isPermaLink="false">cag:126482</guid>
+      <pubDate>Mon, 28 Sep 2026 12:00:00 GMT</pubDate>
+      <description>Union audit · 2026</description>
+      <category>Union</category>
+    </item>
+    <item>
+      <title>Report of the Comptroller and Auditor General of India on Local Bodies for the period ended March 2023, Government of Odisha, Report No. 4 of 2026 (Local Government)</title>
+      <link>https://cag.gov.in/en/audit-report/details/126486</link>
+      <guid isPermaLink="false">cag:126486</guid>
+      <pubDate>Mon, 28 Sep 2026 12:00:00 GMT</pubDate>
+      <description>State audit · 2026</description>
+      <category>State</category>
+    </item>
+    <item>
+      <title>Report of the Comptroller and Auditor General of India for the period ended March 2023 Government of Odisha Report No. 1 of 2026 (Performance &amp; Compliance - Revenue)</title>
+      <link>https://cag.gov.in/en/audit-report/details/126501</link>
+      <guid isPermaLink="false">cag:126501</guid>
+      <pubDate>Mon, 28 Sep 2026 12:00:00 GMT</pubDate>
+      <description>State audit · 2026</description>
+      <category>State</category>
+    </item>
+    <item>
+      <title>Report of the Comptroller and Auditor General of India for the period ended March 2024 Government of Odisha Report No. 5 of 2026 (Performance &amp; Compliance - civil)</title>
+      <link>https://cag.gov.in/en/audit-report/details/126509</link>
+      <guid isPermaLink="false">cag:126509</guid>
+      <pubDate>Mon, 28 Sep 2026 12:00:00 GMT</pubDate>
+      <description>State audit · 2026</description>
+      <category>State</category>
+    </item>
     <item>
       <title>Report of the Comptroller and Auditor General of India on State Revenues for the period ended March 2024 (English)</title>
       <link>https://cag.gov.in/en/audit-report/details/124239</link>
@@ -364,46 +404,6 @@
       <title>Report of the Comptroller and Auditor General of India on Scheme for Faster Adoption and Manufacturing of (Hybrid &amp;) Electric Vehicles in India Union Government Ministry of Heavy Industries Report No. 10 of 2026 (Performance Audit - Civil)</title>
       <link>https://cag.gov.in/en/audit-report/details/125966</link>
       <guid isPermaLink="false">cag:125966</guid>
-      <pubDate>Wed, 12 Aug 2026 12:00:00 GMT</pubDate>
-      <description>Union audit · 2026</description>
-      <category>Union</category>
-    </item>
-    <item>
-      <title>Report of the Comptroller and Auditor General of India for the period ended March 2024 Union Government Economic and Service Ministries Report No. 11 of 2026 (Compliance Audit - Civil)</title>
-      <link>https://cag.gov.in/en/audit-report/details/125967</link>
-      <guid isPermaLink="false">cag:125967</guid>
-      <pubDate>Wed, 12 Aug 2026 12:00:00 GMT</pubDate>
-      <description>Union audit · 2026</description>
-      <category>Union</category>
-    </item>
-    <item>
-      <title>Report of the Comptroller and Auditor General of India for the year ended 31 March 2025 Union Government (Commercial) No. 22 of 2026 (Compliance Audit Observations)</title>
-      <link>https://cag.gov.in/en/audit-report/details/125968</link>
-      <guid isPermaLink="false">cag:125968</guid>
-      <pubDate>Wed, 12 Aug 2026 12:00:00 GMT</pubDate>
-      <description>Union audit · 2026</description>
-      <category>Union</category>
-    </item>
-    <item>
-      <title>Report of the Comptroller and Auditor General of India General Purpose Financial Reports of Central Public Sector Enterprises for the period ended March 2024 Union Government (Commercial) Report No. 21 of 2026 (Compliance Audit)</title>
-      <link>https://cag.gov.in/en/audit-report/details/125969</link>
-      <guid isPermaLink="false">cag:125969</guid>
-      <pubDate>Wed, 12 Aug 2026 12:00:00 GMT</pubDate>
-      <description>Union audit · 2026</description>
-      <category>Union</category>
-    </item>
-    <item>
-      <title>Report of the Comptroller and Auditor General of India on Key Entities and Schemes in Pension Sector Union Government Department of Financial Services Report No. 15 of 2026 (Performance Audit - Civil)</title>
-      <link>https://cag.gov.in/en/audit-report/details/125970</link>
-      <guid isPermaLink="false">cag:125970</guid>
-      <pubDate>Wed, 12 Aug 2026 12:00:00 GMT</pubDate>
-      <description>Union audit · 2026</description>
-      <category>Union</category>
-    </item>
-    <item>
-      <title>Report of the Comptroller and Auditor General of India on Compliance of the Fiscal Responsibility and Budget Management Act, 2003 for the year 2024-25 Union Government Department of Economic Affairs (Ministry of Finance) Report No. 29 of 2026</title>
-      <link>https://cag.gov.in/en/audit-report/details/125971</link>
-      <guid isPermaLink="false">cag:125971</guid>
       <pubDate>Wed, 12 Aug 2026 12:00:00 GMT</pubDate>
       <description>Union audit · 2026</description>
       <category>Union</category>

@@ -5,7 +5,7 @@
     <link>https://sansadsaar.naklitechie.com</link>
     <description>Gazette of India (Central) notifications. Most recent 50 items.</description>
     <language>en-in</language>
-    <lastBuildDate>Tue, 29 Sep 2026 08:59:10 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 30 Sep 2026 08:58:12 GMT</lastBuildDate>
     <generator>sansadsaar feeds (scripts/gen-feeds.mjs)</generator>
     <atom:link href="https://sansadsaar.naklitechie.com/feeds/gazettes.xml" rel="self" type="application/rss+xml"/>
     <item>
@@ -124,6 +124,15 @@
       <description>extraordinary · Ministry of Communications · Department of Telecommunications</description>
       <category>Ministry of Communications</category>
       <category>extraordinary</category>
+    </item>
+    <item>
+      <title>This Gazette may contains Multiple Subjects</title>
+      <link>https://archive.org/download/in.gazette.central.w.2026-09-19.276544/276544.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.w.2026-09-19.276544</guid>
+      <pubDate>Sat, 19 Sep 2026 12:00:00 GMT</pubDate>
+      <description>weekly · This Gazette may contains Multiple Ministry / Organization · This Gazette may contains Multiple Departments</description>
+      <category>This Gazette may contains Multiple Ministry / Organization</category>
+      <category>weekly</category>
     </item>
     <item>
       <title>This Gazette may contains Multiple Subjects</title>
@@ -447,15 +456,6 @@
       <pubDate>Wed, 16 Sep 2026 12:00:00 GMT</pubDate>
       <description>extraordinary · Ministry of Railways · Construction Organization / Central Railway</description>
       <category>Ministry of Railways</category>
-      <category>extraordinary</category>
-    </item>
-    <item>
-      <title>Plant Quarantine 11th Amendment Order,2026</title>
-      <link>https://archive.org/download/in.gazette.central.e.2026-09-16.276426/276426.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-09-16.276426</guid>
-      <pubDate>Wed, 16 Sep 2026 12:00:00 GMT</pubDate>
-      <description>extraordinary · Ministry of Agriculture and Farmers Welfare · Department of Agriculture and Farmers Welfare</description>
-      <category>Ministry of Agriculture and Farmers Welfare</category>
       <category>extraordinary</category>
     </item>
   </channel>
