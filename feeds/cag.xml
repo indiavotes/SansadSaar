@@ -5,9 +5,25 @@
     <link>https://sansadsaar.naklitechie.com</link>
     <description>Comptroller and Auditor General audit reports. Most recent 50 items.</description>
     <language>en-in</language>
-    <lastBuildDate>Wed, 30 Sep 2026 08:58:12 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 01 Oct 2026 09:23:29 GMT</lastBuildDate>
     <generator>sansadsaar feeds (scripts/gen-feeds.mjs)</generator>
     <atom:link href="https://sansadsaar.naklitechie.com/feeds/cag.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Report 4 of 2026 Government of Union Territory of Jammu and Kashmir Report No. 4 of 2026 (Composite Audit Report-Civil) :Report of the Comptroller and Auditor General of India for the period ended March 2024</title>
+      <link>https://cag.gov.in/en/audit-report/details/126517</link>
+      <guid isPermaLink="false">cag:126517</guid>
+      <pubDate>Wed, 30 Sep 2026 12:00:00 GMT</pubDate>
+      <description>State audit · 2026</description>
+      <category>State</category>
+    </item>
+    <item>
+      <title>Report of the Comptroller and Auditor General of India for the period ended March 2023 :Government of Union Territory of Jammu and Kashmir Report No. 3 of 2026 (Composite Audit Report-Civil and PSEs</title>
+      <link>https://cag.gov.in/en/audit-report/details/126518</link>
+      <guid isPermaLink="false">cag:126518</guid>
+      <pubDate>Wed, 30 Sep 2026 12:00:00 GMT</pubDate>
+      <description>State audit · 2026</description>
+      <category>State</category>
+    </item>
     <item>
       <title>Report No. 2 of the Year 2026 of the CAG on Subject Specific Compliance Audit</title>
       <link>https://cag.gov.in/en/audit-report/details/124236</link>
@@ -388,22 +404,6 @@
       <title>Report of the Comptroller and Auditor General of India for the year ended March 2024 Subject Specific Compliance Audit on Direct Tax Vivad se Vishwas Scheme, 2020 Union Government Department of Revenue – Direct Taxes Report No. 8 of 2026 (Compliance Audit – Civil)</title>
       <link>https://cag.gov.in/en/audit-report/details/125964</link>
       <guid isPermaLink="false">cag:125964</guid>
-      <pubDate>Wed, 12 Aug 2026 12:00:00 GMT</pubDate>
-      <description>Union audit · 2026</description>
-      <category>Union</category>
-    </item>
-    <item>
-      <title>Report of the Comptroller and Auditor General of India for the year ended March 2024 Compliance Audit on Taxation of Unexplained Transactions Under the Income Tax Act, 1961 Union Government Department of Revenue – Direct Taxes Report No. 32 of 2026 (Compliance Audit – Civil)</title>
-      <link>https://cag.gov.in/en/audit-report/details/125965</link>
-      <guid isPermaLink="false">cag:125965</guid>
-      <pubDate>Wed, 12 Aug 2026 12:00:00 GMT</pubDate>
-      <description>Union audit · 2026</description>
-      <category>Union</category>
-    </item>
-    <item>
-      <title>Report of the Comptroller and Auditor General of India on Scheme for Faster Adoption and Manufacturing of (Hybrid &amp;) Electric Vehicles in India Union Government Ministry of Heavy Industries Report No. 10 of 2026 (Performance Audit - Civil)</title>
-      <link>https://cag.gov.in/en/audit-report/details/125966</link>
-      <guid isPermaLink="false">cag:125966</guid>
       <pubDate>Wed, 12 Aug 2026 12:00:00 GMT</pubDate>
       <description>Union audit · 2026</description>
       <category>Union</category>
