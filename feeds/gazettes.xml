@@ -5,9 +5,45 @@
     <link>https://sansadsaar.naklitechie.com</link>
     <description>Gazette of India (Central) notifications. Most recent 50 items.</description>
     <language>en-in</language>
-    <lastBuildDate>Sat, 03 Oct 2026 08:31:31 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 04 Oct 2026 08:43:26 GMT</lastBuildDate>
     <generator>sansadsaar feeds (scripts/gen-feeds.mjs)</generator>
     <atom:link href="https://sansadsaar.naklitechie.com/feeds/gazettes.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>This Gazette may contains Multiple Subjects</title>
+      <link>https://archive.org/download/in.gazette.central.w.2026-10-03.276743/276743.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.w.2026-10-03.276743</guid>
+      <pubDate>Sat, 03 Oct 2026 12:00:00 GMT</pubDate>
+      <description>weekly · This Gazette may contains Multiple Ministry / Organization · This Gazette may contains Multiple Departments</description>
+      <category>This Gazette may contains Multiple Ministry / Organization</category>
+      <category>weekly</category>
+    </item>
+    <item>
+      <title>This Gazette may contains Multiple Subjects</title>
+      <link>https://archive.org/download/in.gazette.central.w.2026-10-03.276739/276739.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.w.2026-10-03.276739</guid>
+      <pubDate>Sat, 03 Oct 2026 12:00:00 GMT</pubDate>
+      <description>weekly · This Gazette may contains Multiple Ministry / Organization · This Gazette may contains Multiple Departments</description>
+      <category>This Gazette may contains Multiple Ministry / Organization</category>
+      <category>weekly</category>
+    </item>
+    <item>
+      <title>This Gazette may contains Multiple Subjects</title>
+      <link>https://archive.org/download/in.gazette.central.w.2026-10-03.276738/276738.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.w.2026-10-03.276738</guid>
+      <pubDate>Sat, 03 Oct 2026 12:00:00 GMT</pubDate>
+      <description>weekly · This Gazette may contains Multiple Ministry / Organization · This Gazette may contains Multiple Departments</description>
+      <category>This Gazette may contains Multiple Ministry / Organization</category>
+      <category>weekly</category>
+    </item>
+    <item>
+      <title>This Gazette may contains Multiple Subjects</title>
+      <link>https://archive.org/download/in.gazette.central.w.2026-10-03.276737/276737.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.w.2026-10-03.276737</guid>
+      <pubDate>Sat, 03 Oct 2026 12:00:00 GMT</pubDate>
+      <description>weekly · This Gazette may contains Multiple Ministry / Organization · This Gazette may contains Multiple Departments</description>
+      <category>This Gazette may contains Multiple Ministry / Organization</category>
+      <category>weekly</category>
+    </item>
     <item>
       <title>This Gazette may contains Multiple Subjects</title>
       <link>https://archive.org/download/in.gazette.central.w.2026-09-26.276524/276524.pdf</link>
@@ -420,42 +456,6 @@
       <pubDate>Thu, 17 Sep 2026 12:00:00 GMT</pubDate>
       <description>extraordinary · Ministry of Labour and Employment · Central Advisory Contract Labour Board</description>
       <category>Ministry of Labour and Employment</category>
-      <category>extraordinary</category>
-    </item>
-    <item>
-      <title>Notification for amendment of notification dated 7 January, 2026, Census of India 2026 in Charaideo and Sivasagar districts of Assam</title>
-      <link>https://archive.org/download/in.gazette.central.e.2026-09-17.276292/276292.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-09-17.276292</guid>
-      <pubDate>Thu, 17 Sep 2026 12:00:00 GMT</pubDate>
-      <description>extraordinary · Ministry of Home Affairs · Office of the Registrar General, India</description>
-      <category>Ministry of Home Affairs</category>
-      <category>extraordinary</category>
-    </item>
-    <item>
-      <title>Medicines Medical Stores Appliances and Medical Officers Rules 2026</title>
-      <link>https://archive.org/download/in.gazette.central.e.2026-09-16.276540/276540.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-09-16.276540</guid>
-      <pubDate>Wed, 16 Sep 2026 12:00:00 GMT</pubDate>
-      <description>extraordinary · Ministry of Ports, Shipping and Waterways · Not Applicable</description>
-      <category>Ministry of Ports, Shipping and Waterways</category>
-      <category>extraordinary</category>
-    </item>
-    <item>
-      <title>Medical Examination Rules 2026</title>
-      <link>https://archive.org/download/in.gazette.central.e.2026-09-16.276537/276537.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-09-16.276537</guid>
-      <pubDate>Wed, 16 Sep 2026 12:00:00 GMT</pubDate>
-      <description>extraordinary · Ministry of Ports, Shipping and Waterways · Not Applicable</description>
-      <category>Ministry of Ports, Shipping and Waterways</category>
-      <category>extraordinary</category>
-    </item>
-    <item>
-      <title>Publication of E gazette Notification for Declaration of acquisition of land under Section 20(E) for land acquisition for 11 Villages Injhala, Narsingpur, Fatehpur, Vani, Vela, Yenora, Satefal, Burkoni, Ladki, Italapur, Kawatghat Tq. Hinganghat Dist. Wardha for Quadrupling of Wardha Ballarshah (135 KM) on Delhi Chennai High Density Network (HDN) Route under the Railways Act, 1989 (24 of 1989).</title>
-      <link>https://archive.org/download/in.gazette.central.e.2026-09-16.276431/276431.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-09-16.276431</guid>
-      <pubDate>Wed, 16 Sep 2026 12:00:00 GMT</pubDate>
-      <description>extraordinary · Ministry of Railways · Construction Organization / Central Railway</description>
-      <category>Ministry of Railways</category>
       <category>extraordinary</category>
     </item>
   </channel>
