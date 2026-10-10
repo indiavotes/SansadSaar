@@ -5,7 +5,7 @@
     <link>https://sansadsaar.naklitechie.com</link>
     <description>Lok Sabha and Rajya Sabha debates. Most recent 50 items.</description>
     <language>en-in</language>
-    <lastBuildDate>Fri, 09 Oct 2026 09:34:44 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 10 Oct 2026 08:55:05 GMT</lastBuildDate>
     <generator>sansadsaar feeds (scripts/gen-feeds.mjs)</generator>
     <atom:link href="https://sansadsaar.naklitechie.com/feeds/debates.xml" rel="self" type="application/rss+xml"/>
     <item>
@@ -315,7 +315,7 @@
       <category>Lok Sabha</category>
     </item>
     <item>
-      <title>Papers Laid on the Table by Ministers/Members</title>
+      <title>Papers Laid on the table of the House by Ministers/Members</title>
       <link>https://sansad.in/ls/debates/view-debate?ls=18&amp;session=8&amp;dbslno=7009</link>
       <guid isPermaLink="false">debates:ls|18|8|7009</guid>
       <pubDate>Mon, 03 Aug 2026 12:00:00 GMT</pubDate>
