@@ -5,9 +5,18 @@
     <link>https://sansadsaar.naklitechie.com</link>
     <description>Gazette of India (Central) notifications. Most recent 50 items.</description>
     <language>en-in</language>
-    <lastBuildDate>Thu, 15 Oct 2026 07:42:11 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 16 Oct 2026 07:29:15 GMT</lastBuildDate>
     <generator>sansadsaar feeds (scripts/gen-feeds.mjs)</generator>
     <atom:link href="https://sansadsaar.naklitechie.com/feeds/gazettes.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>This Gazette may contains Multiple Subjects</title>
+      <link>https://archive.org/download/in.gazette.central.w.2026-10-10.277160/277160.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.w.2026-10-10.277160</guid>
+      <pubDate>Sat, 10 Oct 2026 12:00:00 GMT</pubDate>
+      <description>weekly · This Gazette may contains Multiple Ministry / Organization · This Gazette may contains Multiple Departments</description>
+      <category>This Gazette may contains Multiple Ministry / Organization</category>
+      <category>weekly</category>
+    </item>
     <item>
       <title>This Gazette may contains Multiple Subjects</title>
       <link>https://archive.org/download/in.gazette.central.w.2026-10-10.277027/277027.pdf</link>
@@ -447,15 +456,6 @@
       <pubDate>Wed, 07 Oct 2026 12:00:00 GMT</pubDate>
       <description>extraordinary · Ministry of Road Transport and Highways · Not Applicable</description>
       <category>Ministry of Road Transport and Highways</category>
-      <category>extraordinary</category>
-    </item>
-    <item>
-      <title>Reconstitutioin of the Auroville International Advisory Council</title>
-      <link>https://archive.org/download/in.gazette.central.e.2026-10-07.276957/276957.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-10-07.276957</guid>
-      <pubDate>Wed, 07 Oct 2026 12:00:00 GMT</pubDate>
-      <description>extraordinary · Ministry of Education · Department of Higher Education</description>
-      <category>Ministry of Education</category>
       <category>extraordinary</category>
     </item>
   </channel>
