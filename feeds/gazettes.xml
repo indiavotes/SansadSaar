@@ -5,9 +5,18 @@
     <link>https://sansadsaar.naklitechie.com</link>
     <description>Gazette of India (Central) notifications. Most recent 50 items.</description>
     <language>en-in</language>
-    <lastBuildDate>Mon, 19 Oct 2026 08:03:39 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 20 Oct 2026 07:54:09 GMT</lastBuildDate>
     <generator>sansadsaar feeds (scripts/gen-feeds.mjs)</generator>
     <atom:link href="https://sansadsaar.naklitechie.com/feeds/gazettes.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>This Gazette may contains Multiple Subjects</title>
+      <link>https://archive.org/download/in.gazette.central.w.2026-10-17.277272/277272.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.w.2026-10-17.277272</guid>
+      <pubDate>Sat, 17 Oct 2026 12:00:00 GMT</pubDate>
+      <description>weekly · This Gazette may contains Multiple Ministry / Organization · This Gazette may contains Multiple Departments</description>
+      <category>This Gazette may contains Multiple Ministry / Organization</category>
+      <category>weekly</category>
+    </item>
     <item>
       <title>Notification for Trade Margin Rationalization of Non Scheduled Anti Cancer Drugs under Paragraph 19 of DPCO, 2013</title>
       <link>https://archive.org/download/in.gazette.central.e.2026-10-17.277271/277271.pdf</link>
@@ -444,15 +453,6 @@
       <title>Publication of notification under Section 3A</title>
       <link>https://archive.org/download/in.gazette.central.e.2026-10-08.277046/277046.pdf</link>
       <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-10-08.277046</guid>
-      <pubDate>Thu, 08 Oct 2026 12:00:00 GMT</pubDate>
-      <description>extraordinary · Ministry of Road Transport and Highways · Deptt. of Road Transport and Highways</description>
-      <category>Ministry of Road Transport and Highways</category>
-      <category>extraordinary</category>
-    </item>
-    <item>
-      <title>Publication of notification under Section 3D</title>
-      <link>https://archive.org/download/in.gazette.central.e.2026-10-08.277045/277045.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-10-08.277045</guid>
       <pubDate>Thu, 08 Oct 2026 12:00:00 GMT</pubDate>
       <description>extraordinary · Ministry of Road Transport and Highways · Deptt. of Road Transport and Highways</description>
       <category>Ministry of Road Transport and Highways</category>
