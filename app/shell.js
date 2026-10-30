@@ -30,6 +30,7 @@ import {
   diskIsConnected, diskRead, diskWrite,
 } from './disk-sync.js';
 import { initGlobalSearch } from './global-search.js';
+import { MODELS, contextChars } from './ai-models.js';
 
 // ── Constants ───────────────────────────────────────────────────────────────
 
@@ -193,41 +194,7 @@ function bindStalenessIndicators(scope) {
   });
 }
 
-// Local-AI model registry. Multimodal uses AutoProcessor +
-// Gemma4ForConditionalGeneration; causal uses AutoTokenizer +
-// AutoModelForCausalLM. The 'type' field drives the worker's load path.
-const MODELS = {
-  'gemma4-e2b': {
-    id: 'onnx-community/gemma-4-E2B-it-ONNX',
-    label: 'Gemma 4 E2B', size: '~1.5 GB',
-    dtype: 'q4f16', type: 'multimodal', contextSize: 8192,
-    genConfig: { temperature: 0.5, top_k: 40, top_p: 0.95, max_new_tokens: 1024, repetition_penalty: 1.1 },
-  },
-  'gemma4-e4b': {
-    id: 'onnx-community/gemma-4-E4B-it-ONNX',
-    label: 'Gemma 4 E4B', size: '~4.9 GB',
-    dtype: 'q4f16', type: 'multimodal', contextSize: 12288,
-    genConfig: { temperature: 0.5, top_k: 40, top_p: 0.95, max_new_tokens: 1024, repetition_penalty: 1.1 },
-  },
-  'bonsai-1.7b': {
-    id: 'onnx-community/Ternary-Bonsai-1.7B-ONNX',
-    label: 'Ternary Bonsai 1.7B', size: '~470 MB',
-    dtype: 'q2f16', type: 'causal', contextSize: 32768,
-    genConfig: { temperature: 0.7, top_k: 20, top_p: 0.8, max_new_tokens: 1024, repetition_penalty: 1.05 },
-  },
-  'bonsai-4b': {
-    id: 'onnx-community/Ternary-Bonsai-4B-ONNX',
-    label: 'Ternary Bonsai 4B', size: '~1.1 GB',
-    dtype: 'q2f16', type: 'causal', contextSize: 32768,
-    genConfig: { temperature: 0.7, top_k: 20, top_p: 0.8, max_new_tokens: 1024, repetition_penalty: 1.05 },
-  },
-  'bonsai-8b': {
-    id: 'onnx-community/Ternary-Bonsai-8B-ONNX',
-    label: 'Ternary Bonsai 8B', size: '~2.2 GB',
-    dtype: 'q2f16', type: 'causal', contextSize: 65536,
-    genConfig: { temperature: 0.7, top_k: 20, top_p: 0.8, max_new_tokens: 1024, repetition_penalty: 1.05 },
-  },
-};
+// Local-AI model registry lives in app/ai-models.js (shared with harness/ai.html).
 
 // BYOK provider defaults. style determines the request shape (Anthropic
 // has its own format; everything else is OpenAI-compatible).
@@ -326,112 +293,10 @@ if (bc) {
 // ── AI: local worker ────────────────────────────────────────────────────────
 
 function createLocalWorker() {
-  // Blob-URL ES module — same shape as LocalMind/VaultMind. The fetch
-  // intercept layer is omitted (no resumable downloads needed for v1).
-  const code = `
-let env, AutoTokenizer, AutoModelForCausalLM, AutoProcessor, Gemma4ForConditionalGeneration, TextStreamer, InterruptableStoppingCriteria;
-let stopping_criteria;
+  // Same worker the test page (harness/ai.html) drives.
+  const w = new Worker(new URL('./ai-worker.js', import.meta.url), { type: 'module' });
 
-const __modReady = import('https://cdn.jsdelivr.net/npm/@huggingface/transformers@4/+esm').then(m => {
-  env = m.env;
-  AutoTokenizer = m.AutoTokenizer;
-  AutoModelForCausalLM = m.AutoModelForCausalLM;
-  AutoProcessor = m.AutoProcessor;
-  Gemma4ForConditionalGeneration = m.Gemma4ForConditionalGeneration;
-  TextStreamer = m.TextStreamer;
-  InterruptableStoppingCriteria = m.InterruptableStoppingCriteria;
-  env.allowLocalModels  = true;
-  env.localModelPath    = '/models/';
-  env.allowRemoteModels = true;
-  stopping_criteria = new InterruptableStoppingCriteria();
-});
-
-let processor = null;
-let tokenizer = null;
-let model = null;
-
-const progressCallback = (p) => self.postMessage({ type: 'progress', data: p });
-
-async function loadMultimodal(modelId, dtype) {
-  processor = await AutoProcessor.from_pretrained(modelId, { progress_callback: progressCallback });
-  tokenizer = processor.tokenizer;
-  model = await Gemma4ForConditionalGeneration.from_pretrained(modelId, {
-    dtype, device: 'webgpu', progress_callback: progressCallback,
-  });
-  self.postMessage({ type: 'warmup' });
-  const warmupInputs = tokenizer('a');
-  await model.generate({ ...warmupInputs, max_new_tokens: 1 });
-  self.postMessage({ type: 'ready' });
-}
-
-async function loadCausal(modelId, dtype) {
-  processor = null;
-  tokenizer = await AutoTokenizer.from_pretrained(modelId, { progress_callback: progressCallback });
-  model = await AutoModelForCausalLM.from_pretrained(modelId, {
-    dtype, device: 'webgpu', progress_callback: progressCallback,
-  });
-  self.postMessage({ type: 'warmup' });
-  const warmupInputs = tokenizer('a');
-  await model.generate({ ...warmupInputs, max_new_tokens: 1 });
-  self.postMessage({ type: 'ready' });
-}
-
-async function generate(messages, id, gc) {
-  stopping_criteria.reset();
-  try {
-    let inputs, streamerTok;
-    if (processor) {
-      const prompt = processor.apply_chat_template(messages, { add_generation_prompt: true });
-      inputs = await processor(prompt, null, null, { add_special_tokens: false });
-      streamerTok = processor.tokenizer;
-    } else {
-      inputs = tokenizer.apply_chat_template(messages, { add_generation_prompt: true, return_dict: true });
-      streamerTok = tokenizer;
-    }
-    const streamer = new TextStreamer(streamerTok, {
-      skip_prompt: true,
-      skip_special_tokens: true,
-      callback_function: (text) => self.postMessage({ type: 'token', token: text, id }),
-    });
-    await model.generate({
-      ...inputs,
-      max_new_tokens: gc?.max_new_tokens || 1024,
-      do_sample: true,
-      temperature: gc?.temperature ?? 0.5,
-      top_k: gc?.top_k ?? 40,
-      top_p: gc?.top_p ?? 0.95,
-      repetition_penalty: gc?.repetition_penalty ?? 1.1,
-      streamer,
-      stopping_criteria,
-    });
-    self.postMessage({ type: 'complete', id });
-  } catch (err) {
-    self.postMessage({ type: 'error', id, message: err.message || String(err) });
-    self.postMessage({ type: 'complete', id });
-  }
-}
-
-self.addEventListener('message', async (e) => {
-  await __modReady;
-  const { type, modelId, modelType, dtype, messages, id, generationConfig } = e.data;
-  if (type === 'load') {
-    try {
-      if (modelType === 'causal') await loadCausal(modelId, dtype);
-      else await loadMultimodal(modelId, dtype);
-    } catch (err) {
-      self.postMessage({ type: 'error', message: 'Failed to load model: ' + (err.message || String(err)) });
-    }
-  } else if (type === 'generate') {
-    await generate(messages, id, generationConfig);
-  } else if (type === 'stop') {
-    stopping_criteria?.interrupt();
-  }
-});
-`;
-  const blob = new Blob([code], { type: 'application/javascript' });
-  const w = new Worker(URL.createObjectURL(blob), { type: 'module' });
-
-  // Without this, blob-URL module workers fail completely silently — no
+  // Without this, module workers fail completely silently — no
   // console, no network, nothing. Lesson learned the hard way in BabelLocal.
   w.addEventListener('error', (e) => {
     console.error('Worker error:', e.message, e);
@@ -461,6 +326,9 @@ self.addEventListener('message', async (e) => {
     } else if (d.type === 'token') {
       const r = ai.pendingResolvers.get(d.id);
       if (r) r.onToken(d.token);
+    } else if (d.type === 'speech') {
+      const r = ai.pendingResolvers.get(d.id);
+      if (r?.onAudio) r.onAudio(d.pcm, d.sampleRate);
     } else if (d.type === 'complete') {
       const r = ai.pendingResolvers.get(d.id);
       if (r) {
@@ -584,7 +452,7 @@ async function loadLocalModel() {
 
   ai.worker = createLocalWorker();
   const m = MODELS[ai.localModel];
-  ai.worker.postMessage({ type: 'load', modelId: m.id, modelType: m.type, dtype: m.dtype });
+  ai.worker.postMessage({ type: 'load', model: m });
 }
 
 async function isModelCached(modelId) {
@@ -710,7 +578,10 @@ async function streamSSE(res, onLine) {
 
 // ── AI: unified generate / stop ────────────────────────────────────────────
 
-async function aiGenerate(messages, onToken) {
+// opts (local models): { maxNewTokens, audios: [Float32Array 16 kHz],
+// speech: true, onAudio(pcm, sampleRate) } — voice parts need a voice model,
+// see app/voice-chat.js.
+async function aiGenerate(messages, onToken, opts = {}) {
   if (ai.streaming) throw new Error('Already generating — wait or stop.');
   ai.streaming = true;
   try {
@@ -727,8 +598,12 @@ async function aiGenerate(messages, onToken) {
       const id = ++ai.msgIdCounter;
       const m = MODELS[ai.localModel];
       await new Promise((resolve, reject) => {
-        ai.pendingResolvers.set(id, { onToken, onDone: resolve, onErr: reject });
-        ai.worker.postMessage({ type: 'generate', messages, id, generationConfig: m.genConfig });
+        ai.pendingResolvers.set(id, { onToken, onAudio: opts.onAudio, onDone: resolve, onErr: reject });
+        ai.worker.postMessage({
+          type: 'generate', messages, id,
+          generationConfig: opts.maxNewTokens ? { ...m.genConfig, max_new_tokens: opts.maxNewTokens } : m.genConfig,
+          ...(opts.audios && { audios: opts.audios }), ...(opts.speech && { speech: true }),
+        });
       });
     }
   } finally {
@@ -743,6 +618,11 @@ function aiStop() {
     ai.worker.postMessage({ type: 'stop' });
   }
   ai.streaming = false;
+}
+
+// Voice chat needs a local model that hears and speaks, loaded and idle.
+function isVoiceReady() {
+  return ai.mode === 'local' && ai.workerReady && !!MODELS[ai.loadedModel]?.voice;
 }
 
 function isAIUsable() {
@@ -764,7 +644,8 @@ function aiNotReadyHTML() {
     if (ai.workerLoading) {
       return 'Local model is loading — this can take a minute on first run while shaders compile. The pill at the top right tracks progress.';
     }
-    return 'Local model not loaded yet. Open <b>Settings</b> to load Gemma 4 (~1.5 GB the first time, instant after that), or switch to <b>BYOK</b> mode.';
+    const m = MODELS[ai.localModel] || MODELS['gemma4-e2b'];
+    return `Local model not loaded yet. Open <b>Settings</b> to load ${m.label} (${m.size} the first time, instant after that), or switch to <b>BYOK</b> mode.`;
   })();
   return `<div class="ai-empty">
     <p>${reason}</p>
@@ -909,8 +790,21 @@ async function runSearch(query) {
 
 // ── Settings UI ────────────────────────────────────────────────────────────
 
+// Fill the model dropdown from the registry, grouped, once.
+function populateModelSelect(sel) {
+  if (!sel || sel.options.length) return;
+  const groups = new Map();
+  for (const [key, m] of Object.entries(MODELS)) {
+    if (!groups.has(m.group)) groups.set(m.group, []);
+    groups.get(m.group).push(`<option value="${key}">${escapeHtml(m.label)} (${escapeHtml(m.size)})</option>`);
+  }
+  sel.innerHTML = [...groups].map(([g, opts]) =>
+    `<optgroup label="${escapeHtml(g)}">${opts.join('')}</optgroup>`).join('');
+}
+
 function renderSettings() {
   document.getElementById('aiMode').value        = ai.mode;
+  populateModelSelect(document.getElementById('localModel'));
   document.getElementById('localModel').value    = ai.localModel;
   document.getElementById('apiProvider').value   = ai.apiProvider;
   document.getElementById('apiKey').value        = ai.apiKey || '';
@@ -1003,7 +897,7 @@ function applyShellSettingsFromUI() {
 function loadShellSettings() {
   const s = loadSettings();
   if (s.aiMode)         ai.mode        = s.aiMode;
-  if (s.localModel)     ai.localModel  = s.localModel;
+  if (s.localModel && MODELS[s.localModel]) ai.localModel = s.localModel;
   if (s.apiProvider)    ai.apiProvider = s.apiProvider;
   if (s.apiKey)         ai.apiKey      = s.apiKey;
   if (s.apiModel)       ai.apiModel    = s.apiModel;
@@ -1229,6 +1123,9 @@ const deps = {
     isUsable: isAIUsable,
     streaming: () => ai.streaming,
     mode: () => ai.mode,
+    contextChars: () => contextChars(ai.localModel, ai.mode),
+    voiceReady: isVoiceReady,
+    voiceModelLabel: () => Object.values(MODELS).find((m) => m.voice)?.label,
     notReadyHTML: aiNotReadyHTML,
     bindNotReadyCTA: bindAINotReadyCTA,
   },

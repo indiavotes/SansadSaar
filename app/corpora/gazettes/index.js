@@ -20,6 +20,7 @@ import {
   formatLocalTimestamp,
 } from '../../deps.js';
 import { streamWithPersistence } from '../../ai-streaming.js';
+import { attachVoice } from '../../voice-chat.js';
 import {
   parseQuery, highlightMatches,
   loadSearchBundle as sharedLoadSearchBundle,
@@ -52,7 +53,7 @@ const LANG_INFO = {
 };
 const DEFAULT_LANG = { short: '?', class: 'ASSURE', label: 'Language unknown' };
 
-const SUMMARY_PROMPT = `You are summarising a notification from the Central Gazette of India. The text below is one extraordinary or weekly gazette notification (typically a rule, order, appointment, amendment, tariff change, or similar government action). Produce a clear, plain-English briefing for a busy reader. Use this structure:
+export const SUMMARY_PROMPT = `You are summarising a notification from the Central Gazette of India. The text below is one extraordinary or weekly gazette notification (typically a rule, order, appointment, amendment, tariff change, or similar government action). Produce a clear, plain-English briefing for a busy reader. Use this structure:
 
 1. **What this is** (1 sentence — type of action, issuing ministry, date)
 2. **What it does** (3-5 bullets — the substantive provisions)
@@ -64,7 +65,7 @@ Keep it neutral, factual, and accessible to a non-specialist. Don't invent speci
 NOTIFICATION:
 {TEXT}`;
 
-function buildAskPrompt({ summary, text, searchResults, question }) {
+export function buildAskPrompt({ summary, text, searchResults, question }) {
   const parts = [
     'You are answering questions about a specific Central Gazette notification from the Government of India. Use only the supplied material below to answer. If the answer isn\'t in the supplied material, say so clearly.',
   ];
@@ -680,7 +681,7 @@ function renderChatTab() {
 
   const messages = state.dialogChat.length
     ? state.dialogChat
-    : [{ role: 'system', content: 'Ask anything about this gazette notification. Your question + the notification text are sent to the AI you configured (local Gemma or BYOK).' }];
+    : [{ role: 'system', content: 'Ask anything about this gazette notification. Your question + the notification text are sent to the AI you configured (local model or BYOK).' }];
 
   const threadHTML = messages.map(m => {
     const cls = `chat-msg ${m.role}${m.error ? ' error' : ''}`;
@@ -706,12 +707,25 @@ function renderChatTab() {
   document.getElementById('chatInput').addEventListener('keydown', e => {
     if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); chatSend({}); }
   });
+  // Spoken questions when a voice model (LFM3-Omni) is loaded; see app/voice-chat.js.
+  attachVoice({
+    deps: _deps,
+    row: tab.querySelector('.chat-input-row'),
+    docLabel: 'Gazette of India notification',
+    getText: async () => { const text = await fetchReportText(r); return text ? _truncateForContext(text) : null; },
+    chat: state.dialogChat,
+    rerender: renderChatTab,
+    save: () => {
+      state.cache.chats[reportKey(r)] = [...state.dialogChat];
+      idbPut('chats', reportKey(r), state.dialogChat).catch(() => {});
+    },
+  });
   const t = document.getElementById('chatThread');
   if (t) t.scrollTop = t.scrollHeight;
 }
 
 function _truncateForContext(text) {
-  const limit = _deps.ai.mode() === 'local' ? 12000 : 60000;
+  const limit = _deps.ai.contextChars?.() ?? (_deps.ai.mode() === 'local' ? 12000 : 60000);
   if (text.length <= limit) return text;
   return text.slice(0, limit) + '\n\n[...truncated for context window...]';
 }
@@ -822,7 +836,7 @@ async function chatSend(opts) {
       question: q,
     });
     const messages = [
-      { role: 'system', content: 'You answer questions about audit reports from the Comptroller and Auditor General of India. Use only the supplied material. If the answer is not present, say so.' },
+      { role: 'system', content: 'You answer questions about notifications in the Gazette of India. Use only the supplied material. If the answer is not present, say so.' },
       { role: 'user',   content: userPrompt },
     ];
     const result = await streamWithPersistence({

@@ -617,6 +617,8 @@ main {
   min-height: 38px;
   max-height: 120px;
 }
+.voice-btn { white-space: nowrap; }
+.voice-btn.recording { color: #b42318; border-color: #b42318; }
 
 /* ── Settings modal ─────────────────────────────── */
 .settings-section {
@@ -1266,7 +1268,7 @@ body.stats-expanded .corpus-status-caret { transform: rotate(180deg); }
       </div>
       <div class="tab-pane" id="chatTab">
         <div class="chat-thread" id="chatThread">
-          <div class="chat-msg system">Ask anything about this report. Your question + the report text are sent to the AI you configured (local Gemma or BYOK).</div>
+          <div class="chat-msg system">Ask anything about this report. Your question + the report text are sent to the AI you configured (local model or BYOK).</div>
         </div>
         <div class="chat-input-row">
           <textarea id="chatInput" rows="2" placeholder="Ask a question about this report..."></textarea>
@@ -1288,11 +1290,11 @@ body.stats-expanded .corpus-status-caret { transform: rotate(180deg); }
     <div class="modal-body">
       <div class="settings-section">
         <h3>AI mode</h3>
-        <p>Choose how summaries and Q&amp;A are generated. Local runs Gemma in your browser via WebGPU — first load downloads ~1.5 GB of weights, cached after.</p>
+        <p>Choose how summaries and Q&amp;A are generated. Local runs an open model (Gemma 4, LFM3 or Bonsai) in your browser via WebGPU — first load downloads 0.5–5 GB of weights, cached after.</p>
         <div class="settings-row">
           <label>Mode</label>
           <select id="aiMode">
-            <option value="local">Local AI (WebGPU, Gemma)</option>
+            <option value="local">Local AI (WebGPU)</option>
             <option value="api">BYOK (your API key)</option>
           </select>
         </div>
@@ -1301,21 +1303,11 @@ body.stats-expanded .corpus-status-caret { transform: rotate(180deg); }
       <div class="settings-section" id="localAISection">
         <h3>Local AI</h3>
         <div class="settings-warning">
-          <b>Heads up:</b> larger models (Gemma 4 E4B, Bonsai 4B/8B) need a recent GPU and can slow your computer noticeably during generation. If yours feels sluggish or you want faster responses, switch <b>AI mode</b> to <b>BYOK</b> — Gemini, Groq, and OpenRouter all have free tiers that respond in seconds.
+          <b>Heads up:</b> larger models (Gemma 4 E4B, LFM3-VL 2B, LFM3-Omni 2B, Bonsai 4B/8B) need a recent GPU and can slow your computer noticeably during generation. If yours feels sluggish or you want faster responses, switch <b>AI mode</b> to <b>BYOK</b> — Gemini, Groq, and OpenRouter all have free tiers that respond in seconds.
         </div>
         <div class="settings-row">
           <label>Model</label>
-          <select id="localModel">
-            <optgroup label="Gemma 4 (multimodal, recommended)">
-              <option value="gemma4-e2b">Gemma 4 E2B (~1.5 GB)</option>
-              <option value="gemma4-e4b">Gemma 4 E4B (~4.9 GB)</option>
-            </optgroup>
-            <optgroup label="Ternary Bonsai (Qwen3-derived, q2f16)">
-              <option value="bonsai-1.7b">Ternary Bonsai 1.7B (~470 MB)</option>
-              <option value="bonsai-4b">Ternary Bonsai 4B (~1.1 GB)</option>
-              <option value="bonsai-8b">Ternary Bonsai 8B (~2.2 GB)</option>
-            </optgroup>
-          </select>
+          <select id="localModel"></select>
         </div>
         <div class="settings-row">
           <label>Status</label>
@@ -1447,7 +1439,7 @@ body.stats-expanded .corpus-status-caret { transform: rotate(180deg); }
       </div>
       <div class="tab-pane" id="hAI">
         <h3>Local AI (default)</h3>
-        <p>Runs an open-weight model entirely in your browser via WebGPU. Five options today: <b>Gemma 4 E2B</b> (~1.5 GB, default), <b>Gemma 4 E4B</b> (~4.9 GB, stronger), <b>Ternary Bonsai 1.7B</b> (~470 MB, smallest), <b>Bonsai 4B</b> (~1.1 GB), and <b>Bonsai 8B</b> (~2.2 GB, 64K context). First load downloads weights from Hugging Face; subsequent loads are instant from browser cache. Requires a recent Chrome/Edge/Brave or Firefox 130+ with a compatible GPU. No data leaves your device.</p>
+        <p>Runs an open-weight model entirely in your browser via WebGPU. Eight options today: <b>Gemma 4 E2B</b> (~1.5 GB, default), <b>Gemma 4 E4B</b> (~4.9 GB, stronger), <b>LFM3 1.7B</b> (~1.1 GB, Liquid AI's fast text model), <b>LFM3-VL 2B</b> (~1.3 GB, reads images too), <b>LFM3-Omni 2B</b> (~2.1 GB, text, images and speech in; runs through anyformer), <b>Ternary Bonsai 1.7B</b> (~470 MB, smallest), <b>Bonsai 4B</b> (~1.1 GB), and <b>Bonsai 8B</b> (~2.2 GB). First load downloads weights from Hugging Face; subsequent loads are instant from browser cache. Requires a recent Chrome/Edge/Brave or Firefox 130+ with a compatible GPU. No data leaves your device.</p>
         <h3>BYOK (Bring Your Own Key)</h3>
         <p>If WebGPU isn't available or you want a stronger model, configure a provider in Settings. Free options:</p>
         <ul>
@@ -1503,6 +1495,8 @@ body.stats-expanded .corpus-status-caret { transform: rotate(180deg); }
         <ul>
           <li><a href="https://huggingface.co/docs/transformers.js" target="_blank">Transformers.js v4</a> — runs Gemma in the browser via WebGPU</li>
           <li><a href="https://huggingface.co/onnx-community/gemma-4-E2B-it-ONNX" target="_blank">Gemma 4 (ONNX)</a> — by Google, ONNX conversion by the HF community</li>
+          <li><a href="https://github.com/NakliTechie/anyformer.js" target="_blank">anyformer</a> + <a href="https://github.com/NakliTechie/diskformer.js" target="_blank">diskformer</a> — run LFM3-Omni 2B in the browser</li>
+          <li><a href="https://huggingface.co/onnx-community/LFM3-1.7B-ONNX" target="_blank">LFM3 (ONNX)</a> — by Liquid AI (LFM Open License v1.0), ONNX conversion by the HF community</li>
           <li><a href="https://github.com/py-pdf/pypdf" target="_blank">pypdf</a> — PDF text extraction in the daily mirror Action</li>
           <li>Mirror hosted on <a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Workers + Static Assets</a>; each corpus scraped on its own cron (hourly to daily) via <a href="https://github.com/features/actions" target="_blank">GitHub Actions</a></li>
         </ul>

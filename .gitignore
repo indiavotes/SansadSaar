@@ -13,6 +13,8 @@
 !feeds/**
 !scripts/
 !scripts/**
+!harness/
+!harness/**
 !.github/
 !.github/**
 !wrangler.jsonc

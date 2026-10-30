@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI harness — SansadSaar</title>
+<style>
+  :root { --bg: #fbfaf6; --fg: #1d1d1b; --muted: #6b6a64; --line: #e3e0d6; --pass: #e6f2e6; --fail: #f8e3e0; }
+  body { background: var(--bg); color: var(--fg); font: 14px/1.45 system-ui, sans-serif; margin: 0 auto; max-width: 1100px; padding: 16px; }
+  h1 { font-size: 20px; margin: 0 0 4px; }
+  p { color: var(--muted); margin: 0 0 12px; }
+  #models { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 8px 0; }
+  #models small { color: var(--muted); }
+  .bar { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin: 8px 0 12px; }
+  button { font: inherit; padding: 6px 12px; border: 1px solid var(--line); background: #fff; border-radius: 6px; cursor: pointer; }
+  button:disabled { opacity: .5; cursor: default; }
+  #status { color: var(--muted); }
+  #log { background: #fff; border: 1px solid var(--line); border-radius: 6px; padding: 8px; height: 160px; overflow: auto; font: 12px/1.4 ui-monospace, monospace; white-space: pre-wrap; }
+  table { border-collapse: collapse; width: 100%; margin-top: 12px; }
+  th, td { border-bottom: 1px solid var(--line); padding: 6px; text-align: left; vertical-align: top; }
+  tr.pass td:nth-child(3) { background: var(--pass); }
+  tr.fail td:nth-child(3) { background: var(--fail); }
+  td small { color: var(--muted); }
+  pre { white-space: pre-wrap; max-width: 520px; font-size: 12px; }
+  #loads { color: var(--muted); margin-top: 8px; }
+</style>
+</head>
+<body>
+  <h1>Local-AI harness</h1>
+  <p>Runs the app's worker and real gazette prompts against each model with greedy decoding. Local only; not deployed.</p>
+  <div id="models"></div>
+  <div class="bar">
+    <label>Max new tokens <input id="maxNew" type="number" value="400" min="32" max="1024" style="width:70px"></label>
+    <button id="run">Run</button>
+    <button id="download">Download JSON</button>
+    <span id="status"></span>
+  </div>
+  <div id="log"></div>
+  <div id="loads"></div>
+  <div id="players" style="display:flex;gap:16px;flex-wrap:wrap;margin-top:8px"></div>
+  <table>
+    <thead><tr><th>Model</th><th>Case</th><th>Checks</th><th>First token (ms)</th><th>Decode (tok/s)</th><th>Output</th></tr></thead>
+    <tbody id="results"></tbody>
+  </table>
+  <script type="module" src="ai.js"></script>
+</body>
+</html>

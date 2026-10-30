@@ -28,6 +28,7 @@ import {
   mapPooled,
 } from '../../deps.js';
 import { streamWithPersistence } from '../../ai-streaming.js';
+import { attachVoice } from '../../voice-chat.js';
 import {
   parseQuery, highlightMatches,
 } from '../../corpus-search.js';
@@ -798,12 +799,25 @@ function renderChatTab() {
   document.getElementById('chatInput').addEventListener('keydown', e => {
     if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); chatSend({}); }
   });
+  // Spoken questions when a voice model (LFM3-Omni) is loaded; see app/voice-chat.js.
+  attachVoice({
+    deps: _deps,
+    row: tab.querySelector('.chat-input-row'),
+    docLabel: 'parliamentary debate intervention',
+    getText: async () => { const text = await fetchReportText(r, state.rsSelectedVersion); return text ? _truncateForContext(text) : null; },
+    chat: state.dialogChat,
+    rerender: renderChatTab,
+    save: () => {
+      state.cache.chats[reportKey(r)] = [...state.dialogChat];
+      idbPut('chats', reportKey(r), state.dialogChat).catch(() => {});
+    },
+  });
   const t = document.getElementById('chatThread');
   if (t) t.scrollTop = t.scrollHeight;
 }
 
 function _truncateForContext(text) {
-  const limit = _deps.ai.mode() === 'local' ? 12000 : 60000;
+  const limit = _deps.ai.contextChars?.() ?? (_deps.ai.mode() === 'local' ? 12000 : 60000);
   if (text.length <= limit) return text;
   return text.slice(0, limit) + '\n\n[...truncated for context window...]';
 }

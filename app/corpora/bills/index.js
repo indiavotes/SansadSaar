@@ -29,6 +29,7 @@ import {
   formatLocalTimestamp,
 } from '../../deps.js';
 import { streamWithPersistence } from '../../ai-streaming.js';
+import { attachVoice } from '../../voice-chat.js';
 import {
   parseQuery, highlightMatches,
   loadSearchBundle as sharedLoadSearchBundle,
@@ -684,7 +685,7 @@ function renderChatTab() {
 
   const messages = state.dialogChat.length
     ? state.dialogChat
-    : [{ role: 'system', content: 'Ask anything about this bill. Your question + the bill text are sent to the AI you configured (local Gemma or BYOK).' }];
+    : [{ role: 'system', content: 'Ask anything about this bill. Your question + the bill text are sent to the AI you configured (local model or BYOK).' }];
 
   const threadHTML = messages.map(m => {
     const cls = `chat-msg ${m.role}${m.error ? ' error' : ''}`;
@@ -710,12 +711,25 @@ function renderChatTab() {
   document.getElementById('chatInput').addEventListener('keydown', e => {
     if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); chatSend({}); }
   });
+  // Spoken questions when a voice model (LFM3-Omni) is loaded; see app/voice-chat.js.
+  attachVoice({
+    deps: _deps,
+    row: tab.querySelector('.chat-input-row'),
+    docLabel: 'parliamentary bill',
+    getText: async () => { const text = await fetchBillText(b); return text ? _truncateForContext(text) : null; },
+    chat: state.dialogChat,
+    rerender: renderChatTab,
+    save: () => {
+      state.cache.chats[billKey(b)] = [...state.dialogChat];
+      idbPut('chats', billKey(b), state.dialogChat).catch(() => {});
+    },
+  });
   const t = document.getElementById('chatThread');
   if (t) t.scrollTop = t.scrollHeight;
 }
 
 function _truncateForContext(text) {
-  const limit = _deps.ai.mode() === 'local' ? 12000 : 60000;
+  const limit = _deps.ai.contextChars?.() ?? (_deps.ai.mode() === 'local' ? 12000 : 60000);
   if (text.length <= limit) return text;
   return text.slice(0, limit) + '\n\n[...truncated for context window...]';
 }
