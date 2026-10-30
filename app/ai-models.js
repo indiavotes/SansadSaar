@@ -14,7 +14,7 @@
 // accepts 256K tokens, but a browser tab cannot prefill that in useful time.
 
 export const TRANSFORMERS_URL = 'https://cdn.jsdelivr.net/npm/@huggingface/transformers@4.3.2/+esm';
-export const ANYFORMER_URL = 'https://cdn.jsdelivr.net/npm/anyformer@0.4.15/index.js';
+export const ANYFORMER_URL = 'https://cdn.jsdelivr.net/npm/anyformer@0.4.16/index.js';
 
 export const MODELS = {
   'gemma4-e2b': {

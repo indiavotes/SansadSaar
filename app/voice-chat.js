@@ -15,24 +15,24 @@ const MAX_REPLY_SLOTS = 480;    // text tokens + 80 ms speech frames (~30 s of s
 let recorder = null;            // the one live recording, across corpora
 let player = null;              // the SpeechPlayer for the current reply
 
-// LFM3-Omni makes speech at about 0.5x real time in a browser tab, so
-// playing each chunk as it lands stutters every second. SpeechPlayer waits
-// for START_BUFFER seconds before it starts, and after each run-dry it
-// waits for twice the previous amount (capped), so a slow reply pauses a
-// few times at most. end() plays whatever is left.
-const START_BUFFER = 2;
+// LFM3-Omni (anyformer 0.4.16, diskformer 0.6.14) makes speech at ~1.4x
+// real time in a browser tab: measured 10.2 s of speech in 7.4 s, chunks of
+// 0.96 s every ~0.5 s, and no pauses even at a 0 s start buffer. START_BUFFER
+// keeps a small margin; if a slower GPU runs dry, the wait doubles each time
+// (capped), so a slow reply pauses a few times at most. end() plays the rest.
+const START_BUFFER = 0.5;
 const MAX_BUFFER = 8;
 
 export class SpeechPlayer {
   // ctx: an AudioContext, or any { currentTime, createBuffer,
   // createBufferSource, destination } (the tests pass a fake clock).
-  constructor(ctx) {
+  constructor(ctx, startBuffer = START_BUFFER) {
     this.ctx = ctx;
     this.pending = [];          // AudioBuffers not yet scheduled
     this.pendingSec = 0;
     this.nextTime = 0;          // when the scheduled audio runs out
     this.started = false;
-    this.need = START_BUFFER;   // buffered seconds required to (re)start
+    this.need = startBuffer;    // buffered seconds required to (re)start
     this.pauses = 0;
   }
   push(pcm, sampleRate) {
@@ -43,7 +43,7 @@ export class SpeechPlayer {
     if (this.started && !this.waiting) {     // ran dry since the last chunk
       this.waiting = true;
       this.pauses++;
-      this.need = Math.min(MAX_BUFFER, this.need * 2);
+      this.need = Math.min(MAX_BUFFER, Math.max(1, this.need * 2));
     }
     this.pending.push(buf);
     this.pendingSec += buf.duration;

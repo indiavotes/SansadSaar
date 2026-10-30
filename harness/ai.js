@@ -6,7 +6,7 @@
 
 import { MODELS, contextChars, truncateForContext } from '../app/ai-models.js';
 import { CASES, VOICE_CASE, visionImageDataURL } from './cases.js';
-import { voiceMessages, resampleMono } from '../app/voice-chat.js';
+import { voiceMessages, resampleMono, SpeechPlayer } from '../app/voice-chat.js';
 
 const $ = (id) => document.getElementById(id);
 const results = [];
@@ -74,6 +74,7 @@ async function runModel(key) {
   const maxNew = +$('maxNew').value || 400;
   for (const c of CASES) {
     if (c.vision && !m.vision) continue;
+    if (new URLSearchParams(location.search).has('voiceonly')) break;
     $('status').textContent = `${m.label}: ${c.id}`;
     let out = '';
     const cr = { id: c.id, what: c.what, output: '', checks: {}, stats: null, error: null };
@@ -104,18 +105,37 @@ async function runModel(key) {
 // Generate one reply with speech; returns its text, joined PCM and level.
 async function speak(worker, messages, audios, maxNew) {
   const parts = [];
+  const arrivals = [];          // [seconds since request, chunk seconds]
   let text = '', rate = 24000, tFirstAudio = 0;
   const t0 = performance.now();
   const stats = await runInWorker(worker, {
     type: 'generate', id: ++reqId, messages, audios, speech: true,
     generationConfig: { max_new_tokens: maxNew },
-    onSpeech: (pcm, sr) => { parts.push(pcm); rate = sr; tFirstAudio ||= performance.now() - t0; },
+    onSpeech: (pcm, sr) => {
+      parts.push(pcm); rate = sr; tFirstAudio ||= performance.now() - t0;
+      arrivals.push([(performance.now() - t0) / 1000, pcm.length / sr]);
+    },
   }, (tok) => { text += tok; });
   const pcm = new Float32Array(parts.reduce((a, p) => a + p.length, 0));
   let o = 0; for (const p of parts) { pcm.set(p, o); o += p.length; }
   let sq = 0; for (const x of pcm) sq += x * x;
   return { text, pcm, rate, seconds: +(pcm.length / rate).toFixed(2), rms: +Math.sqrt(sq / (pcm.length || 1)).toFixed(4),
-    firstAudioMs: Math.round(tFirstAudio), stats };
+    firstAudioMs: Math.round(tFirstAudio), arrivals, wallSeconds: (performance.now() - t0) / 1000, stats };
+}
+
+// Replay measured chunk arrivals through SpeechPlayer on a fake clock, for a
+// given start buffer: first sound, pauses, and when the last sound ends.
+export function replayBuffer(arrivals, wallSeconds, startBuffer) {
+  const starts = [];
+  const ctx = { currentTime: 0, destination: {},
+    createBuffer: (_c, n, sr) => ({ duration: n / sr, copyToChannel() {} }),
+    createBufferSource: () => { const src = { connect() {}, start(at) { starts.push([at, src.buffer.duration]); } }; return src; } };
+  const p = new SpeechPlayer(ctx, startBuffer);
+  for (const [t, d] of arrivals) { ctx.currentTime = t; p.push(new Float32Array(Math.round(d * 24000)), 24000); }
+  ctx.currentTime = wallSeconds; p.end();
+  let pauses = 0, pauseSec = 0, end = 0;
+  for (const [at, d] of starts) { if (end && at - end > 0.06) { pauses++; pauseSec += at - end; } end = Math.max(end, at + d); }
+  return { startBuffer, firstSound: +(starts[0]?.[0] ?? 0).toFixed(2), pauses, pauseSec: +pauseSec.toFixed(2), lastEnds: +end.toFixed(2) };
 }
 
 async function runVoiceCase(worker, m, row) {
@@ -135,7 +155,8 @@ async function runVoiceCase(worker, m, row) {
     cr.output = `[question spoken ${q.seconds} s: "${q.text.trim()}"]\n${r.text}`;
     cr.stats = { ...r.stats, firstAudioMs: r.firstAudioMs, speechSeconds: r.seconds, rms: r.rms };
     for (const [name, fn] of Object.entries(c.checks)) cr.checks[name] = fn(r);
-    window.harnessAudio = { question: q, reply: r };
+    window.harnessAudio = { question: q, reply: r,
+      buffers: [0, 0.5, 1, 1.5, 2].map((b) => replayBuffer(r.arrivals, r.wallSeconds, b)) };
     addPlayer(`${m.label} — spoken question`, q.pcm, q.rate);
     addPlayer(`${m.label} — spoken answer`, r.pcm, r.rate);
   } catch (e) {
