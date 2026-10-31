@@ -1239,9 +1239,11 @@ function applySettingsFromUI() {
 // still re-render the filter row + list — necessary when user switches
 // back to DRSC from another corpus that overwrote `#filtersContainer`.
 let _activated = false;
+let _loaded = null;      // the first fetchData(); a visible activate() during the shell's silent preload waits on it
 
 async function activate(deps, { silent = false } = {}) {
   _deps = deps;
+  const isActive = () => _deps.activeCorpus?.() === 'drsc';
 
   // ALWAYS (when not silent) — re-render filter row + handlers + applied
   // filters so a corpus-switch round-trip restores DRSC's UI even if CAG
@@ -1261,18 +1263,19 @@ async function activate(deps, { silent = false } = {}) {
     state.deepSearch = !!settings.deepSearch;
     state.matchAny   = !!settings.matchAny;
 
-    const ok = await fetchData();
-    if (!ok) return false;
-    if (!silent) {
+    _loaded = fetchData();
+    const ok = await _loaded;
+    if (!ok) { _activated = false; return false; }
+    if (!silent && isActive()) {
       populateFilters();
       renderHeaderStats();
       applyFilters();
     }
 
-    loadCachedSummaries().then(() => { if (!silent) renderList(); });
+    loadCachedSummaries().then(() => { if (isActive()) renderList(); });
     loadCachedChats();
     loadCachedTexts().then((n) => {
-      if (n && !silent) {
+      if (n && isActive()) {
         renderList();
         renderResultsLine();
       }
@@ -1286,6 +1289,8 @@ async function activate(deps, { silent = false } = {}) {
     });
   } else if (!silent) {
     // Re-mount: data already fetched, just refresh the visible UI.
+    if (!(await _loaded)) return false;
+    if (!isActive()) return true;   // the user moved on while the data loaded
     populateFilters();
     renderHeaderStats();
     applyFilters();

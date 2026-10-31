@@ -1078,6 +1078,15 @@ async function activate(corpusId) {
   if (!isSameAsActive) {
     const resultsLineEl = document.getElementById('resultsLine');
     if (resultsLineEl) resultsLineEl.innerHTML = '';
+    // The corpus may still be loading in the silent preload; its activate()
+    // waits for that, so drop the previous corpus's list and say so meanwhile.
+    const listEl = document.getElementById('reportsList');
+    if (listEl) listEl.innerHTML = '';
+    const statusEl = document.getElementById('corpusStatus');
+    if (statusEl) {
+      statusEl.classList.remove('ready', 'stale', 'error');
+      statusEl.innerHTML = `<span class="dot"></span><span>${escapeHtml(c.shortLabel)}: loading…</span>`;
+    }
   }
   if (typeof c.activate === 'function') {
     const ok = await c.activate(depsForCorpus(corpusId));

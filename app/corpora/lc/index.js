@@ -144,6 +144,7 @@ const state = {
 
 let _deps = null;
 let _activated = false;   // gates one-time setup; activate() can re-run cheaply
+let _loaded = null;      // the first fetchData(); a visible activate() during the shell's silent preload waits on it
 
 // ── Helpers ─────────────────────────────────────────────────────────────────
 
@@ -1076,6 +1077,7 @@ function attachHandlers() {
 
 async function activate(deps, { silent = false } = {}) {
   _deps = deps;
+  const isActive = () => _deps.activeCorpus?.() === 'lc';
 
   // Always re-render filter row + handlers on visible activation so a
   // corpus switch back to LC restores the right UI in #filtersContainer.
@@ -1094,19 +1096,20 @@ async function activate(deps, { silent = false } = {}) {
     state.deepSearch = !!settings.lc_deepSearch;
     state.matchAny   = !!settings.lc_matchAny;
 
-    const ok = await fetchData();
-    if (!ok) return false;
+    _loaded = fetchData();
+    const ok = await _loaded;
+    if (!ok) { _activated = false; return false; }
 
-    if (!silent) {
+    if (!silent && isActive()) {
       populateFilters();
       renderHeaderStats();
       applyFilters();
     }
 
-    loadCachedSummaries().then(() => { if (!silent) renderList(); });
+    loadCachedSummaries().then(() => { if (isActive()) renderList(); });
     loadCachedChats();
     loadCachedTexts().then((n) => {
-      if (n && !silent) {
+      if (n && isActive()) {
         renderList();
         renderResultsLine();
       }
@@ -1121,6 +1124,8 @@ async function activate(deps, { silent = false } = {}) {
     // see it on the next open after the index lands.
     fetchArchiveIndex();
   } else if (!silent) {
+    if (!(await _loaded)) return false;
+    if (!isActive()) return true;   // the user moved on while the data loaded
     populateFilters();
     renderHeaderStats();
     applyFilters();

@@ -77,6 +77,7 @@ const state = {
 
 let _deps = null;
 let _activated = false;
+let _loaded = null;      // the first fetchData(); a visible activate() during the shell's silent preload waits on it
 
 // ── Helpers ─────────────────────────────────────────────────────────────────
 
@@ -562,20 +563,24 @@ async function fetchStatus() {
 
 async function activate(deps, { silent = false } = {}) {
   _deps = deps;
+  const isActive = () => _deps.activeCorpus?.() === 'questions';
   if (!silent) {
     renderFilterRow();
     attachHandlers();
   }
   if (!_activated) {
     _activated = true;
-    const ok = await fetchData();
-    if (!ok) return false;
-    if (!silent) {
+    _loaded = fetchData();
+    const ok = await _loaded;
+    if (!ok) { _activated = false; return false; }
+    if (!silent && isActive()) {
       populateFilters();
       renderHeaderStats();
       applyFilters();
     }
   } else if (!silent) {
+    if (!(await _loaded)) return false;
+    if (!isActive()) return true;   // the user moved on while the data loaded
     populateFilters();
     renderHeaderStats();
     applyFilters();

@@ -132,6 +132,7 @@ const state = {
 
 let _deps = null;
 let _activated = false;
+let _loaded = null;      // the first fetchData(); a visible activate() during the shell's silent preload waits on it
 
 // ── Helpers ─────────────────────────────────────────────────────────────────
 
@@ -992,6 +993,7 @@ function attachHandlers() {
 
 async function activate(deps, { silent = false } = {}) {
   _deps = deps;
+  const isActive = () => _deps.activeCorpus?.() === 'bills';
 
   // Silent mode (used by shell to preload non-active corpora for
   // cross-corpus search) skips DOM mutation so it doesn't fight the
@@ -1007,10 +1009,11 @@ async function activate(deps, { silent = false } = {}) {
     const settings = loadSettings();
     state.deepSearch = !!settings.bills_deepSearch;
 
-    const ok = await fetchData();
-    if (!ok) return false;
+    _loaded = fetchData();
+    const ok = await _loaded;
+    if (!ok) { _activated = false; return false; }
 
-    if (!silent) {
+    if (!silent && isActive()) {
       populateFilters();
       renderHeaderStats();
       applyFilters();
@@ -1019,7 +1022,7 @@ async function activate(deps, { silent = false } = {}) {
     loadCachedSummaries();
     loadCachedChats();
     loadCachedTexts().then((n) => {
-      if (n && !silent) {
+      if (n && isActive()) {
         renderList();
         renderResultsLine();
       }
@@ -1029,6 +1032,8 @@ async function activate(deps, { silent = false } = {}) {
       }
     });
   } else if (!silent) {
+    if (!(await _loaded)) return false;
+    if (!isActive()) return true;   // the user moved on while the data loaded
     populateFilters();
     renderHeaderStats();
     applyFilters();
