@@ -5,7 +5,7 @@
     <link>https://sansadsaar.naklitechie.com</link>
     <description>Comptroller and Auditor General audit reports. Most recent 50 items.</description>
     <language>en-in</language>
-    <lastBuildDate>Mon, 02 Nov 2026 09:54:18 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 03 Nov 2026 09:58:41 GMT</lastBuildDate>
     <generator>sansadsaar feeds (scripts/gen-feeds.mjs)</generator>
     <atom:link href="https://sansadsaar.naklitechie.com/feeds/cag.xml" rel="self" type="application/rss+xml"/>
     <item>
@@ -374,6 +374,22 @@
       <category>State</category>
     </item>
     <item>
+      <title>Report No. 8 of 2026 - Subject Specific Compliance Audit on Direct Tax Vivad se Vishwas Scheme, 2020, Union Government (Department of Revenue – Direct Taxes)</title>
+      <link>https://cag.gov.in/en/audit-report/details/125840</link>
+      <guid isPermaLink="false">cag:125840</guid>
+      <pubDate>Wed, 12 Aug 2026 12:00:00 GMT</pubDate>
+      <description>Union audit · 2026</description>
+      <category>Union</category>
+    </item>
+    <item>
+      <title>Report No. 32 of 2026 - Compliance Audit on Taxation of Unexplained Transactions Under the Income Tax Act, 1961, Union Government (Department of Revenue – Direct Taxes)</title>
+      <link>https://cag.gov.in/en/audit-report/details/125842</link>
+      <guid isPermaLink="false">cag:125842</guid>
+      <pubDate>Wed, 12 Aug 2026 12:00:00 GMT</pubDate>
+      <description>Union audit · 2026</description>
+      <category>Union</category>
+    </item>
+    <item>
       <title>Report of the Comptroller and Auditor General of India for the period ended March 2024, Union Government, Department of Revenue (Indirect Taxes-Goods and Services Tax), Report No.20 of 2026 (Compliance Audit-Civil)</title>
       <link>https://cag.gov.in/en/audit-report/details/125940</link>
       <guid isPermaLink="false">cag:125940</guid>
@@ -385,22 +401,6 @@
       <title>Report of the Comptroller and Auditor General of India for the year ended March 2023 -Union Government – Central Autonomous Bodies - Report No. 9 of 2026 (Compliance Audit - Civil)</title>
       <link>https://cag.gov.in/en/audit-report/details/125942</link>
       <guid isPermaLink="false">cag:125942</guid>
-      <pubDate>Wed, 12 Aug 2026 12:00:00 GMT</pubDate>
-      <description>Union audit · 2026</description>
-      <category>Union</category>
-    </item>
-    <item>
-      <title>Report of the Comptroller and Auditor General of India on Indian Institute of Management, Rohtak - Union Government – Ministry of Education - Report No. 24 of 2026 (Compliance Audit - Civil)</title>
-      <link>https://cag.gov.in/en/audit-report/details/125954</link>
-      <guid isPermaLink="false">cag:125954</guid>
-      <pubDate>Wed, 12 Aug 2026 12:00:00 GMT</pubDate>
-      <description>Union audit · 2026</description>
-      <category>Union</category>
-    </item>
-    <item>
-      <title>Report of the Comptroller and Auditor General of India on Project Imports Scheme Union Government Department of Revenue (Indirect Taxes - Customs) Report No. 27 of 2026 (Performance Audit – Civil)</title>
-      <link>https://cag.gov.in/en/audit-report/details/125956</link>
-      <guid isPermaLink="false">cag:125956</guid>
       <pubDate>Wed, 12 Aug 2026 12:00:00 GMT</pubDate>
       <description>Union audit · 2026</description>
       <category>Union</category>
