@@ -5,9 +5,36 @@
     <link>https://sansadsaar.naklitechie.com</link>
     <description>Lok Sabha and Rajya Sabha debates. Most recent 50 items.</description>
     <language>en-in</language>
-    <lastBuildDate>Tue, 03 Nov 2026 09:58:41 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 04 Nov 2026 09:47:50 GMT</lastBuildDate>
     <generator>sansadsaar feeds (scripts/gen-feeds.mjs)</generator>
     <atom:link href="https://sansadsaar.naklitechie.com/feeds/debates.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Laid the statement showing final action taken by the Government on the observations/recommendations contained in 29th Report of the Standing Committee on Finance</title>
+      <link>https://sansad.in/ls/debates/view-debate?ls=18&amp;session=8&amp;dbslno=7483</link>
+      <guid isPermaLink="false">debates:ls|18|8|7483</guid>
+      <pubDate>Wed, 12 Aug 2026 12:00:00 GMT</pubDate>
+      <description>PARLIAMENTARY COMMITTEES · Lok Sabha · 1 member(s)</description>
+      <category>PARLIAMENTARY COMMITTEES</category>
+      <category>Lok Sabha</category>
+    </item>
+    <item>
+      <title>Laid the statements showing action taken by the Government on 23rd, 24th, 26th, 35th, 37th and 38th reports of the Standing Committee on Agriculture, Animal Husbandry and Food Processing</title>
+      <link>https://sansad.in/ls/debates/view-debate?ls=18&amp;session=8&amp;dbslno=7482</link>
+      <guid isPermaLink="false">debates:ls|18|8|7482</guid>
+      <pubDate>Wed, 12 Aug 2026 12:00:00 GMT</pubDate>
+      <description>PARLIAMENTARY COMMITTEES · Lok Sabha · 1 member(s)</description>
+      <category>PARLIAMENTARY COMMITTEES</category>
+      <category>Lok Sabha</category>
+    </item>
+    <item>
+      <title>Presentation of 39th to 46th Reports of the Standing Committee on Agriculture, Animal Husbandry and Food Processing</title>
+      <link>https://sansad.in/ls/debates/view-debate?ls=18&amp;session=8&amp;dbslno=7481</link>
+      <guid isPermaLink="false">debates:ls|18|8|7481</guid>
+      <pubDate>Wed, 12 Aug 2026 12:00:00 GMT</pubDate>
+      <description>PARLIAMENTARY COMMITTEES · Lok Sabha · 1 member(s)</description>
+      <category>PARLIAMENTARY COMMITTEES</category>
+      <category>Lok Sabha</category>
+    </item>
     <item>
       <title>Messages From Rajya Sabha</title>
       <link>https://sansad.in/ls/debates/view-debate?ls=18&amp;session=8&amp;dbslno=7431</link>
@@ -360,7 +387,7 @@
       <category>Lok Sabha</category>
     </item>
     <item>
-      <title>Presentation of 393rd report of the Standing Committee on Transport, Tourism and Culture</title>
+      <title>Presentation of 393rd Report of the Standing Committee on Transport, Tourism and Culture</title>
       <link>https://sansad.in/ls/debates/view-debate?ls=18&amp;session=8&amp;dbslno=7392</link>
       <guid isPermaLink="false">debates:ls|18|8|7392</guid>
       <pubDate>Wed, 12 Aug 2026 12:00:00 GMT</pubDate>
@@ -369,7 +396,7 @@
       <category>Lok Sabha</category>
     </item>
     <item>
-      <title>Presentation of 25th report of the Standing Committee on Social Justice and Empowerment</title>
+      <title>Presentation of 25th Report of the Standing Committee on Social Justice and Empowerment</title>
       <link>https://sansad.in/ls/debates/view-debate?ls=18&amp;session=8&amp;dbslno=7391</link>
       <guid isPermaLink="false">debates:ls|18|8|7391</guid>
       <pubDate>Wed, 12 Aug 2026 12:00:00 GMT</pubDate>
@@ -378,7 +405,7 @@
       <category>Lok Sabha</category>
     </item>
     <item>
-      <title>Presentation of 29th report of Standing Committee on Coal, Mines and Steel</title>
+      <title>Presentation of 29th Report of Standing Committee on Coal, Mines and Steel</title>
       <link>https://sansad.in/ls/debates/view-debate?ls=18&amp;session=8&amp;dbslno=7390</link>
       <guid isPermaLink="false">debates:ls|18|8|7390</guid>
       <pubDate>Wed, 12 Aug 2026 12:00:00 GMT</pubDate>
@@ -409,8 +436,8 @@
       <link>https://sansad.in/ls/debates/view-debate?ls=18&amp;session=8&amp;dbslno=7387</link>
       <guid isPermaLink="false">debates:ls|18|8|7387</guid>
       <pubDate>Wed, 12 Aug 2026 12:00:00 GMT</pubDate>
-      <description>STATEMENT BY MINISTER · Lok Sabha · 1 member(s)</description>
-      <category>STATEMENT BY MINISTER</category>
+      <description>PARLIAMENTARY COMMITTEES · Lok Sabha · 1 member(s)</description>
+      <category>PARLIAMENTARY COMMITTEES</category>
       <category>Lok Sabha</category>
     </item>
     <item>
@@ -429,33 +456,6 @@
       <pubDate>Wed, 12 Aug 2026 12:00:00 GMT</pubDate>
       <description>RULING BY THE SPEAKER · Lok Sabha · 1 member(s)</description>
       <category>RULING BY THE SPEAKER</category>
-      <category>Lok Sabha</category>
-    </item>
-    <item>
-      <title>Observation regarding disruption of the House</title>
-      <link>https://sansad.in/ls/debates/view-debate?ls=18&amp;session=8&amp;dbslno=7338</link>
-      <guid isPermaLink="false">debates:ls|18|8|7338</guid>
-      <pubDate>Wed, 12 Aug 2026 12:00:00 GMT</pubDate>
-      <description>OBSERVATION BY THE CHAIR · Lok Sabha · 1 member(s)</description>
-      <category>OBSERVATION BY THE CHAIR</category>
-      <category>Lok Sabha</category>
-    </item>
-    <item>
-      <title>Papers Laid on the Table of the House by Ministers/Members</title>
-      <link>https://sansad.in/ls/debates/view-debate?ls=18&amp;session=8&amp;dbslno=7337</link>
-      <guid isPermaLink="false">debates:ls|18|8|7337</guid>
-      <pubDate>Wed, 12 Aug 2026 12:00:00 GMT</pubDate>
-      <description>PAPERS LAID ON THE TABLE · Lok Sabha · 6 member(s)</description>
-      <category>PAPERS LAID ON THE TABLE</category>
-      <category>Lok Sabha</category>
-    </item>
-    <item>
-      <title>Presentation of 8th and 9th Reports of the Committee on Government Assurances</title>
-      <link>https://sansad.in/ls/debates/view-debate?ls=18&amp;session=8&amp;dbslno=7336</link>
-      <guid isPermaLink="false">debates:ls|18|8|7336</guid>
-      <pubDate>Wed, 12 Aug 2026 12:00:00 GMT</pubDate>
-      <description>PARLIAMENTARY COMMITTEES · Lok Sabha · 1 member(s)</description>
-      <category>PARLIAMENTARY COMMITTEES</category>
       <category>Lok Sabha</category>
     </item>
   </channel>
