@@ -5,9 +5,45 @@
     <link>https://sansadsaar.naklitechie.com</link>
     <description>Gazette of India (Central) notifications. Most recent 50 items.</description>
     <language>en-in</language>
-    <lastBuildDate>Sat, 07 Nov 2026 09:11:36 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 08 Nov 2026 09:25:39 GMT</lastBuildDate>
     <generator>sansadsaar feeds (scripts/gen-feeds.mjs)</generator>
     <atom:link href="https://sansadsaar.naklitechie.com/feeds/gazettes.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>This Gazette may contains Multiple Subjects</title>
+      <link>https://archive.org/download/in.gazette.central.w.2026-11-07.277776/277776.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.w.2026-11-07.277776</guid>
+      <pubDate>Sat, 07 Nov 2026 12:00:00 GMT</pubDate>
+      <description>weekly · This Gazette may contains Multiple Ministry / Organization · This Gazette may contains Multiple Departments</description>
+      <category>This Gazette may contains Multiple Ministry / Organization</category>
+      <category>weekly</category>
+    </item>
+    <item>
+      <title>This Gazette may contains Multiple Subjects</title>
+      <link>https://archive.org/download/in.gazette.central.w.2026-11-07.277774/277774.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.w.2026-11-07.277774</guid>
+      <pubDate>Sat, 07 Nov 2026 12:00:00 GMT</pubDate>
+      <description>weekly · This Gazette may contains Multiple Ministry / Organization · This Gazette may contains Multiple Departments</description>
+      <category>This Gazette may contains Multiple Ministry / Organization</category>
+      <category>weekly</category>
+    </item>
+    <item>
+      <title>This Gazette may contains Multiple Subjects</title>
+      <link>https://archive.org/download/in.gazette.central.w.2026-11-07.277773/277773.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.w.2026-11-07.277773</guid>
+      <pubDate>Sat, 07 Nov 2026 12:00:00 GMT</pubDate>
+      <description>weekly · This Gazette may contains Multiple Ministry / Organization · This Gazette may contains Multiple Departments</description>
+      <category>This Gazette may contains Multiple Ministry / Organization</category>
+      <category>weekly</category>
+    </item>
+    <item>
+      <title>This Gazette may contains Multiple Subjects</title>
+      <link>https://archive.org/download/in.gazette.central.w.2026-11-07.277771/277771.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.w.2026-11-07.277771</guid>
+      <pubDate>Sat, 07 Nov 2026 12:00:00 GMT</pubDate>
+      <description>weekly · This Gazette may contains Multiple Ministry / Organization · This Gazette may contains Multiple Departments</description>
+      <category>This Gazette may contains Multiple Ministry / Organization</category>
+      <category>weekly</category>
+    </item>
     <item>
       <title>Resignation of Shri Aga Syed Ruhullah Mehdi MP</title>
       <link>https://archive.org/download/in.gazette.central.e.2026-11-05.277717/277717.pdf</link>
@@ -420,42 +456,6 @@
       <pubDate>Mon, 02 Nov 2026 12:00:00 GMT</pubDate>
       <description>extraordinary · Ministry of Road Transport and Highways · Deptt. of Road Transport and Highways</description>
       <category>Ministry of Road Transport and Highways</category>
-      <category>extraordinary</category>
-    </item>
-    <item>
-      <title>Publication of notification under Section 3A</title>
-      <link>https://archive.org/download/in.gazette.central.e.2026-11-02.277648/277648.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-11-02.277648</guid>
-      <pubDate>Mon, 02 Nov 2026 12:00:00 GMT</pubDate>
-      <description>extraordinary · Ministry of Road Transport and Highways · Deptt. of Road Transport and Highways</description>
-      <category>Ministry of Road Transport and Highways</category>
-      <category>extraordinary</category>
-    </item>
-    <item>
-      <title>Publication of notification under Section 3A</title>
-      <link>https://archive.org/download/in.gazette.central.e.2026-11-02.277647/277647.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-11-02.277647</guid>
-      <pubDate>Mon, 02 Nov 2026 12:00:00 GMT</pubDate>
-      <description>extraordinary · Ministry of Road Transport and Highways · Deptt. of Road Transport and Highways</description>
-      <category>Ministry of Road Transport and Highways</category>
-      <category>extraordinary</category>
-    </item>
-    <item>
-      <title>Publication of notification under Section 3A</title>
-      <link>https://archive.org/download/in.gazette.central.e.2026-11-02.277646/277646.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-11-02.277646</guid>
-      <pubDate>Mon, 02 Nov 2026 12:00:00 GMT</pubDate>
-      <description>extraordinary · Ministry of Road Transport and Highways · Deptt. of Road Transport and Highways</description>
-      <category>Ministry of Road Transport and Highways</category>
-      <category>extraordinary</category>
-    </item>
-    <item>
-      <title>Notification under the second proviso to subsection 1 of section 4 of the MMDR Act 1957</title>
-      <link>https://archive.org/download/in.gazette.central.e.2026-11-02.277644/277644.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-11-02.277644</guid>
-      <pubDate>Mon, 02 Nov 2026 12:00:00 GMT</pubDate>
-      <description>extraordinary · Ministry of Mines · Not Applicable</description>
-      <category>Ministry of Mines</category>
       <category>extraordinary</category>
     </item>
   </channel>
