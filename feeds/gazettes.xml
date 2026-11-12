@@ -5,7 +5,7 @@
     <link>https://sansadsaar.naklitechie.com</link>
     <description>Gazette of India (Central) notifications. Most recent 50 items.</description>
     <language>en-in</language>
-    <lastBuildDate>Wed, 11 Nov 2026 09:48:30 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 12 Nov 2026 10:12:47 GMT</lastBuildDate>
     <generator>sansadsaar feeds (scripts/gen-feeds.mjs)</generator>
     <atom:link href="https://sansadsaar.naklitechie.com/feeds/gazettes.xml" rel="self" type="application/rss+xml"/>
     <item>
@@ -297,6 +297,15 @@
       <category>extraordinary</category>
     </item>
     <item>
+      <title>Special Railway Projects Construction of Road under Bridges at LC No 19, Km 1132/5_7 in AAP TDL section And Construction of Road under Bridges at LC No 33, Km 1167/25_27 in AAP TDL section</title>
+      <link>https://archive.org/download/in.gazette.central.e.2026-11-05.277828/277828.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-11-05.277828</guid>
+      <pubDate>Thu, 05 Nov 2026 12:00:00 GMT</pubDate>
+      <description>extraordinary · Ministry of Railways · North Central Railway</description>
+      <category>Ministry of Railways</category>
+      <category>extraordinary</category>
+    </item>
+    <item>
       <title>Publication of notification under Section 3D</title>
       <link>https://archive.org/download/in.gazette.central.e.2026-11-05.277812/277812.pdf</link>
       <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-11-05.277812</guid>
@@ -447,15 +456,6 @@
       <pubDate>Thu, 05 Nov 2026 12:00:00 GMT</pubDate>
       <description>extraordinary · Ministry of Road Transport and Highways · Not Applicable</description>
       <category>Ministry of Road Transport and Highways</category>
-      <category>extraordinary</category>
-    </item>
-    <item>
-      <title>The Central Government hereby further extends the term of the existing Animal Welfare Board of India.</title>
-      <link>https://archive.org/download/in.gazette.central.e.2026-11-05.277702/277702.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-11-05.277702</guid>
-      <pubDate>Thu, 05 Nov 2026 12:00:00 GMT</pubDate>
-      <description>extraordinary · Ministry of Fisheries, Animal Husbandry and Dairying · Department of Animal Husbandry and Dairying</description>
-      <category>Ministry of Fisheries, Animal Husbandry and Dairying</category>
       <category>extraordinary</category>
     </item>
   </channel>
