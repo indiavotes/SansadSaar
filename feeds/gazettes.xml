@@ -5,9 +5,45 @@
     <link>https://sansadsaar.naklitechie.com</link>
     <description>Gazette of India (Central) notifications. Most recent 50 items.</description>
     <language>en-in</language>
-    <lastBuildDate>Sat, 14 Nov 2026 09:21:31 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 15 Nov 2026 09:51:03 GMT</lastBuildDate>
     <generator>sansadsaar feeds (scripts/gen-feeds.mjs)</generator>
     <atom:link href="https://sansadsaar.naklitechie.com/feeds/gazettes.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>This Gazette may contains Multiple Subjects</title>
+      <link>https://archive.org/download/in.gazette.central.w.2026-11-14.277907/277907.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.w.2026-11-14.277907</guid>
+      <pubDate>Sat, 14 Nov 2026 12:00:00 GMT</pubDate>
+      <description>weekly · This Gazette may contains Multiple Ministry / Organization · This Gazette may contains Multiple Departments</description>
+      <category>This Gazette may contains Multiple Ministry / Organization</category>
+      <category>weekly</category>
+    </item>
+    <item>
+      <title>This Gazette may contains Multiple Subjects</title>
+      <link>https://archive.org/download/in.gazette.central.w.2026-11-14.277906/277906.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.w.2026-11-14.277906</guid>
+      <pubDate>Sat, 14 Nov 2026 12:00:00 GMT</pubDate>
+      <description>weekly · This Gazette may contains Multiple Ministry / Organization · This Gazette may contains Multiple Departments</description>
+      <category>This Gazette may contains Multiple Ministry / Organization</category>
+      <category>weekly</category>
+    </item>
+    <item>
+      <title>This Gazette may contains Multiple Subjects</title>
+      <link>https://archive.org/download/in.gazette.central.w.2026-11-14.277905/277905.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.w.2026-11-14.277905</guid>
+      <pubDate>Sat, 14 Nov 2026 12:00:00 GMT</pubDate>
+      <description>weekly · This Gazette may contains Multiple Ministry / Organization · This Gazette may contains Multiple Departments</description>
+      <category>This Gazette may contains Multiple Ministry / Organization</category>
+      <category>weekly</category>
+    </item>
+    <item>
+      <title>This Gazette may contains Multiple Subjects</title>
+      <link>https://archive.org/download/in.gazette.central.w.2026-11-14.277904/277904.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.w.2026-11-14.277904</guid>
+      <pubDate>Sat, 14 Nov 2026 12:00:00 GMT</pubDate>
+      <description>weekly · This Gazette may contains Multiple Ministry / Organization · This Gazette may contains Multiple Departments</description>
+      <category>This Gazette may contains Multiple Ministry / Organization</category>
+      <category>weekly</category>
+    </item>
     <item>
       <title>Notification in respect of M/s Green Infra Clean Wind Technology Private Limited.</title>
       <link>https://archive.org/download/in.gazette.central.e.2026-11-10.277823/277823.pdf</link>
@@ -420,42 +456,6 @@
       <pubDate>Thu, 05 Nov 2026 12:00:00 GMT</pubDate>
       <description>extraordinary · Ministry of Finance · Department of Revenue</description>
       <category>Ministry of Finance</category>
-      <category>extraordinary</category>
-    </item>
-    <item>
-      <title>Publication of result of Bye election to the Council of States from the State of Madhya Pradesh</title>
-      <link>https://archive.org/download/in.gazette.central.e.2026-11-05.277714/277714.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-11-05.277714</guid>
-      <pubDate>Thu, 05 Nov 2026 12:00:00 GMT</pubDate>
-      <description>extraordinary · Ministry of Law  and Justice · Legislative Department</description>
-      <category>Ministry of Law  and Justice</category>
-      <category>extraordinary</category>
-    </item>
-    <item>
-      <title>Nomination of Members NALSA under LSA Act 1987</title>
-      <link>https://archive.org/download/in.gazette.central.e.2026-11-05.277713/277713.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-11-05.277713</guid>
-      <pubDate>Thu, 05 Nov 2026 12:00:00 GMT</pubDate>
-      <description>extraordinary · Ministry of Law  and Justice · Department of Justice</description>
-      <category>Ministry of Law  and Justice</category>
-      <category>extraordinary</category>
-    </item>
-    <item>
-      <title>Publication of Notification in the Extraordinary Gazette of India under Section 3(1) of the Petroleum and Minerals Pipelines (Acquisition of Right of User in Land) Act, 1962 in respect of  Malkapur Hyderabad ATF Pipeline project of Bharat Petroleum Corporation Limited for acquisition of ROU in the State of Telangana</title>
-      <link>https://archive.org/download/in.gazette.central.e.2026-11-05.277712/277712.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-11-05.277712</guid>
-      <pubDate>Thu, 05 Nov 2026 12:00:00 GMT</pubDate>
-      <description>extraordinary · Ministry of Petroleum and Natural Gas · REFINERY DIVISION</description>
-      <category>Ministry of Petroleum and Natural Gas</category>
-      <category>extraordinary</category>
-    </item>
-    <item>
-      <title>Transportation of ODC</title>
-      <link>https://archive.org/download/in.gazette.central.e.2026-11-05.277703/277703.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-11-05.277703</guid>
-      <pubDate>Thu, 05 Nov 2026 12:00:00 GMT</pubDate>
-      <description>extraordinary · Ministry of Road Transport and Highways · Not Applicable</description>
-      <category>Ministry of Road Transport and Highways</category>
       <category>extraordinary</category>
     </item>
   </channel>
