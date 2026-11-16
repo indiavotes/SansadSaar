@@ -5,9 +5,18 @@
     <link>https://sansadsaar.naklitechie.com</link>
     <description>Gazette of India (Central) notifications. Most recent 50 items.</description>
     <language>en-in</language>
-    <lastBuildDate>Sun, 15 Nov 2026 09:51:03 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 16 Nov 2026 10:07:21 GMT</lastBuildDate>
     <generator>sansadsaar feeds (scripts/gen-feeds.mjs)</generator>
     <atom:link href="https://sansadsaar.naklitechie.com/feeds/gazettes.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Resignation of Shri Hardeep Singh Puri, Member of Rajya Sabha</title>
+      <link>https://archive.org/download/in.gazette.central.e.2026-11-14.277913/277913.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-11-14.277913</guid>
+      <pubDate>Sat, 14 Nov 2026 12:00:00 GMT</pubDate>
+      <description>extraordinary · Rajya Sabha Secretariat · Not Applicable</description>
+      <category>Rajya Sabha Secretariat</category>
+      <category>extraordinary</category>
+    </item>
     <item>
       <title>This Gazette may contains Multiple Subjects</title>
       <link>https://archive.org/download/in.gazette.central.w.2026-11-14.277907/277907.pdf</link>
@@ -43,6 +52,51 @@
       <description>weekly · This Gazette may contains Multiple Ministry / Organization · This Gazette may contains Multiple Departments</description>
       <category>This Gazette may contains Multiple Ministry / Organization</category>
       <category>weekly</category>
+    </item>
+    <item>
+      <title>Publication of notification under Section 3A</title>
+      <link>https://archive.org/download/in.gazette.central.e.2026-11-13.277922/277922.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-11-13.277922</guid>
+      <pubDate>Fri, 13 Nov 2026 12:00:00 GMT</pubDate>
+      <description>extraordinary · Ministry of Road Transport and Highways · Deptt. of Road Transport and Highways</description>
+      <category>Ministry of Road Transport and Highways</category>
+      <category>extraordinary</category>
+    </item>
+    <item>
+      <title>Publication of notification under Section 3A</title>
+      <link>https://archive.org/download/in.gazette.central.e.2026-11-13.277921/277921.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-11-13.277921</guid>
+      <pubDate>Fri, 13 Nov 2026 12:00:00 GMT</pubDate>
+      <description>extraordinary · Ministry of Road Transport and Highways · Deptt. of Road Transport and Highways</description>
+      <category>Ministry of Road Transport and Highways</category>
+      <category>extraordinary</category>
+    </item>
+    <item>
+      <title>Publication of notification under Section 3A</title>
+      <link>https://archive.org/download/in.gazette.central.e.2026-11-13.277920/277920.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-11-13.277920</guid>
+      <pubDate>Fri, 13 Nov 2026 12:00:00 GMT</pubDate>
+      <description>extraordinary · Ministry of Road Transport and Highways · Deptt. of Road Transport and Highways</description>
+      <category>Ministry of Road Transport and Highways</category>
+      <category>extraordinary</category>
+    </item>
+    <item>
+      <title>Publication of notification under Section 3A</title>
+      <link>https://archive.org/download/in.gazette.central.e.2026-11-13.277915/277915.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-11-13.277915</guid>
+      <pubDate>Fri, 13 Nov 2026 12:00:00 GMT</pubDate>
+      <description>extraordinary · Ministry of Road Transport and Highways · Deptt. of Road Transport and Highways</description>
+      <category>Ministry of Road Transport and Highways</category>
+      <category>extraordinary</category>
+    </item>
+    <item>
+      <title>Publication of user fee notification</title>
+      <link>https://archive.org/download/in.gazette.central.e.2026-11-12.277924/277924.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-11-12.277924</guid>
+      <pubDate>Thu, 12 Nov 2026 12:00:00 GMT</pubDate>
+      <description>extraordinary · Ministry of Road Transport and Highways · Not Applicable</description>
+      <category>Ministry of Road Transport and Highways</category>
+      <category>extraordinary</category>
     </item>
     <item>
       <title>Notification in respect of M/s Green Infra Clean Wind Technology Private Limited.</title>
@@ -114,6 +168,24 @@
       <pubDate>Tue, 10 Nov 2026 12:00:00 GMT</pubDate>
       <description>extraordinary · Ministry of Housing and Urban Affairs · Not Applicable</description>
       <category>Ministry of Housing and Urban Affairs</category>
+      <category>extraordinary</category>
+    </item>
+    <item>
+      <title>Publication of E gazette Notification for Declaration of Intention to acquire of land under Section 20(A) under the Railways Act, 1989 (24 of 1989) for land acquisition of Wakharbhag Miraj village in Miraj Taluka of Sangli District for Miraj Chord line Project (1.73 Km).</title>
+      <link>https://archive.org/download/in.gazette.central.e.2026-11-09.277923/277923.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-11-09.277923</guid>
+      <pubDate>Mon, 09 Nov 2026 12:00:00 GMT</pubDate>
+      <description>extraordinary · Ministry of Railways · Construction Organization / Central Railway</description>
+      <category>Ministry of Railways</category>
+      <category>extraordinary</category>
+    </item>
+    <item>
+      <title>Request for Publication of Gazette Notification for the below mentioned Land Schedule under Subsection 1 of section 20A of the Railways Amendment Act 2008 for Connection with Construction of Doubling HaridaspurParadeep BG Railway Line 74.08 Kilometer</title>
+      <link>https://archive.org/download/in.gazette.central.e.2026-11-09.277909/277909.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-11-09.277909</guid>
+      <pubDate>Mon, 09 Nov 2026 12:00:00 GMT</pubDate>
+      <description>extraordinary · Ministry of Railways · Construction Department</description>
+      <category>Ministry of Railways</category>
       <category>extraordinary</category>
     </item>
     <item>
@@ -243,6 +315,87 @@
       <category>weekly</category>
     </item>
     <item>
+      <title>In pursuance of Sub rule  1  of Rule  15 of the Bureau of Indian Standards Rules, 2018, the Bureau of Indian Standards hereby notifies that Indian standards, particulars of which are given in the second column</title>
+      <link>https://archive.org/download/in.gazette.central.e.2026-11-06.277919/277919.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-11-06.277919</guid>
+      <pubDate>Fri, 06 Nov 2026 12:00:00 GMT</pubDate>
+      <description>extraordinary · Bureau of Indian Standards · Not Applicable</description>
+      <category>Bureau of Indian Standards</category>
+      <category>extraordinary</category>
+    </item>
+    <item>
+      <title>In pursuance of Sub rule  1 of Rule  15 of the Bureau of Indian Standards 	Rules, 2018, the Bureau of Indian Standards hereby notifies that Indian standards, particulars of which are given in the second column</title>
+      <link>https://archive.org/download/in.gazette.central.e.2026-11-06.277918/277918.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-11-06.277918</guid>
+      <pubDate>Fri, 06 Nov 2026 12:00:00 GMT</pubDate>
+      <description>extraordinary · Bureau of Indian Standards · Not Applicable</description>
+      <category>Bureau of Indian Standards</category>
+      <category>extraordinary</category>
+    </item>
+    <item>
+      <title>In pursuance of Sub rule  1 of Rule  15 of the Bureau of Indian Standards Rules, 2018, the Bureau of Indian Standards hereby notifies that Indian standards, particulars of which are given in the second column</title>
+      <link>https://archive.org/download/in.gazette.central.e.2026-11-06.277917/277917.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-11-06.277917</guid>
+      <pubDate>Fri, 06 Nov 2026 12:00:00 GMT</pubDate>
+      <description>extraordinary · Bureau of Indian Standards · Not Applicable</description>
+      <category>Bureau of Indian Standards</category>
+      <category>extraordinary</category>
+    </item>
+    <item>
+      <title>In pursuance of Sub rule  1 of Rule  15 of the Bureau of Indian Standards Rules, 2018, the Bureau of Indian Standards hereby notifies that Indian standards, particulars of which are given in the second column</title>
+      <link>https://archive.org/download/in.gazette.central.e.2026-11-06.277916/277916.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-11-06.277916</guid>
+      <pubDate>Fri, 06 Nov 2026 12:00:00 GMT</pubDate>
+      <description>extraordinary · Bureau of Indian Standards · Not Applicable</description>
+      <category>Bureau of Indian Standards</category>
+      <category>extraordinary</category>
+    </item>
+    <item>
+      <title>20E notification</title>
+      <link>https://archive.org/download/in.gazette.central.e.2026-11-06.277914/277914.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-11-06.277914</guid>
+      <pubDate>Fri, 06 Nov 2026 12:00:00 GMT</pubDate>
+      <description>extraordinary · Ministry of Railways · Sout East Central Railway</description>
+      <category>Ministry of Railways</category>
+      <category>extraordinary</category>
+    </item>
+    <item>
+      <title>In pursuance of Sub rule  1 of Rule  15 of the Bureau of Indian Standards Rules, 2018, the Bureau of Indian Standards hereby notifies that Indian standards, particulars of which are given in the second column</title>
+      <link>https://archive.org/download/in.gazette.central.e.2026-11-06.277912/277912.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-11-06.277912</guid>
+      <pubDate>Fri, 06 Nov 2026 12:00:00 GMT</pubDate>
+      <description>extraordinary · Bureau of Indian Standards · Not Applicable</description>
+      <category>Bureau of Indian Standards</category>
+      <category>extraordinary</category>
+    </item>
+    <item>
+      <title>Whereas by the notification of the Rail Vikas Nigam Limited, notification No. F No 13 INDB BNI LA Gazette 15 Work Correspondence</title>
+      <link>https://archive.org/download/in.gazette.central.e.2026-11-06.277911/277911.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-11-06.277911</guid>
+      <pubDate>Fri, 06 Nov 2026 12:00:00 GMT</pubDate>
+      <description>extraordinary · RAIL VIKAS NIGAM LIMITED · Not Applicable</description>
+      <category>RAIL VIKAS NIGAM LIMITED</category>
+      <category>extraordinary</category>
+    </item>
+    <item>
+      <title>In pursuance of Sub rule  1 of Rule  15 of the Bureau of Indian Standards Rules, 2018, the Bureau of Indian Standards hereby notifies that Amendments to Indian standards,</title>
+      <link>https://archive.org/download/in.gazette.central.e.2026-11-06.277910/277910.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-11-06.277910</guid>
+      <pubDate>Fri, 06 Nov 2026 12:00:00 GMT</pubDate>
+      <description>extraordinary · Bureau of Indian Standards · Not Applicable</description>
+      <category>Bureau of Indian Standards</category>
+      <category>extraordinary</category>
+    </item>
+    <item>
+      <title>In exercise of the powers conferred upon it under section 36, read with  sub clauses  vii  and  viii of sub section  1 b of section 11 of the Telecom Regulatory Authority of India Act,</title>
+      <link>https://archive.org/download/in.gazette.central.e.2026-11-06.277908/277908.pdf</link>
+      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-11-06.277908</guid>
+      <pubDate>Fri, 06 Nov 2026 12:00:00 GMT</pubDate>
+      <description>extraordinary · Telecom Regulatory Authority of India · Not Applicable</description>
+      <category>Telecom Regulatory Authority of India</category>
+      <category>extraordinary</category>
+    </item>
+    <item>
       <title>Publication of user fee notification</title>
       <link>https://archive.org/download/in.gazette.central.e.2026-11-06.277810/277810.pdf</link>
       <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-11-06.277810</guid>
@@ -303,159 +456,6 @@
       <pubDate>Fri, 06 Nov 2026 12:00:00 GMT</pubDate>
       <description>extraordinary · Ministry of Railways · Construction Department</description>
       <category>Ministry of Railways</category>
-      <category>extraordinary</category>
-    </item>
-    <item>
-      <title>SC Railway Publication of Notification under section 20A of Railways Act, 1989 Acquisition of land for Doubling between Mahabubnagar and Dhone for Wanaparthy district in the state of Telangana.</title>
-      <link>https://archive.org/download/in.gazette.central.e.2026-11-06.277796/277796.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-11-06.277796</guid>
-      <pubDate>Fri, 06 Nov 2026 12:00:00 GMT</pubDate>
-      <description>extraordinary · Ministry of Railways · Construction Department</description>
-      <category>Ministry of Railways</category>
-      <category>extraordinary</category>
-    </item>
-    <item>
-      <title>20ELUNISMRLUNIJN</title>
-      <link>https://archive.org/download/in.gazette.central.e.2026-11-06.277793/277793.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-11-06.277793</guid>
-      <pubDate>Fri, 06 Nov 2026 12:00:00 GMT</pubDate>
-      <description>extraordinary · Ministry of Railways · North Western Railway</description>
-      <category>Ministry of Railways</category>
-      <category>extraordinary</category>
-    </item>
-    <item>
-      <title>20ENTDDEORAJSAMAND</title>
-      <link>https://archive.org/download/in.gazette.central.e.2026-11-06.277788/277788.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-11-06.277788</guid>
-      <pubDate>Fri, 06 Nov 2026 12:00:00 GMT</pubDate>
-      <description>extraordinary · Ministry of Railways · North Western Railway</description>
-      <category>Ministry of Railways</category>
-      <category>extraordinary</category>
-    </item>
-    <item>
-      <title>Special Railway Projects Construction of Road under Bridges at LC No 19, Km 1132/5_7 in AAP TDL section And Construction of Road under Bridges at LC No 33, Km 1167/25_27 in AAP TDL section</title>
-      <link>https://archive.org/download/in.gazette.central.e.2026-11-05.277828/277828.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-11-05.277828</guid>
-      <pubDate>Thu, 05 Nov 2026 12:00:00 GMT</pubDate>
-      <description>extraordinary · Ministry of Railways · North Central Railway</description>
-      <category>Ministry of Railways</category>
-      <category>extraordinary</category>
-    </item>
-    <item>
-      <title>Publication of notification under Section 3D</title>
-      <link>https://archive.org/download/in.gazette.central.e.2026-11-05.277812/277812.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-11-05.277812</guid>
-      <pubDate>Thu, 05 Nov 2026 12:00:00 GMT</pubDate>
-      <description>extraordinary · Ministry of Road Transport and Highways · Deptt. of Road Transport and Highways</description>
-      <category>Ministry of Road Transport and Highways</category>
-      <category>extraordinary</category>
-    </item>
-    <item>
-      <title>Publication of notification under Section 3A</title>
-      <link>https://archive.org/download/in.gazette.central.e.2026-11-05.277811/277811.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-11-05.277811</guid>
-      <pubDate>Thu, 05 Nov 2026 12:00:00 GMT</pubDate>
-      <description>extraordinary · Ministry of Road Transport and Highways · Deptt. of Road Transport and Highways</description>
-      <category>Ministry of Road Transport and Highways</category>
-      <category>extraordinary</category>
-    </item>
-    <item>
-      <title>Publication of notification under Section 3A</title>
-      <link>https://archive.org/download/in.gazette.central.e.2026-11-05.277781/277781.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-11-05.277781</guid>
-      <pubDate>Thu, 05 Nov 2026 12:00:00 GMT</pubDate>
-      <description>extraordinary · Ministry of Road Transport and Highways · Deptt. of Road Transport and Highways</description>
-      <category>Ministry of Road Transport and Highways</category>
-      <category>extraordinary</category>
-    </item>
-    <item>
-      <title>Publication of notification under Section 3A</title>
-      <link>https://archive.org/download/in.gazette.central.e.2026-11-05.277780/277780.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-11-05.277780</guid>
-      <pubDate>Thu, 05 Nov 2026 12:00:00 GMT</pubDate>
-      <description>extraordinary · Ministry of Road Transport and Highways · Deptt. of Road Transport and Highways</description>
-      <category>Ministry of Road Transport and Highways</category>
-      <category>extraordinary</category>
-    </item>
-    <item>
-      <title>Publication of notification under Section 3A</title>
-      <link>https://archive.org/download/in.gazette.central.e.2026-11-05.277779/277779.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-11-05.277779</guid>
-      <pubDate>Thu, 05 Nov 2026 12:00:00 GMT</pubDate>
-      <description>extraordinary · Ministry of Road Transport and Highways · Deptt. of Road Transport and Highways</description>
-      <category>Ministry of Road Transport and Highways</category>
-      <category>extraordinary</category>
-    </item>
-    <item>
-      <title>Publication of notification under Section 3A</title>
-      <link>https://archive.org/download/in.gazette.central.e.2026-11-05.277778/277778.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-11-05.277778</guid>
-      <pubDate>Thu, 05 Nov 2026 12:00:00 GMT</pubDate>
-      <description>extraordinary · Ministry of Road Transport and Highways · Deptt. of Road Transport and Highways</description>
-      <category>Ministry of Road Transport and Highways</category>
-      <category>extraordinary</category>
-    </item>
-    <item>
-      <title>Publication of notification under Section 3a</title>
-      <link>https://archive.org/download/in.gazette.central.e.2026-11-05.277777/277777.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-11-05.277777</guid>
-      <pubDate>Thu, 05 Nov 2026 12:00:00 GMT</pubDate>
-      <description>extraordinary · Ministry of Road Transport and Highways · Deptt. of Road Transport and Highways</description>
-      <category>Ministry of Road Transport and Highways</category>
-      <category>extraordinary</category>
-    </item>
-    <item>
-      <title>Publication of notification under Section 3a</title>
-      <link>https://archive.org/download/in.gazette.central.e.2026-11-05.277775/277775.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-11-05.277775</guid>
-      <pubDate>Thu, 05 Nov 2026 12:00:00 GMT</pubDate>
-      <description>extraordinary · Ministry of Road Transport and Highways · Deptt. of Road Transport and Highways</description>
-      <category>Ministry of Road Transport and Highways</category>
-      <category>extraordinary</category>
-    </item>
-    <item>
-      <title>Amendment in CMVR 1989</title>
-      <link>https://archive.org/download/in.gazette.central.e.2026-11-05.277749/277749.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-11-05.277749</guid>
-      <pubDate>Thu, 05 Nov 2026 12:00:00 GMT</pubDate>
-      <description>extraordinary · Ministry of Road Transport and Highways · Not Applicable</description>
-      <category>Ministry of Road Transport and Highways</category>
-      <category>extraordinary</category>
-    </item>
-    <item>
-      <title>Publication of notification under Section 3A</title>
-      <link>https://archive.org/download/in.gazette.central.e.2026-11-05.277722/277722.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-11-05.277722</guid>
-      <pubDate>Thu, 05 Nov 2026 12:00:00 GMT</pubDate>
-      <description>extraordinary · Ministry of Road Transport and Highways · Deptt. of Road Transport and Highways</description>
-      <category>Ministry of Road Transport and Highways</category>
-      <category>extraordinary</category>
-    </item>
-    <item>
-      <title>Arbitrator File</title>
-      <link>https://archive.org/download/in.gazette.central.e.2026-11-05.277721/277721.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-11-05.277721</guid>
-      <pubDate>Thu, 05 Nov 2026 12:00:00 GMT</pubDate>
-      <description>extraordinary · Ministry of Road Transport and Highways · Deptt. of Road Transport and Highways</description>
-      <category>Ministry of Road Transport and Highways</category>
-      <category>extraordinary</category>
-    </item>
-    <item>
-      <title>Resignation of Shri Aga Syed Ruhullah Mehdi MP</title>
-      <link>https://archive.org/download/in.gazette.central.e.2026-11-05.277717/277717.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-11-05.277717</guid>
-      <pubDate>Thu, 05 Nov 2026 12:00:00 GMT</pubDate>
-      <description>extraordinary · Lok Sabha Secretariat · Not Applicable</description>
-      <category>Lok Sabha Secretariat</category>
-      <category>extraordinary</category>
-    </item>
-    <item>
-      <title>Provisional Assessment</title>
-      <link>https://archive.org/download/in.gazette.central.e.2026-11-05.277715/277715.pdf</link>
-      <guid isPermaLink="false">gazettes:in.gazette.central.e.2026-11-05.277715</guid>
-      <pubDate>Thu, 05 Nov 2026 12:00:00 GMT</pubDate>
-      <description>extraordinary · Ministry of Finance · Department of Revenue</description>
-      <category>Ministry of Finance</category>
       <category>extraordinary</category>
     </item>
   </channel>
