@@ -70,11 +70,11 @@ require a versioned migration: open old DB, copy stores into new DB
 
 **Storage is per-origin.** SansadSaar serves on two custom domains:
 
-- `https://sansadsaar.naklitechie.com` (canonical)
+- `https://sansadsaar.indiavotes.com` (canonical)
 - `https://sansadlocal.naklitechie.com` (alias)
 
 These are **different origins for storage purposes**. A user with summaries
-on `sansadlocal.naklitechie.com` who navigates to `sansadsaar.naklitechie.com`
+on `sansadlocal.naklitechie.com` who navigates to `sansadsaar.indiavotes.com`
 lands on a cold install — no summaries, no settings, no model cache.
 
 This is accepted by spec (`plan/sansadsaar-spec-001-v0.4.md` §"Notes on dual

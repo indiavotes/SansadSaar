@@ -2,7 +2,7 @@
 
 > Browse, search, and summarise India's parliamentary record — privately, in your browser.
 
-**[Live →](https://sansadsaar.naklitechie.com)** · **[User guide →](https://sansadsaar.naklitechie.com/guide/)**
+**[Live →](https://sansadsaar.indiavotes.com)** · **[User guide →](https://sansadsaar.indiavotes.com/guide/)**
 
 No accounts. No keys required. No data leaves your device.
 
@@ -14,16 +14,16 @@ A single-file browser app over a growing set of Indian parliamentary corpora —
 
 The data is public but scattered across multiple government sites. SansadSaar mirrors it and presents it in one searchable, offline-capable interface — no servers, no logins, no analytics.
 
-Also reachable at `sansadlocal.naklitechie.com` (legacy alias).
+The old addresses `sansadsaar.naklitechie.com` and `sansadlocal.naklitechie.com` redirect here.
 
 ## Data
 
 Each corpus is mirrored in a sibling repo:
 
-- [parliamentwatch-data](https://github.com/NakliTechie/parliamentwatch-data) — DRSC, CAG, Bills, LC, FC
-- [sansadsaar-proceedings-data](https://github.com/NakliTechie/sansadsaar-proceedings-data) — Debates, Questions
-- [sansadsaar-gazettes](https://github.com/NakliTechie/sansadsaar-gazettes) — Central Gazette
-- [sansadsaar-lc](https://github.com/NakliTechie/sansadsaar-lc) — Law Commission PDF archive
+- [parliamentwatch-data](https://github.com/indiavotes/parliamentwatch-data) — DRSC, CAG, Bills, LC, FC
+- [sansadsaar-proceedings-data](https://github.com/indiavotes/sansadsaar-proceedings-data) — Debates, Questions
+- [sansadsaar-gazettes](https://github.com/indiavotes/sansadsaar-gazettes) — Central Gazette
+- [sansadsaar-lc](https://github.com/indiavotes/sansadsaar-lc) — Law Commission PDF archive
 
 ## Credits
 

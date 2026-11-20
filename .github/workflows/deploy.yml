@@ -1,6 +1,6 @@
 name: Deploy to Cloudflare
 
-# Deploy the static-assets Worker (serves sansadsaar.naklitechie.com) on every
+# Deploy the static-assets Worker (serves sansadsaar.indiavotes.com) on every
 # push to main, and after the daily RSS feeds regeneration. Uses wrangler with
 # a scoped Cloudflare API token stored as the repo secret CLOUDFLARE_API_TOKEN.
 #

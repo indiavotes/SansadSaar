@@ -1005,7 +1005,7 @@ function exportSummariesMD() {
   const out = [];
   out.push(`# SansadSaar — Debate summaries`);
   out.push('');
-  out.push(`Exported ${new Date().toLocaleString('en-IN')}. Source: <https://sansadsaar.naklitechie.com>.`);
+  out.push(`Exported ${new Date().toLocaleString('en-IN')}. Source: <https://sansadsaar.indiavotes.com>.`);
   out.push('');
   let n = 0;
   for (const r of all) {

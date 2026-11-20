@@ -4,7 +4,7 @@
 // Generate one RSS 2.0 feed per corpus ("section") into feeds/<id>.xml,
 // plus a feeds/index.html listing. Runs daily (and on manual dispatch)
 // via .github/workflows/feeds.yml; the committed XML is served statically
-// at https://sansadsaar.naklitechie.com/feeds/<id>.xml.
+// at https://sansadsaar.indiavotes.com/feeds/<id>.xml.
 //
 // Source of truth is the live data mirror — the same JSON the browser app
 // fetches. We pull each corpus's primary file(s), take the most-recent N
@@ -25,10 +25,10 @@ import { dirname, join } from 'node:path';
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT_DIR = join(ROOT, 'feeds');
 
-const APP = 'https://sansadsaar.naklitechie.com';
-const DATA = 'https://sansadsaar-data.naklitechie.com/';
-const PROC = 'https://sansadsaar-proceedings.naklitechie.com/';
-const GAZ  = 'https://sansadsaar-gazettes.naklitechie.com/';
+const APP = 'https://sansadsaar.indiavotes.com';
+const DATA = 'https://data.indiavotes.com/';
+const PROC = 'https://proceedings.indiavotes.com/';
+const GAZ  = 'https://gazettes.indiavotes.com/';
 
 const ITEMS_PER_FEED = 50;
 

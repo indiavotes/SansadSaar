@@ -42,13 +42,13 @@ const CORPUS_PREFIX = 'lc/';
 // .github/workflows/lc.yml for the upstream side.
 //
 // URL shape:
-//   https://raw.githubusercontent.com/NakliTechie/sansadsaar-lc/main/pdfs/<n>.pdf
-//   https://raw.githubusercontent.com/NakliTechie/sansadsaar-lc/main/index.json
+//   https://raw.githubusercontent.com/indiavotes/sansadsaar-lc/main/pdfs/<n>.pdf
+//   https://raw.githubusercontent.com/indiavotes/sansadsaar-lc/main/index.json
 //
 // `raw.githubusercontent.com` serves with `access-control-allow-origin: *`
 // so we can fetch index.json client-side without a proxy.
-const ARCHIVE_REPO_URL  = 'https://github.com/NakliTechie/sansadsaar-lc';
-const ARCHIVE_RAW_BASE  = 'https://raw.githubusercontent.com/NakliTechie/sansadsaar-lc/main';
+const ARCHIVE_REPO_URL  = 'https://github.com/indiavotes/sansadsaar-lc';
+const ARCHIVE_RAW_BASE  = 'https://raw.githubusercontent.com/indiavotes/sansadsaar-lc/main';
 const ARCHIVE_INDEX_URL = `${ARCHIVE_RAW_BASE}/index.json`;
 const ARCHIVE_PDF_URL   = (n) => `${ARCHIVE_RAW_BASE}/pdfs/${n}.pdf`;
 
@@ -961,7 +961,7 @@ function exportSummariesMD() {
   const out = [];
   out.push(`# SansadSaar — Law Commission summaries`);
   out.push('');
-  out.push(`Exported ${new Date().toLocaleString('en-IN')}. Source: <https://sansadsaar.naklitechie.com>.`);
+  out.push(`Exported ${new Date().toLocaleString('en-IN')}. Source: <https://sansadsaar.indiavotes.com>.`);
   out.push('');
   let n = 0;
   for (const r of all) {

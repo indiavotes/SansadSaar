@@ -38,15 +38,13 @@ const PRODUCT = 'sansadsaar';
 const VERSION = '1.0a-phase1';
 
 // Data mirror URL. ?data=ghpages or ?data=<url> overrides for local dev /
-// alternate origin testing. Default = sansadsaar-data.naklitechie.com (CF
-// Workers + Static Assets, post-phase-3). sansad-files.naklitechie.com
-// continues to serve the same Worker as a legacy alias — pass
-// ?data=https://sansad-files.naklitechie.com/ to use it explicitly.
+// alternate origin testing. Default = data.indiavotes.com (CF
+// Workers + Static Assets on the indiavotes account since 21 Nov 2026).
 const DATA_BASE_URL = (() => {
   const u = new URL(window.location.href);
   const override = u.searchParams.get('data');
-  if (override === 'ghpages') return 'https://naklitechie.github.io/parliamentwatch-data/';
-  return override || 'https://sansadsaar-data.naklitechie.com/';
+  if (override === 'ghpages') return 'https://indiavotes.github.io/parliamentwatch-data/';
+  return override || 'https://data.indiavotes.com/';
 })();
 
 // Per-corpus data-origin overrides. Some corpora live in their own repos
@@ -56,13 +54,13 @@ const DATA_BASE_URL = (() => {
 // affects the main DATA_BASE_URL; corpora listed here ignore it.
 const CORPUS_DATA_BASE_URLS = {
   // Gazettes: sansadsaar-gazettes repo (private), served via CF Worker
-  // Static Assets at sansadsaar-gazettes.naklitechie.com.
-  gazettes:  'https://sansadsaar-gazettes.naklitechie.com/',
+  // Static Assets at gazettes.indiavotes.com.
+  gazettes:  'https://gazettes.indiavotes.com/',
   // Debates + Questions: sansadsaar-proceedings-data repo (private),
-  // both corpora served from one Worker at sansadsaar-proceedings.naklitechie.com.
+  // both corpora served from one Worker at proceedings.indiavotes.com.
   // Update this when the custom domain is wired.
-  debates:   'https://sansadsaar-proceedings.naklitechie.com/',
-  questions: 'https://sansadsaar-proceedings.naklitechie.com/',
+  debates:   'https://proceedings.indiavotes.com/',
+  questions: 'https://proceedings.indiavotes.com/',
 };
 
 // Per-corpus expected interval between data updates visible on the
@@ -93,14 +91,14 @@ const CORPUS_CADENCE_MINUTES = {
 // Per-corpus source-data repository for the "View workflow runs" link
 // in the staleness indicator's expanded details.
 const CORPUS_REPO_URL = {
-  drsc:      'https://github.com/NakliTechie/parliamentwatch-data',
-  cag:       'https://github.com/NakliTechie/parliamentwatch-data',
-  fc:        'https://github.com/NakliTechie/parliamentwatch-data',
-  bills:     'https://github.com/NakliTechie/parliamentwatch-data',
-  lc:        'https://github.com/NakliTechie/parliamentwatch-data',
-  debates:   'https://github.com/NakliTechie/sansadsaar-proceedings-data',
-  questions: 'https://github.com/NakliTechie/sansadsaar-proceedings-data',
-  gazettes:  'https://github.com/NakliTechie/sansadsaar-gazettes',
+  drsc:      'https://github.com/indiavotes/parliamentwatch-data',
+  cag:       'https://github.com/indiavotes/parliamentwatch-data',
+  fc:        'https://github.com/indiavotes/parliamentwatch-data',
+  bills:     'https://github.com/indiavotes/parliamentwatch-data',
+  lc:        'https://github.com/indiavotes/parliamentwatch-data',
+  debates:   'https://github.com/indiavotes/sansadsaar-proceedings-data',
+  questions: 'https://github.com/indiavotes/sansadsaar-proceedings-data',
+  gazettes:  'https://github.com/indiavotes/sansadsaar-gazettes',
 };
 
 // ── Staleness indicator helpers (used by each corpus's settings section) ──
@@ -264,7 +262,7 @@ function closeModal(id) {
 // ── Cross-tab postMessage (BroadcastChannel) ────────────────────────────────
 //
 // Same-origin only — different origins can't share a BroadcastChannel. The
-// dual-app-URL setup means a user with tabs open at sansadsaar.naklitechie.com
+// dual-app-URL setup means a user with tabs open at sansadsaar.indiavotes.com
 // AND sansadlocal.naklitechie.com won't see cross-broadcasts (separate
 // origins). Within a single origin, any tab broadcasting changes is heard
 // by all other tabs. Used for settings sync + corpus activation hints.
