@@ -262,7 +262,7 @@ function closeModal(id) {
 // ── Cross-tab postMessage (BroadcastChannel) ────────────────────────────────
 //
 // Same-origin only — different origins can't share a BroadcastChannel. The
-// dual-app-URL setup means a user with tabs open at sansadsaar.indiavotes.com
+// dual-app-URL setup means a user with tabs open at www.indiavotes.com/sansadsaar
 // AND sansadlocal.naklitechie.com won't see cross-broadcasts (separate
 // origins). Within a single origin, any tab broadcasting changes is heard
 // by all other tabs. Used for settings sync + corpus activation hints.

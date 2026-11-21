@@ -25,7 +25,7 @@ let T, stopping_criteria;
 const ready = import(TRANSFORMERS_URL).then((m) => {
   T = m;
   T.env.allowLocalModels  = true;
-  T.env.localModelPath    = '/models/';
+  T.env.localModelPath    = '/sansadsaar/models/';
   T.env.allowRemoteModels = true;
   stopping_criteria = new T.InterruptableStoppingCriteria();
 });

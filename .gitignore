@@ -18,6 +18,8 @@
 !.github/
 !.github/**
 !wrangler.jsonc
+!src/
+!src/**
 
 # wrangler files
 .wrangler

@@ -2,7 +2,7 @@
 
 > Browse, search, and summarise India's parliamentary record — privately, in your browser.
 
-**[Live →](https://sansadsaar.indiavotes.com)** · **[User guide →](https://sansadsaar.indiavotes.com/guide/)**
+**[Live →](https://www.indiavotes.com/sansadsaar)** · **[User guide →](https://www.indiavotes.com/sansadsaar/guide/)**
 
 No accounts. No keys required. No data leaves your device.
 

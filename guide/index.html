@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="Chirag Patnaik">
 <title>SansadSaar — User guide</title>
-<link rel="canonical" href="https://sansadsaar.indiavotes.com/guide/">
+<link rel="canonical" href="https://www.indiavotes.com/sansadsaar/guide/">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23f5efe2'/%3E%3Cpath d='M6 24h20M8 24V14M12 24V14M16 24V14M20 24V14M24 24V14M5 14h22L16 6z' stroke='%23cc5500' stroke-width='1.6' fill='none' stroke-linejoin='round'/%3E%3C/svg%3E">
 <style>
 :root {
@@ -516,7 +516,7 @@ img.shot {
     </tr>
     <tr>
       <td><b>Ollama</b></td>
-      <td><b>Yes — fully free.</b> Runs on your computer. Install from <a href="https://ollama.com" target="_blank">ollama.com</a>, then <code>ollama pull llama3.2</code>. Set <code>OLLAMA_ORIGINS=https://sansadsaar.indiavotes.com</code> when starting Ollama so the browser can reach it.</td>
+      <td><b>Yes — fully free.</b> Runs on your computer. Install from <a href="https://ollama.com" target="_blank">ollama.com</a>, then <code>ollama pull llama3.2</code>. Set <code>OLLAMA_ORIGINS=https://www.indiavotes.com/sansadsaar</code> when starting Ollama so the browser can reach it.</td>
       <td>—</td>
     </tr>
     <tr>
@@ -554,7 +554,7 @@ img.shot {
 
 <h3>Ollama returns CORS errors</h3>
 <p>Ollama's HTTP API doesn't allow cross-origin requests by default. Set <code>OLLAMA_ORIGINS</code> when starting Ollama:</p>
-<pre style="background:var(--surface2); border:1px solid var(--border); padding:10px; border-radius:4px; font-family:ui-monospace,Menlo,monospace; font-size:0.85rem; overflow-x:auto">OLLAMA_ORIGINS="https://sansadsaar.indiavotes.com" ollama serve</pre>
+<pre style="background:var(--surface2); border:1px solid var(--border); padding:10px; border-radius:4px; font-family:ui-monospace,Menlo,monospace; font-size:0.85rem; overflow-x:auto">OLLAMA_ORIGINS="https://www.indiavotes.com/sansadsaar" ollama serve</pre>
 <p>If you opened the app via <code>http://localhost:8000</code> for local dev, set <code>OLLAMA_ORIGINS=http://localhost:8000</code> instead.</p>
 
 <h3>The mirror is missing data</h3>

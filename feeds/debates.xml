@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>SansadSaar — Parliamentary Debates</title>
-    <link>https://sansadsaar.naklitechie.com</link>
+    <link>https://www.indiavotes.com/sansadsaar</link>
     <description>Lok Sabha and Rajya Sabha debates. Most recent 50 items.</description>
     <language>en-in</language>
-    <lastBuildDate>Fri, 20 Nov 2026 10:24:44 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 21 Nov 2026 03:15:57 GMT</lastBuildDate>
     <generator>sansadsaar feeds (scripts/gen-feeds.mjs)</generator>
-    <atom:link href="https://sansadsaar.naklitechie.com/feeds/debates.xml" rel="self" type="application/rss+xml"/>
+    <atom:link href="https://www.indiavotes.com/sansadsaar/feeds/debates.xml" rel="self" type="application/rss+xml"/>
     <item>
       <title>Laid the statement showing final action taken by the Government on the observations/recommendations contained in 29th Report of the Standing Committee on Finance</title>
       <link>https://sansad.in/ls/debates/view-debate?ls=18&amp;session=8&amp;dbslno=7483</link>

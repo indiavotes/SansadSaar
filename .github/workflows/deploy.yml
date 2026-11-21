@@ -1,6 +1,6 @@
 name: Deploy to Cloudflare
 
-# Deploy the static-assets Worker (serves sansadsaar.indiavotes.com) on every
+# Deploy the static-assets Worker (serves www.indiavotes.com/sansadsaar) on every
 # push to main, and after the daily RSS feeds regeneration. Uses wrangler with
 # a scoped Cloudflare API token stored as the repo secret CLOUDFLARE_API_TOKEN.
 #
@@ -14,7 +14,7 @@ name: Deploy to Cloudflare
 
 on:
   push:
-    branches: [main]
+    branches: [main, staging]
   workflow_run:
     # The daily feeds job commits with GITHUB_TOKEN, which does NOT re-trigger
     # `push` workflows — so deploy after it completes to ship the fresh feeds.
@@ -46,4 +46,5 @@ jobs:
           # v4 is required: this is an assets-only Worker (no `main`), which
           # wrangler-action's default (3.90.0) rejects with "Missing entry-point".
           wranglerVersion: "4"
-          command: deploy
+          # staging branch -> env.staging (staging.indiavotes.com/sansadsaar/); main -> production.
+          command: deploy${{ github.ref_name == 'staging' && ' --env staging' || '' }}

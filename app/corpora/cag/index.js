@@ -926,7 +926,7 @@ function exportSummariesMD() {
   const out = [];
   out.push(`# SansadSaar — CAG audit summaries`);
   out.push('');
-  out.push(`Exported ${new Date().toLocaleString('en-IN')}. Source: <https://sansadsaar.indiavotes.com>.`);
+  out.push(`Exported ${new Date().toLocaleString('en-IN')}. Source: <https://www.indiavotes.com/sansadsaar>.`);
   out.push('');
   let n = 0;
   for (const r of all) {

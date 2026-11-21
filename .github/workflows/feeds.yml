@@ -2,7 +2,7 @@ name: Generate RSS feeds
 
 # Regenerate one RSS feed per section (corpus) from the live data mirror and
 # commit the changed XML. The committed files are served statically at
-# https://sansadsaar.indiavotes.com/feeds/<id>.xml.
+# https://www.indiavotes.com/sansadsaar/feeds/<id>.xml.
 #
 # Runs daily, and on demand. The scrape pipelines live in the sibling data
 # repos; this job reads their published JSON, so "daily" is the refresh
