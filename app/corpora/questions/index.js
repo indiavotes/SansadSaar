@@ -34,6 +34,7 @@ import {
 import {
   parseQuery, highlightMatches,
 } from '../../corpus-search.js';
+import { loadTextFromShards } from '../../text-shards.js';
 
 const CORPUS_PREFIX = 'questions/';
 
@@ -59,7 +60,8 @@ const TYPE_INFO = {
 const state = {
   // reports is house-keyed dict of record arrays, matching the on-disk
   // sharded shape after merge.
-  data: { reports: { ls: [], rs: [] }, meta: null },
+  data: { reports: { ls: [], rs: [] }, manifest: { texts: {} }, meta: null },
+  textCache: {},   // fileId -> answer text (session memory)
 
   filtered: [],
   selectedReport: null,
@@ -87,6 +89,21 @@ function reportKey(r) {
   }
   // RS shape (Phase B): per-PDF records keyed by (session, date_iso, type).
   return `questions|rs|${r.session}|${r.date_iso || r.date}|${r.type}`;
+}
+
+// Text-file id, the same scheme as the builder (questions/scrapers/*.file_id):
+// LS18_S4_U_1234 for Lok Sabha, RS250_2020-01-01_S for a Rajya Sabha sitting.
+function fileId(r) {
+  const t = String(r.type || '').toUpperCase() === 'STARRED' ? 'S' : 'U';
+  if (r.house === 'ls') return `LS${r.lok_sabha}_S${r.session}_${t}_${r.question_no}`;
+  if (r.house === 'rs') return `RS${r.session}_${r.date_iso || r.date}_${t}`;
+  return '';
+}
+
+// manifest.texts.<house>[<fileId>] is present when the question + answer text
+// is bundled in the text shards (same gate as debates' hasExtractedText).
+function hasExtractedText(r) {
+  return !!state.data.manifest?.texts?.[r.house]?.[fileId(r)];
 }
 
 function reportDate(r) {
@@ -174,14 +191,16 @@ async function fetchData(forceRefresh = false) {
 
   if (!forceRefresh) {
     try {
-      const [reportsBlob, metaBlob] = await Promise.all([
+      const [reportsBlob, metaBlob, manifestBlob] = await Promise.all([
         idbGet('blobs', 'questions-reports.json'),
         idbGet('blobs', 'questions-meta.json'),
+        idbGet('blobs', 'questions-manifest.json'),
       ]);
       if (reportsBlob) {
         state.data.reports = reportsBlob;
         state.data.meta    = metaBlob || null;
       }
+      if (manifestBlob) state.data.manifest = manifestBlob;
     } catch (e) { console.warn('questions IDB cache miss', e); }
   }
 
@@ -191,15 +210,18 @@ async function fetchData(forceRefresh = false) {
   const fetchOpts = { cache: 'no-cache' };
 
   try {
-    const [reports, meta] = await Promise.all([
+    const [reports, meta, manifest] = await Promise.all([
       fetchReports(dataUrl, v, fetchOpts),
       fetch(dataUrl + CORPUS_PREFIX + 'meta.json' + v, fetchOpts).then(r => r.ok ? r.json() : null).catch(() => null),
+      fetch(dataUrl + CORPUS_PREFIX + 'manifest.json' + v, fetchOpts).then(r => r.ok ? r.json() : null).catch(() => null),
     ]);
     state.data.reports = reports;
     state.data.meta    = meta;
+    if (manifest?.texts) state.data.manifest = manifest;
 
     idbPut('blobs', 'questions-reports.json', reports).catch(() => {});
     if (meta) idbPut('blobs', 'questions-meta.json', meta).catch(() => {});
+    if (manifest?.texts) idbPut('blobs', 'questions-manifest.json', manifest).catch(() => {});
   } catch (err) {
     console.error('questions fetch failed', err);
     if (!haveCache) {
@@ -264,10 +286,13 @@ function renderHeaderStats() {
   const total = getAllReports().length;
   const lsTotal = state.data.reports.ls?.length || 0;
   const rsTotal = state.data.reports.rs?.length || 0;
+  const texts = state.data.manifest?.texts || {};
+  const withText = Object.values(texts).reduce((n, h) => n + Object.keys(h || {}).length, 0);
   el.innerHTML = `
     <span><b>${total}</b> questions</span>
     ${lsTotal ? `<span><b>${lsTotal}</b> LS</span>` : ''}
     ${rsTotal ? `<span><b>${rsTotal}</b> RS</span>` : ''}
+    ${withText ? `<span><b>${withText}</b> with text</span>` : ''}
   `;
 }
 
@@ -321,7 +346,7 @@ function renderList() {
         </div>
         <span class="house-pill house-${hp}" title="${escapeHtml(HOUSES[r.house]?.long || '')}">${escapeHtml(houseShort)}</span>
         <span class="cat-badge cat-${ti.class}" title="${escapeHtml(ti.label + ' question')}">${escapeHtml(ti.short)}</span>
-        <span class="text-status">metadata</span>
+        <span class="text-status ${hasExtractedText(r) ? 'ok' : ''}">${hasExtractedText(r) ? 'text' : 'metadata'}</span>
       </div>
     `;
   }).join('');
@@ -502,6 +527,38 @@ function renderPlaceholderTab(paneId, title, body) {
   `;
 }
 
+// Full-text tab: the question + answer body from the bundled text shards,
+// the same fetch path as debates (loadTextFromShards by composite id).
+async function loadTextTab() {
+  const r = state.selectedReport;
+  const tab = document.getElementById('textTab');
+  if (!r || !tab) return;
+  if (!hasExtractedText(r)) {
+    renderPlaceholderTab('textTab', 'Text not extracted yet',
+      'The question + answer text for this item has not been extracted yet. The original document on sansad.in has it.');
+    return;
+  }
+  const fid = fileId(r);
+  tab.innerHTML = `<p style="color:var(--text-muted)">Loading…</p>`;
+  let text = state.textCache[fid];
+  if (text == null) {
+    try {
+      text = await loadTextFromShards('questions', `${r.house}|${fid}`, _deps.config.dataBaseUrl);
+    } catch (e) {
+      console.warn('questions: text-shard fetch failed', e);
+      text = null;
+    }
+    if (text) state.textCache[fid] = text;
+  }
+  if (state.selectedReport !== r) return;   // user moved on while loading
+  if (!text) {
+    renderPlaceholderTab('textTab', 'Could not load the text',
+      'The text shard did not return this item. The original document on sansad.in has it.');
+    return;
+  }
+  tab.innerHTML = `<pre>${escapeHtml(text)}</pre>`;
+}
+
 function switchReportTab(name) {
   if (_deps.activeCorpus?.() !== 'questions') return;   // multi-corpus DOM guard
   const r = state.selectedReport;
@@ -513,7 +570,7 @@ function switchReportTab(name) {
     pane.classList.toggle('active', pane.id === `${name}Tab`);
   }
   if (name === 'details') renderDetailsTab(r);
-  else if (name === 'text')    renderPlaceholderTab('textTab', 'Full text not in SansadSaar', 'SansadSaar shows question metadata only. The question + answer text is in the original PDF on sansad.in.');
+  else if (name === 'text')    loadTextTab();
   else if (name === 'summary') renderPlaceholderTab('summaryTab', 'AI summary for Questions lives in Netas', 'Per-MP and per-question AI analytics are part of Netas Explorer (coming soon). The original PDF is one click away.');
   else if (name === 'chat')    renderPlaceholderTab('chatTab', 'Ask is not available for Questions', 'The AI-Ask experience for questions will land in Netas Explorer. The original PDF is one click away.');
 }
