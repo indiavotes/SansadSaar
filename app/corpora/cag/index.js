@@ -126,25 +126,27 @@ function reportKey(r) {
 
 function reportDate(r) {
   // CAG dates come as "Thu 02 Apr, 2026", "30/06/2023", or similar variants.
-  // Best-effort to a JS Date for sorting.
-  const candidates = [r.date_tabled, r.date_sent];
-  for (const s of candidates) {
+  // Best-effort to a JS Date for sorting. A date after today is a typo on
+  // cag.gov.in (one report is listed as tabled in 2030), so it is skipped and
+  // the next source is used.
+  const now = new Date();
+  const ok = (d) => !isNaN(d) && d <= now;
+  for (const s of [r.date_tabled, r.date_sent]) {
     if (!s) continue;
     // "Thu 02 Apr, 2026" → "Apr 02, 2026"
     const m1 = String(s).match(/(\d{1,2})\s+([A-Za-z]+),?\s+(\d{4})/);
     if (m1) {
       const d = new Date(`${m1[2]} ${m1[1]}, ${m1[3]}`);
-      if (!isNaN(d)) return d;
+      if (ok(d)) return d;
     }
     // ISO or DD/MM/YYYY
-    const s2 = String(s).replace(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/, '$3-$2-$1');
-    const d2 = new Date(s2);
-    if (!isNaN(d2)) return d2;
+    const d2 = new Date(String(s).replace(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/, '$3-$2-$1'));
+    if (ok(d2)) return d2;
   }
   // Fallback: midnight Jan 1 of inferred year
   if (r.year) {
     const y = new Date(`Jan 1, ${r.year}`);
-    if (!isNaN(y)) return y;
+    if (ok(y)) return y;
   }
   return null;
 }

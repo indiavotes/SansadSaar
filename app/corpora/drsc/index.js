@@ -183,7 +183,9 @@ function categoriseReport(r) {
 function reportDate(r) {
   // sansad.in dates can be '18-Mar-2026' or 'DD/MM/YYYY'. Best-effort to a
   // JS Date for sorting; falls back to lok_sabha + report_number ordering.
-  const candidates = [r.date_of_presentation, r.presented_in_ls, r.laid_in_rs, r.date_of_adoption];
+  // presented_to_speaker covers reports given to the Speaker between sessions,
+  // which have no House presentation date until the next sitting.
+  const candidates = [r.date_of_presentation, r.presented_in_ls, r.laid_in_rs, r.presented_to_speaker, r.date_of_adoption];
   for (const s of candidates) {
     if (!s) continue;
     const d = new Date(String(s).replace(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/, '$3-$2-$1'));
@@ -594,6 +596,7 @@ function renderDetailsTab(r) {
       <dt>Lok Sabha</dt><dd>${escapeHtml(r.lok_sabha ?? '—')}</dd>
       <dt>Category</dt><dd><span class="cat-badge cat-${r._category}">${r._category}</span></dd>
       <dt>Date of presentation</dt><dd>${escapeHtml(r.date_of_presentation || r.presented_in_ls || r.laid_in_rs || '—')}</dd>
+      ${r.presented_to_speaker ? `<dt>Presented to the Speaker</dt><dd>${escapeHtml(r.presented_to_speaker)}</dd>` : ''}
       <dt>Date of adoption</dt><dd>${escapeHtml(r.date_of_adoption || '—')}</dd>
       ${r.pdf_url ? `<dt>PDF (English)</dt><dd><a href="${escapeHtml(r.pdf_url)}" target="_blank" rel="noopener">${escapeHtml(r.pdf_url.split('/').pop())}</a></dd>` : ''}
       ${r.pdf_url_hindi ? `<dt>PDF (Hindi)</dt><dd><a href="${escapeHtml(r.pdf_url_hindi)}" target="_blank" rel="noopener">${escapeHtml(r.pdf_url_hindi.split('/').pop())}</a></dd>` : ''}
@@ -976,7 +979,7 @@ function exportMetadataCSV() {
     lines.push([
       r.committee, cm, r.house || 'L', r.lok_sabha,
       r.report_number, r.title, r._category,
-      r.date_of_presentation || r.presented_in_ls || r.laid_in_rs || '',
+      r.date_of_presentation || r.presented_in_ls || r.laid_in_rs || r.presented_to_speaker || '',
       r.date_of_adoption || '',
       r.pdf_url || '', r.pdf_url_hindi || '',
       hasExtractedText(r) ? 'yes' : 'no',
