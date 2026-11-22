@@ -572,6 +572,7 @@ function openReportByKey(key) {
   const all = getAllReports();
   const r = all.find(x => reportKey(x) === key);
   if (!r) return;
+  _deps?.onRecordOpened?.('drsc', key);
   // Stop any in-flight generation tied to a *different* report so we don't
   // corrupt the new dialog's chat.
   if (_deps.ai.streaming() && state.streamingContext?.reportKey !== key) {

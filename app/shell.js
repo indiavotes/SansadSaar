@@ -1113,6 +1113,7 @@ function depsForCorpus(corpusId) {
 }
 
 const deps = {
+  onRecordOpened: (corpusId, key) => onRecordOpened(corpusId, key),
   config: {
     dataBaseUrl: DATA_BASE_URL,
     // Per-corpus lookup for callers (like disk-sync) that iterate
@@ -1296,9 +1297,45 @@ function readDeepLink() {
   return { corpus, open, q: u.searchParams.get('q') };
 }
 
+// Every corpus calls deps.onRecordOpened(corpusId, key) when it opens a record, so any record can be
+// linked: the address bar gets ?open=<link key> while the record is open (cleared on close) and the
+// record dialog's Copy link button copies it. Most keys already start with the corpus id; DRSC keys do
+// not, so its link key carries the prefix and applyDeepLink strips it.
+function linkKeyFor(corpusId, key) {
+  return key.startsWith(`${corpusId}|`) ? key : `${corpusId}|${key}`;
+}
+function recordLink(corpusId, key) {
+  const u = new URL(location.href);
+  u.search = '';
+  u.searchParams.set('open', linkKeyFor(corpusId, key));
+  return u.toString();
+}
+let openRecordLink = null;
+function onRecordOpened(corpusId, key) {
+  openRecordLink = recordLink(corpusId, key);
+  try { history.replaceState(null, '', openRecordLink); } catch {}
+}
+function watchRecordDialog() {
+  const modal = document.getElementById('reportModal');
+  if (!modal) return;
+  new MutationObserver(() => {
+    if (modal.classList.contains('open') || !openRecordLink) return;
+    openRecordLink = null;
+    const u = new URL(location.href);
+    if (u.searchParams.has('open')) { u.searchParams.delete('open'); try { history.replaceState(null, '', u.toString()); } catch {} }
+  }).observe(modal, { attributes: true, attributeFilter: ['class'] });
+  document.getElementById('reportCopyLinkBtn')?.addEventListener('click', async () => {
+    const link = openRecordLink || location.href;
+    try { await navigator.clipboard.writeText(link); toast('Link copied', 2500); }
+    catch { toast(`Copy this link: ${link}`, 10000); }
+  });
+}
+
 function applyDeepLink(link) {
   if (link.open) {
-    const ok = window[PRODUCT]?.[link.corpus]?.open?.(link.open);
+    const api = window[PRODUCT]?.[link.corpus];
+    const bare = link.open.startsWith(`${link.corpus}|`) ? link.open.slice(link.corpus.length + 1) : null;
+    const ok = api?.open?.(link.open) || (bare != null && api?.open?.(bare));
     if (!ok) toast('That record is not in the loaded data. Search for it in the list.', 8000);
   } else if (link.q) {
     const el = document.getElementById('filterSearch');
@@ -1322,6 +1359,7 @@ async function init() {
   corpora.set(GazettesCorpus.id, GazettesCorpus);
 
   attachShellHandlers();
+  watchRecordDialog();
   wireMobileChrome();
   buildJSAPI();
   refreshAIPill();

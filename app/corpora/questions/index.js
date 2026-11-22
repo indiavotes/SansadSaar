@@ -465,6 +465,7 @@ function attachHandlers() {
 function openReportByKey(key) {
   const r = getAllReports().find(x => reportKey(x) === key);
   if (!r) return;
+  _deps?.onRecordOpened?.('questions', key);
   state.selectedReport = r;
   const titleEl = document.getElementById('reportTitle');
   if (titleEl) titleEl.textContent = r.subject || '(untitled)';

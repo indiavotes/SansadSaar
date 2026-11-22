@@ -539,6 +539,7 @@ function openBillByKey(key) {
   const all = getAllBills();
   const b = all.find(x => billKey(x) === key);
   if (!b) return;
+  _deps?.onRecordOpened?.('bills', key);
   if (_deps.ai.streaming() && state.streamingContext?.billKey !== key) {
     _deps.ai.stop();
     state.streamingContext = null;

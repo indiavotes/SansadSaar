@@ -517,6 +517,7 @@ function openReportByKey(key) {
   const all = getAllReports();
   const r = all.find(x => reportKey(x) === key);
   if (!r) return;
+  _deps?.onRecordOpened?.('fc', key);
   if (_deps.ai.streaming() && state.streamingContext?.reportKey !== key) {
     _deps.ai.stop();
     state.streamingContext = null;
