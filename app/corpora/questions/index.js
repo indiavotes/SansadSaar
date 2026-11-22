@@ -509,7 +509,7 @@ function renderDetailsTab(r) {
     </div>
     <div style="margin-top:18px;padding:12px;border:1px dashed var(--border);border-radius:6px;font-size:0.9rem">
       <strong>Looking for per-MP analytics?</strong>
-      SansadSaar surfaces individual questions for search and click-through. The richer per-MP view — how many questions an MP asked, by ministry, by topic — lives in <em>Netas Explorer</em> (coming soon).
+      SansadSaar surfaces individual questions for search and click-through. The per-MP view — every question an MP asked, by house, year and ministry — is on <a href="/netas/" target="_blank" rel="noopener">IndiaVotes Netas</a>: open the MP's page and choose "All questions".
     </div>
   `;
 }
@@ -572,8 +572,8 @@ function switchReportTab(name) {
   }
   if (name === 'details') renderDetailsTab(r);
   else if (name === 'text')    loadTextTab();
-  else if (name === 'summary') renderPlaceholderTab('summaryTab', 'AI summary for Questions lives in Netas', 'Per-MP and per-question AI analytics are part of Netas Explorer (coming soon). The original PDF is one click away.');
-  else if (name === 'chat')    renderPlaceholderTab('chatTab', 'Ask is not available for Questions', 'The AI-Ask experience for questions will land in Netas Explorer. The original PDF is one click away.');
+  else if (name === 'summary') renderPlaceholderTab('summaryTab', 'AI summary is not available for Questions', 'Each MP\'s questions, by house, year and ministry, are on IndiaVotes Netas (indiavotes.com/netas/). The original PDF is one click away.');
+  else if (name === 'chat')    renderPlaceholderTab('chatTab', 'Ask is not available for Questions', 'Each MP\'s questions are listed on IndiaVotes Netas (indiavotes.com/netas/). The original PDF is one click away.');
 }
 
 // ── Settings section (mounted by shell) ─────────────────────────────────────
@@ -587,9 +587,9 @@ function renderSettingsSection(container) {
     <div class="settings-section">
       <h3>Parliamentary Questions</h3>
       <p style="font-size:0.9rem;color:var(--muted);margin:0 0 8px">
-        SansadSaar shows questions as a searchable metadata corpus. The richer
-        per-MP and per-topic analytic experience for questions + debates lives
-        in <em>Netas Explorer</em> (coming soon).
+        SansadSaar shows questions as a searchable metadata corpus. Each MP's
+        questions and debates, by house, year, ministry and type, are on
+        <a href="/netas/" target="_blank" rel="noopener">IndiaVotes Netas</a>.
       </p>
       <p id="questionsDataInfo" style="font-size:0.82rem; color:var(--muted)">${meta
         ? `${_deps.ui.stalenessIndicatorHTML('questions', meta)}${totalCount ? ` · ${totalCount.toLocaleString()} questions total` : ''}`
