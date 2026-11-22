@@ -1281,6 +1281,31 @@ function attachShellHandlers() {
   });
 }
 
+// ── Deep links ──────────────────────────────────────────────────────────────
+//
+// ?open=<record key> opens one record in its corpus, using the key each corpus builds in reportKey(),
+// for example debates|ls|18|8|7356 (house, Lok Sabha, session, record number) or
+// questions|ls|18|8|STARRED|12. ?corpus=<id>&q=<words> opens a corpus with that search. IndiaVotes
+// day pages and Netas link here so a reader lands on the record, with the summarise and ask tools.
+
+function readDeepLink() {
+  const u = new URL(location.href);
+  const open = u.searchParams.get('open');
+  const corpus = open ? open.split('|')[0] : u.searchParams.get('corpus');
+  if (!corpus || !corpora.has(corpus)) return null;
+  return { corpus, open, q: u.searchParams.get('q') };
+}
+
+function applyDeepLink(link) {
+  if (link.open) {
+    const ok = window[PRODUCT]?.[link.corpus]?.open?.(link.open);
+    if (!ok) toast('That record is not in the loaded data. Search for it in the list.', 8000);
+  } else if (link.q) {
+    const el = document.getElementById('filterSearch');
+    if (el) { el.value = link.q; el.dispatchEvent(new Event('input')); }
+  }
+}
+
 async function init() {
   loadShellSettings();
 
@@ -1313,15 +1338,18 @@ async function init() {
   // and keyboard handlers. See CONV.md "Cross-corpus search modal".
   initGlobalSearch({ deps, corpora, activate });
 
-  // Activate the first corpus — this also renders chips and fetches data.
-  await activate(DRSCCorpus.id);
+  // Activate the first corpus — this also renders chips and fetches data. A deep link
+  // (?open= or ?corpus=) starts on its own corpus and then opens the record or runs the search.
+  const deepLink = readDeepLink();
+  await activate(deepLink ? deepLink.corpus : DRSCCorpus.id);
+  if (deepLink) applyDeepLink(deepLink);
 
   // Background preload of the other corpora so cross-corpus search has
   // their data ready. `silent: true` runs the corpus's data-fetch path
   // without touching the visible DOM (filter row / list / chips are
   // owned by the active corpus). See CONV.md "Cross-corpus search".
   for (const c of corpora.values()) {
-    if (c.id === DRSCCorpus.id) continue;
+    if (c.id === activeCorpusId) continue;
     if (typeof c.activate !== 'function') continue;
     c.activate(depsForCorpus(c.id), { silent: true }).catch(e =>
       console.warn(`[shell] silent preload of ${c.id} failed:`, e));
@@ -1330,7 +1358,7 @@ async function init() {
   // First-visit hint: auto-open Help once. Per-machine flag, separate from
   // the settings JSON so toggling settings doesn't reset it.
   try {
-    if (!localStorage.getItem(INTRO_SEEN_KEY)) {
+    if (!deepLink && !localStorage.getItem(INTRO_SEEN_KEY)) {
       document.querySelectorAll('#helpModal .tab-btn').forEach(b => b.classList.toggle('active', b.dataset.htab === 'about'));
       document.querySelectorAll('#helpModal .tab-pane').forEach(p => p.classList.toggle('active', p.id === 'hAbout'));
       openModal('helpModal');
