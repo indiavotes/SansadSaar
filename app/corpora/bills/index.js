@@ -488,7 +488,10 @@ function renderHeaderStats() {
   if (!el) return;
   const total = state.data.records.length;
   const withText = Object.keys(state.data.manifest?.texts || {}).length;
-  const becameLaw = state.data.records.filter(b => b.actNo).length;
+  // Became law = the record shows assent in any form: status, Act number or assent date. The status alone
+  // misses bills never updated from "Passed"; the Act number alone misses assented bills without one.
+  // Same rule as the IndiaVotes bill pages (site data/scripts/build-bills.py).
+  const becameLaw = state.data.records.filter(b => b.status === 'Assented' || b.actNo || b.billAssentedDate).length;
   el.innerHTML = `
     <span><b>${total}</b> bills</span>
     <span><b>${withText}</b> with text</span>
